@@ -716,6 +716,7 @@ generateSubsets(str, index + 1, current, subsets);
 }
 }
 ```
+```
 Output:
 All subsets of “abc”: [, c, b, bc, a, ac, ab, abc]
 ```
@@ -748,467 +749,159 @@ Longest substring without repeating characters: 3
 ```
 
 ### 28) Java Program to find longest repeating sequence in a string:
-
+```
 public class LongestRepeatingSequence {
-
- 
-
 public static void main(String[] args) {
-
- 
-
 String str = “aabcaabdaab”;
-
- 
-
 System.out.println(“Longest repeating sequence: ” + longestRepeatingSequence(str));
-
- 
-
 }
-
- 
-
 public static String longestRepeatingSequence(String str) {
-
- 
-
 int n = str.length();
-
- 
-
 int[][] dp = new int[n + 1][n + 1];
-
- 
-
 int longest = 0, endIndex = 0;
-
- 
-
 for (int i = 1; i <= n; i++) {
-
- 
-
 for (int j = i + 1; j <= n; j++) {
-
- 
-
 if (str.charAt(i – 1) == str.charAt(j – 1) && dp[i – 1][j – 1] < (j – i)) {
-
- 
-
 dp[i][j] = dp[i – 1][j – 1] + 1;
-
- 
-
 if (dp[i][j] > longest) {
-
- 
-
 longest = dp[i][j];
-
- 
-
 endIndex = i;
-
- 
-
 }
-
- 
-
 } else {
-
- 
-
 dp[i][j] = 0;
-
- 
-
 }
-
- 
-
 }
-
- 
-
 }
-
- 
-
 return str.substring(endIndex – longest, endIndex);
-
- 
-
 }
-
- 
-
 }
-
- 
-
+```
+```
 Output:
-
- 
-
 Longest repeating sequence: aab
-
+```
  
-
-29) Java Program to remove all the white spaces from a string:
-
+### 29) Java Program to remove all the white spaces from a string:
+```
 public class RemoveWhiteSpaces {
-
- 
-
 public static void main(String[] args) {
-
- 
-
 String str = “This is a test string”;
-
- 
-
 String trimmedStr = removeWhiteSpaces(str);
-
- 
-
 System.out.println(“String after removing white spaces: \”” + trimmedStr + “\””);
-
- 
-
 }
-
- 
-
 public static String removeWhiteSpaces(String str) {
-
- 
-
 return str.replaceAll(\\s, “”);
-
- 
-
 }
-
- 
-
 }
-
- 
-
+```
+```
 Output:
-
- 
-
 String after removing white spaces: “Thisisateststring”
-
- 
-
+```
 ### 30) Program to find number of elements in an array:
-
+```
 public class ArrayLength {
-
- 
-
 public static void main(String[] args) {
-
- 
-
 int[] array = {1, 2, 3, 4, 5};
-
- 
-
 int length = array.length;
-
- 
-
 System.out.println(“Number of elements in the array: ” + length);
-
- 
-
 }
-
- 
-
 }
-
- 
-
+```
+```
 Output:
-
- 
-
 Number of elements in the array: 5
+```
 
- 
-
-31) Java Program to Calculate average of numbers using Array:
-
+## 31) Java Program to Calculate average of numbers using Array:
+```
 public class AverageOfArray {
-
- 
-
 public static void main(String[] args) {
-
- 
-
 int[] array = {5, 10, 15, 20, 25};
-
- 
-
 int sum = 0;
-
- 
-
 for (int num : array) {
-
- 
-
 sum += num;
-
- 
-
 }
-
- 
-
 double average = (double) sum / array.length;
-
- 
-
 System.out.println(“Average of numbers in the array: ” + average);
-
- 
-
 }
-
- 
-
 }
-
- 
-
+```
+```
 Output:
-
- 
-
 Average of numbers in the array: 15.0
-
- 
+```
 
 ### 32) Java Program to Add the elements of an Array:
-
+```
 public class ArraySum {
-
- 
-
 public static void main(String[] args) {
-
- 
-
 int[] array = {1, 2, 3, 4, 5};
-
- 
-
 int sum = 0;
-
- 
-
 for (int num : array) {
-
- 
-
 sum += num;
-
- 
-
 }
-
- 
-
 System.out.println(“Sum of elements in the array: ” + sum);
-
- 
-
 }
-
- 
-
 }
-
- 
-
+```
+```
 Output:
-
- 
-
 Sum of elements in the array: 15
-
- 
+```
 
 ### 33) Java Program to reverse an array:
-
-import java.util.Arrays;
-
- 
-
+```
 public class ReverseArray {
-
- 
-
 public static void main(String[] args) {
-
- 
-
 int[] array = {1, 2, 3, 4, 5};
-
- 
-
 reverseArray(array);
-
- 
-
 System.out.println(“Reversed array: ” + Arrays.toString(array));
-
- 
-
 }
-
- 
-
 public static void reverseArray(int[] array) {
-
- 
-
 int start = 0;
-
- 
-
 int end = array.length – 1;
-
- 
-
 while (start < end) {
-
- 
-
 int temp = array[start];
-
- 
-
 array[start] = array[end];
-
- 
-
 array[end] = temp;
-
- 
-
 start++;
-
- 
-
-end–;
-
- 
-
+end–-;
 }
-
- 
-
 }
-
- 
-
 }
-
- 
-
+```
+```
 Output:
-
- 
-
 Reversed array: [5, 4, 3, 2, 1]
-
- 
+```
 
 ### 34) Java Program to sort an array in ascending order:
-
-import java.util.Arrays;
-
- 
-
+```
 public class SortArray {
-
- 
-
 public static void main(String[] args) {
-
- 
-
 int[] array = {5, 3, 9, 1, 7};
-
- 
-
 Arrays.sort(array);
-
- 
-
 System.out.println(“Sorted array in ascending order: ” + Arrays.toString(array));
-
- 
-
 }
-
- 
-
 }
-
- 
-
+```
+```
 Output:
-
- 
-
 Sorted array in ascending order: [1, 3, 5, 7, 9]
-
- 
+``` 
 
 ### 35) Java Program to convert char Array to String:
-
+```
 public class CharArrayToString {
-
- 
-
 public static void main(String[] args) {
-
- 
-
 char[] charArray = {‘h’, ‘e’, ‘l’, ‘l’, ‘o’};
-
- 
-
 String str = new String(charArray);
-
- 
-
 System.out.println(“Converted String: ” + str);
-
- 
-
 }
-
- 
-
 }
-
- 
-
+```
+```
 Output:
-
- 
-
 Converted String: hello
+```
