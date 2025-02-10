@@ -576,17 +576,17 @@ class Main {
 ### 22) Java program to find occurrence of a character in a String:
 ```
 public class CharacterOccurrences {
-public static void main(String[] args) {
-String str = “hello world”;
-char ch = ‘o’;
-int count = 0;
-for (int i = 0; i < str.length(); i++) {
-if (str.charAt(i) == ch) {
-count++;
-}
-}
-System.out.println(“Occurrences of ‘” + ch + “‘ in the string: ” + count);
-}
+  public static void main(String[] args) {
+    String str = “hello world”;
+    char ch = ‘o’;
+    int count = 0;
+    for (int i = 0; i < str.length(); i++) {
+      if (str.charAt(i) == ch) {
+        count++;
+        }
+      }
+    System.out.println(“Occurrences of ‘” + ch + “‘ in the string: ” + count);
+  }
 }
 ```
 ```
@@ -595,484 +595,157 @@ Occurrences of ‘o’ in the string: 2
 ```
 
 ### 23) Java program to count vowels and consonants in a String:
-
+```
 public class VowelsConsonantsCount {
-
- 
-
 public static void main(String[] args) {
-
- 
-
 String str = “hello world”;
-
- 
-
 int vowels = 0, consonants = 0;
-
- 
-
 str = str.toLowerCase();
-
- 
-
 for (int i = 0; i < str.length(); i++) {
-
- 
-
 char ch = str.charAt(i);
-
- 
-
 if (ch == ‘a’ || ch == ‘e’ || ch == ‘i’ || ch == ‘o’ || ch == ‘u’) {
-
- 
-
 vowels++;
-
- 
-
 } else if (ch >= ‘a’ && ch <= ‘z’) {
-
- 
-
 consonants++;
-
- 
-
 }
-
- 
-
 }
-
- 
-
 System.out.println(“Vowels: ” + vowels);
-
- 
-
 System.out.println(“Consonants: ” + consonants);
-
- 
-
 }
-
- 
-
 }
-
- 
-
+```
+```
 Output:
-
- 
-
 Vowels: 3
-
- 
-
 Consonants: 7
-
+```
  
 
-24) Java Program to check two strings are anagram or not:
-
-import java.util.Arrays;
-
- 
-
+### 24) Java Program to check two strings are anagram or not:
+```
 public class AnagramCheck {
-
- 
-
 public static void main(String[] args) {
-
- 
-
 String str1 = “listen”;
-
- 
-
 String str2 = “silent”;
-
- 
-
 boolean isAnagram = checkAnagram(str1, str2);
-
- 
-
 if (isAnagram) {
-
- 
-
 System.out.println(str1 + ” and ” + str2 + ” are anagrams.”);
-
- 
-
 } else {
-
- 
-
 System.out.println(str1 + ” and ” + str2 + ” are not anagrams.”);
-
- 
-
 }
-
- 
-
 }
-
- 
-
 public static boolean checkAnagram(String str1, String str2) {
-
- 
-
 if (str1.length() != str2.length()) {
-
- 
-
 return false;
-
- 
-
 }
-
- 
-
 char[] chars1 = str1.toCharArray();
-
- 
-
 char[] chars2 = str2.toCharArray();
-
- 
-
 Arrays.sort(chars1);
-
- 
-
 Arrays.sort(chars2);
-
- 
-
 return Arrays.equals(chars1, chars2);
-
- 
-
 }
-
- 
-
 }
-
- 
-
+```
+```
 Output:
-
- 
-
 listen and silent are anagrams.
-
+```
  
-
-25) Java Program to divide a string in ‘n’ equal parts:
-
+### 25) Java Program to divide a string in ‘n’ equal parts:
+```
 public class DivideString {
-
- 
-
 public static void main(String[] args) {
-
- 
-
 String str = “abcdefghi”;
-
- 
-
 int n = 3;
-
- 
-
 int len = str.length();
-
- 
-
 int partLength = len / n;
-
- 
-
 int extraChars = len % n;
-
- 
-
 int start = 0;
-
- 
-
 for (int i = 0; i < n; i++) {
-
- 
-
 int end = start + partLength + (i < extraChars ? 1 : 0);
-
- 
-
 String part = str.substring(start, end);
-
- 
-
 System.out.println(“Part ” + (i + 1) + “: ” + part);
-
- 
-
 start = end;
-
- 
-
 }
-
- 
-
 }
-
- 
-
 }
-
- 
-
+```
+```
 Output:
-
- 
-
 Part 1: abc
-
- 
-
 Part 2: def
-
- 
-
 Part 3: ghi
-
- 
-
+```
 ###############
-
-// The main method must be in a class named "Main".
-
+```
 class Main {
-
     public static void main(String[] args) {
-
     System.out.println("Divide String in n ");
-
         int n = 3;
-
         String st = "manjinders";
-
         int length = st.length() ;
-
         int start = 0 ;
-
         for(int i = 0 ; i < length/n; i++ ){
-
             System.out.println(st.substring(start , start + n ));
-
             start += n ;
-
         }
-
         if(length > start){
-
             System.out.println(st.substring(start , length ));
-
         }
-
     }
-
 }
-
- 
+```
 
 ### 26) Java Program to find all subsets of a string:
-
-import java.util.ArrayList;
-
- 
-
-import java.util.List;
-
- 
-
+```
 public class SubsetsOfString {
-
- 
-
 public static void main(String[] args) {
-
- 
-
 String str = “abc”;
-
- 
-
 List<String> subsets = new ArrayList<>();
-
- 
-
 generateSubsets(str, 0, “”, subsets);
-
- 
-
 System.out.println(“All subsets of \”” + str + “\”: ” + subsets);
-
- 
-
 }
-
- 
-
 private static void generateSubsets(String str, int index, String current, List<String> subsets) {
 
- 
-
 if (index == str.length()) {
-
- 
-
 subsets.add(current);
-
- 
-
 return;
-
- 
-
 }
-
- 
-
 generateSubsets(str, index + 1, current + str.charAt(index), subsets);
-
- 
-
 generateSubsets(str, index + 1, current, subsets);
-
- 
-
 }
-
- 
-
 }
-
- 
-
+```
 Output:
-
- 
-
 All subsets of “abc”: [, c, b, bc, a, ac, ab, abc]
-
- 
+```
 
 ### 27) Java Program to find longest substring without repeating characters:
-
-import java.util.HashSet;
-
- 
-
-import java.util.Set;
-
- 
-
+```
 public class LongestSubstringWithoutRepeating {
-
- 
-
 public static void main(String[] args) {
-
- 
-
 String str = “abcabcbb”;
-
- 
-
 System.out.println(“Longest substring without repeating characters: ” + longestSubstring(str));
-
- 
-
 }
-
- 
-
 public static int longestSubstring(String s) {
-
- 
-
 Set<Character> set = new HashSet<>();
-
- 
-
 int left = 0, right = 0, maxLen = 0;
-
- 
-
 while (right < s.length()) {
-
- 
-
 if (!set.contains(s.charAt(right))) {
-
- 
-
 set.add(s.charAt(right++));
-
- 
-
 maxLen = Math.max(maxLen, set.size());
-
- 
-
 } else {
-
- 
-
 set.remove(s.charAt(left++));
-
- 
-
 }
-
- 
-
 }
-
- 
-
 return maxLen;
-
- 
-
 }
-
- 
-
 }
-
- 
-
+```
+```
 Output:
-
- 
-
 Longest substring without repeating characters: 3
-
- 
+```
 
 ### 28) Java Program to find longest repeating sequence in a string:
 
