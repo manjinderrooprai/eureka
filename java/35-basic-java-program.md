@@ -303,860 +303,296 @@ Simple Interest: 375.0
 ```
 
 ### 14) Java Program to Find Quotient and Remainder:
-
-import java.util.Scanner;
-
- 
-
+```
 public class QuotientRemainder {
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+    System.out.print(“Enter dividend: “);
+    int dividend = input.nextInt();
 
- 
+    System.out.print(“Enter divisor: “);
+    int divisor = input.nextInt();
 
-public static void main(String[] args) {
+    int quotient = dividend / divisor;
+    int remainder = dividend % divisor;
 
- 
+    System.out.println(“Quotient: ” + quotient);
+    System.out.println(“Remainder: ” + remainder);
 
-Scanner input = new Scanner(System.in);
-
- 
-
-System.out.print(“Enter dividend: “);
-
- 
-
-int dividend = input.nextInt();
-
- 
-
-System.out.print(“Enter divisor: “);
-
- 
-
-int divisor = input.nextInt();
-
- 
-
-int quotient = dividend / divisor;
-
- 
-
-int remainder = dividend % divisor;
-
- 
-
-System.out.println(“Quotient: ” + quotient);
-
- 
-
-System.out.println(“Remainder: ” + remainder);
-
- 
-
-input.close();
-
- 
-
+    input.close();
+    }  
 }
-
- 
-
-}
-
- 
-
+```
+```
 Output:
-
- 
-
 Enter dividend: 17
-
- 
-
 Enter divisor: 5
-
- 
-
 Quotient: 3
-
- 
-
 Remainder: 2
+```
 
- 
-
-15) Java Program to Calculate Power of a Number:
-
-import java.util.Scanner;
-
- 
-
+### 15) Java Program to Calculate Power of a Number:
+```
 public class PowerOfNumber {
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+    System.out.print(“Enter base: “);
+    int base = input.nextInt();
 
- 
+    System.out.print(“Enter exponent: “);
+    int exponent = input.nextInt();
 
-public static void main(String[] args) {
+    long result = 1;
+    while (exponent != 0) {
+      result *= base;
+      –-exponent;
+    }
 
- 
-
-Scanner input = new Scanner(System.in);
-
- 
-
-System.out.print(“Enter base: “);
-
- 
-
-int base = input.nextInt();
-
- 
-
-System.out.print(“Enter exponent: “);
-
- 
-
-int exponent = input.nextInt();
-
- 
-
-long result = 1;
-
- 
-
-while (exponent != 0) {
-
- 
-
-result *= base;
-
- 
-
-–exponent;
-
- 
-
+    System.out.println(“Result: ” + result);
+    input.close();
+  }
 }
-
- 
-
-System.out.println(“Result: ” + result);
-
- 
-
-input.close();
-
- 
-
-}
-
- 
-
-}
-
- 
-
+```
+```
 Output:
-
- 
-
 Enter base: 3
-
- 
-
 Enter exponent: 4
-
- 
-
 Result: 81
-
- 
+```
 
 ### 16) Java Program to Convert char to String and String to Char:
-
+```
 public class CharStringConversion {
+  public static void main(String[] args) {
+    char ch = ‘A’;
+    String str = Character.toString(ch);
+    System.out.println(“Char to String: ” + str);
 
- 
-
-public static void main(String[] args) {
-
- 
-
-// Convert char to String
-
- 
-
-char ch = ‘A’;
-
- 
-
-String str = Character.toString(ch);
-
- 
-
-System.out.println(“Char to String: ” + str);
-
- 
-
-// Convert String to char
-
- 
-
-String s = “Hello”;
-
- 
-
-char c = s.charAt(0);
-
- 
-
-System.out.println(“String to Char: ” + c);
-
- 
-
+    String s = “Hello”;
+    char c = s.charAt(0);
+    System.out.println(“String to Char: ” + c);
+  }
 }
-
- 
-
-}
-
- 
-
+```
 ##########
-
- 
-
-// The main method must be in a class named "Main".
-
+```
 class Main {
-
     public static void main(String[] args) {
-
- 
-
         System.out.println("String Occurance");
-
         String occur = "occur";
-
         char [] arry = occur.toCharArray();
-
         Map< Character, Integer> map = new HashMap<>();
-
- 
-
         for(char ch : arry){
-
             Integer value = map.get(ch);
-
             if(null != value ){
-
                 map.put(ch, value + 1);
-
             }else{
-
                 map.put(ch, 1);
-
             }
-
         }
-
         System.out.println(map.toString()) ;
-
         for (Map.Entry<Character, Integer> entry : map.entrySet()){
-
             int vaule = entry.getValue();
-
             if(vaule > 1){
-
                 System.out.println(entry.toString());
-
             }
-
         }
-
     }
-
 }
-
- 
-
+```
+```
 Output:
-
 String Occurance
-
 {r=1, c=2, u=1, o=1}
-
 c=2
-
- 
+```
 
 ### 17) Java Program to Find Duplicate Characters in a String:
-
-import java.util.HashMap;
-
- 
-
-import java.util.Map;
-
- 
-
+```
 public class DuplicateCharacters {
-
- 
-
-public static void main(String[] args) {
-
- 
-
-String str = “programming”;
-
- 
-
-Map<Character, Integer> charCountMap = new HashMap<>();
-
- 
-
-for (char ch : str.toCharArray()) {
-
- 
-
-if (charCountMap.containsKey(ch)) {
-
- 
-
-charCountMap.put(ch, charCountMap.get(ch) + 1);
-
- 
-
-} else {
-
- 
-
-charCountMap.put(ch, 1);
-
- 
-
+  public static void main(String[] args) {
+    String str = “programming”;
+    Map<Character, Integer> charCountMap = new HashMap<>();
+      for (char ch : str.toCharArray()) {
+        if (charCountMap.containsKey(ch)) {
+          charCountMap.put(ch, charCountMap.get(ch) + 1);
+        } else {
+          charCountMap.put(ch, 1);
+        }
+      }
+      System.out.println(“Duplicate Characters:”);
+      for (Map.Entry<Character, Integer> entry : charCountMap.entrySet()) {
+        if (entry.getValue() > 1) {
+        System.out.println(entry.getKey() + ” – ” + entry.getValue() + ” times”);
+      }
+    }
+  }
 }
-
- 
-
-}
-
- 
-
-System.out.println(“Duplicate Characters:”);
-
- 
-
-for (Map.Entry<Character, Integer> entry : charCountMap.entrySet()) {
-
- 
-
-if (entry.getValue() > 1) {
-
- 
-
-System.out.println(entry.getKey() + ” – ” + entry.getValue() + ” times”);
-
- 
-
-}
-
- 
-
-}
-
- 
-
-}
-
- 
-
-}
-
- 
+```
 
 ### 18) Java Program to Check Palindrome String using Stack, Queue, For, and While loop:
-
-import java.util.LinkedList;
-
- 
-
-import java.util.Queue;
-
- 
-
-import java.util.Stack;
-
- 
-
+```
 public class PalindromeCheck {
-
- 
-
-public static void main(String[] args) {
-
- 
-
-String str = “racecar”;
-
- 
-
-Stack<Character> stack = new Stack<>();
-
- 
-
-Queue<Character> queue = new LinkedList<>();
-
- 
-
-for (char ch : str.toCharArray()) {
-
- 
-
-stack.push(ch);
-
- 
-
-queue.add(ch);
-
- 
-
-}
-
- 
-
-boolean isPalindrome = true;
-
- 
-
-while (!stack.isEmpty() && !queue.isEmpty()) {
-
- 
-
-if (!stack.pop().equals(queue.remove())) {
-
- 
-
-isPalindrome = false;
-
- 
-
-break;
-
- 
-
-}
-
- 
-
-}
-
- 
-
-if (isPalindrome) {
-
- 
-
-System.out.println(str + ” is a palindrome.”);
-
- 
-
-} else {
-
- 
-
-System.out.println(str + ” is not a palindrome.”);
-
- 
-
-}
-
- 
-
-}
-
- 
-
-}
-
- 
-
-#######
-
-// The main method must be in a class named "Main".
-
-class Main {
-
-    public static void main(String[] args) {
-
- 
-
-        System.out.print("Is Palindrome :");
-
- 
-
-        Stack<Character> stack = new Stack<>();
-
-        Queue <Character> queue = new LinkedList<>();
-
- 
-
-        for(char ch : "racecar".toCharArray()){
-
-            stack.push(ch);
-
-            queue.add(ch);
-
-        }
-
- 
-
-        boolean isPalindrome = true;
-
-        if(!stack.pop().equals(queue.remove())){
-
-            isPalindrome = false;
-
-        }
-
- 
-
-        System.out.println(isPalindrome);
-
+  public static void main(String[] args) {
+    String str = “racecar”;
+    Stack<Character> stack = new Stack<>();
+    Queue<Character> queue = new LinkedList<>();
+    for (char ch : str.toCharArray()) {
+      stack.push(ch);
+      queue.add(ch);
     }
-
+    boolean isPalindrome = true;
+    while (!stack.isEmpty() && !queue.isEmpty()) {
+      if (!stack.pop().equals(queue.remove())) {
+        isPalindrome = false;
+        break;
+      }
+    }
+    if (isPalindrome) {
+      System.out.println(str + ” is a palindrome.”);
+    } else {
+      System.out.println(str + ” is not a palindrome.”);
+    }
+  }
 }
-
- 
+```
+#######
+```
+class Main {
+    public static void main(String[] args) {
+        System.out.print("Is Palindrome :");
+        Stack<Character> stack = new Stack<>();
+        Queue <Character> queue = new LinkedList<>();
+        for(char ch : "racecar".toCharArray()){
+            stack.push(ch);
+            queue.add(ch);
+        }
+        boolean isPalindrome = true;
+        if(!stack.pop().equals(queue.remove())){
+            isPalindrome = false;
+        }
+        System.out.println(isPalindrome);
+    }
+}
+```
 
 ### 19) Java Program to Sort Strings in Alphabetical Order:
-
-import java.util.Arrays;
-
- 
-
+```
 public class SortStrings {
-
- 
-
-public static void main(String[] args) {
-
- 
-
-String[] strings = {“orange”, “apple”, “banana”, “grape”};
-
- 
-
-Arrays.sort(strings);
-
- 
-
-System.out.println(“Sorted Strings:”);
-
- 
-
-for (String s : strings) {
-
- 
-
-System.out.println(s);
-
- 
-
+  public static void main(String[] args) {
+    String[] strings = {“orange”, “apple”, “banana”, “grape”};
+      Arrays.sort(strings);
+      System.out.println(“Sorted Strings:”);
+      for (String s : strings) {
+        System.out.println(s);
+      }
+  }
 }
-
- 
-
-}
-
- 
-
-}
-
+```
 ########
-
-// The main method must be in a class named "Main".
-
+```
 class Main {
-
     public static void main(String[] args) {
-
         System.out.println("Sort String :");
-
         String[] strings = {"orange","apple","banana","grape"};
-
         Arrays.sort(strings);
-
         Arrays.asList(strings).forEach(System.out::println);
-
     }
-
 }
-
-############
-
-// The main method must be in a class named "Main".
-
+```
+########
+```
 class Main {
-
     public static void main(String[] args) {
-
-    System.out.println("Sort String :");
-
-       String [] array = {"orange","apple","banana","grape"};
-
-        List<String> list =  Arrays.asList(array);
-
+      System.out.println("Sort String :");
+       String [] array = {"orange","apple","banana","grape"};\
+        List<String> list =  Arrays.asList(array);\
         list.stream().sorted().forEach(System.out::println);
-
     }
-
 }
-
- 
+```
 
 ### 20) Java Program to Reverse Words in a String:
-
+```
 public class ReverseWords {
-
- 
-
-public static void main(String[] args) {
-
- 
-
-String str = “Hello World”;
-
- 
-
-String[] words = str.split(” “);
-
- 
-
-StringBuilder reversed = new StringBuilder();
-
- 
-
-for (int i = words.length – 1; i >= 0; i–) {
-
- 
-
-reversed.append(words[i]).append(” “);
-
- 
-
-}
-
- 
-
-System.out.println(“Reversed Words: ” + reversed.toString().trim());
-
- 
-
-}
-
- 
-
-}
-
- 
-
-### 21) Java Program to perform bubble sort on Strings:
-
-import java.util.Arrays;
-
- 
-
-public class BubbleSortStrings {
-
- 
-
-public static void main(String[] args) {
-
- 
-
-String[] arr = {“banana”, “apple”, “orange”, “grapes”, “pineapple”};
-
- 
-
-bubbleSort(arr);
-
- 
-
-System.out.println(“Sorted Array: ” + Arrays.toString(arr));
-
- 
-
-}
-
- 
-
-public static void bubbleSort(String[] arr) {
-
- 
-
-int n = arr.length;
-
- 
-
-for (int i = 0; i < n – 1; i++) {
-
- 
-
-for (int j = 0; j < n – i – 1; j++) {
-
- 
-
-if (arr[j].compareTo(arr[j + 1]) > 0) {
-
- 
-
-// swap arr[j] and arr[j+1]
-
- 
-
-String temp = arr[j];
-
- 
-
-arr[j] = arr[j + 1];
-
- 
-
-arr[j + 1] = temp;
-
- 
-
-}
-
- 
-
-}
-
- 
-
-}
-
- 
-
-}
-
- 
-
-}
-
- 
-
-Output:
-
- 
-
-Sorted Array: [apple, banana, grapes, orange, pineapple]
-
- 
-
-############
-
-// The main method must be in a class named "Main".
-
-class Main {
-
-    public static void main(String[] args) {
-
-    System.out.println("Bubble Sort :");
-
-       String [] array = {"orange","apple","banana","grape"};
-
- 
-
-        int totalElements = array.length;
-
-        for(int i = 0 ; i < totalElements - 1 ; i++ ){
-
-            for (int j = 0 ; j < totalElements - i - 1 ; j++){
-
-                if(array[j].compareTo(array[j + 1]) > 0){
-
-                    String temp = array[j];
-
-                    array[j] = array[j + 1];
-
-                    array[j + 1] = temp;
-
-                }
-
-            }
-
-        }
-
-        Arrays.asList(array).forEach(System.out::println);
-
+  public static void main(String[] args) {
+    String str = “Hello World”;
+    String[] words = str.split(” “);
+    StringBuilder reversed = new StringBuilder();
+    for (int i = words.length – 1; i >= 0; i–) {
+      reversed.append(words[i]).append(” “);
     }
-
+    System.out.println(“Reversed Words: ” + reversed.toString().trim());
+  }
 }
-
- 
+```
+### 21) Java Program to perform bubble sort on Strings:
+```
+public class BubbleSortStrings {
+  public static void main(String[] args) {
+    String[] arr = {“banana”, “apple”, “orange”, “grapes”, “pineapple”};
+    bubbleSort(arr);
+    System.out.println(“Sorted Array: ” + Arrays.toString(arr));
+}
+  public static void bubbleSort(String[] arr) {
+    int n = arr.length;
+    for (int i = 0; i < n – 1; i++) {
+      for (int j = 0; j < n – i – 1; j++) {
+        if (arr[j].compareTo(arr[j + 1]) > 0) {
+          String temp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
+        }
+      }
+    }
+  }
+}
+```
+```
+Output:
+Sorted Array: [apple, banana, grapes, orange, pineapple]
+```
+############
+```
+class Main {
+    public static void main(String[] args) {
+    System.out.println("Bubble Sort :");
+       String [] array = {"orange","apple","banana","grape"};
+        int totalElements = array.length;
+        for(int i = 0 ; i < totalElements - 1 ; i++ ){
+            for (int j = 0 ; j < totalElements - i - 1 ; j++){
+                if(array[j].compareTo(array[j + 1]) > 0){
+                    String temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
+            }
+        }
+        Arrays.asList(array).forEach(System.out::println);
+    }
+}
+```
 
 ### 22) Java program to find occurrence of a character in a String:
-
+```
 public class CharacterOccurrences {
-
- 
-
 public static void main(String[] args) {
-
- 
-
 String str = “hello world”;
-
- 
-
 char ch = ‘o’;
-
- 
-
 int count = 0;
-
- 
-
 for (int i = 0; i < str.length(); i++) {
-
- 
-
 if (str.charAt(i) == ch) {
-
- 
-
 count++;
-
- 
-
 }
-
- 
-
 }
-
- 
-
 System.out.println(“Occurrences of ‘” + ch + “‘ in the string: ” + count);
-
- 
-
 }
-
- 
-
 }
-
- 
-
+```
+```
 Output:
-
- 
-
 Occurrences of ‘o’ in the string: 2
-
- 
+```
 
 ### 23) Java program to count vowels and consonants in a String:
 
