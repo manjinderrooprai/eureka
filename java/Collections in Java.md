@@ -195,7 +195,7 @@ Stack is a class that represents a **last-in, first-out (LIFO)** stack of object
 - **Thread-Safety:** Like Vector, **Stack is synchronized**, meaning that it is **thread-safe**. However, this comes at a performance cost in single-threaded environments.
 - **Legacy Class:** Similar to Vector, Stack is considered a legacy class in modern Java. The use of **Stack is generally discouraged in favor of other collections or the Deque interface,** specifically ArrayDeque, which can be used as a stack with better performance.
 
-Key Methods of Stack:
+**Key Methods of Stack:**
 - **push(E item):** Pushes an element onto the top of the stack.
 - **pop():** Removes and returns the top element from the stack. Throws an exception (EmptyStackException) if the stack is empty.
 - **peek():** Returns the top element without removing it. Throws an exception if the stack is empty.
