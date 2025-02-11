@@ -45,10 +45,10 @@
 
 ### Iterator interface
 Iterator interface provides the facility of iterating the elements in a forward direction only. The Iterable interface is the root interface for all the collection classes. The Collection interface extends the Iterable interface and therefore all the subclasses of Collection interface also implement the Iterable interface.
-`
+```
 It contains only one abstract method. i.e.
 Iterator<T> iterator()
-`
+```
 | No. | Method                  | Description                                                                 |
 | --- | ----------------------- | --------------------------------------------------------------------------- |
 | 1   | public boolean hasNext() | It returns true if the iterator has more elements otherwise it returns false. |
@@ -58,9 +58,9 @@ Iterator<T> iterator()
 ## List Interface
 List interface is the child interface of Collection interface. It inhibits a list type data structure in which we can store the ordered collection of objects. It can have duplicate values.
 
-`
-List <data-type> list1= new ArrayList();  
+```
+List <data-type> list1 = new ArrayList();
 List <data-type> list2 = new LinkedList();  
 List <data-type> list3 = new Vector();  
 List <data-type> list4 = new Stack();  
-`
+```
