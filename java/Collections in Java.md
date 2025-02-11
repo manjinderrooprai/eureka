@@ -43,7 +43,7 @@
 | 18  | public boolean equals(Object element)                | It matches two collections.                                                |
 | 19  | public int hashCode()                                | It returns the hash code number of the collection.                         |
 
-### Iterator interface
+## Iterator interface
 Iterator interface provides the facility of iterating the elements in a forward direction only. The Iterable interface is the root interface for all the collection classes. The Collection interface extends the Iterable interface and therefore all the subclasses of Collection interface also implement the Iterable interface.
 ```
 It contains only one abstract method. i.e.
@@ -55,7 +55,7 @@ Iterator<T> iterator()
 | 2   | public Object next()     | It returns the element and moves the cursor pointer to the next element.    |
 | 3   | public void remove()     | It removes the last element returned by the iterator. It is less used.      |
 
-## List Interface
+# List Interface
 List interface is the child interface of Collection interface. It inhibits a list type data structure in which we can store the ordered collection of objects. It can have duplicate values.
 
 ```
@@ -222,3 +222,38 @@ Class ArrayDequeExample{
   }
 }
 ```
+# Set Interface
+The Set Interface in Java represents a collection of **unique elements**, where **duplicate elements are not allowed.** It **extends the Collection Interface** and provides methods for handling sets. The most common implementing classes of the Set interface are **HashSet, LinkedHashSet, and TreeSet.** We can store at **most one null** value in Set.
+
+### HashSet
+HashSet is a collection class that **implements the Set interface** and is part of the **java.util package.** It is a collection that **does not allow duplicate elements** and **does not guarantee any specific order** of the elements. This class is **backed by a hash table (actually a HashMap instance)**, which allows for **constant-time performance (O(1))** for basic operations like **add(), remove(), and contains().**
+
+**Key Characteristics of HashSet:**
+- **No Duplicates:** A HashSet ensures that each element is unique. If you attempt to add a duplicate element, it will simply not be added.
+- **Unordered:** The elements in a HashSet are unordered, meaning they are not stored in any specific order. The order of elements may change over time.
+- **Null Elements:** HashSet allows one null element to be stored, but only one null value is allowed because duplicates are not permitted.
+- **Backed by Hashing:** It uses a hash table for storing the elements, which provides very fast look-up times.
+- **Not Synchronized:** HashSet is not thread-safe. If multiple threads access the HashSet concurrently and at least one thread modifies it, it must be synchronized externally.
+
+**Basic Operations in HashSet:**
+- **add(E e):** Adds the specified element to the set if it is not already present. Returns true if the element was added, false if it was already in the set.
+- **remove(Object o):** Removes the specified element from the set if it exists. Returns true if the element was removed, false if it wasn't found.
+- **contains(Object o):** Returns true if the set contains the specified element.
+- **size():** Returns the number of elements in the set.
+- **isEmpty():** Returns true if the set is empty.
+- **clear():** Removes all elements from the set.
+- **iterator():** Returns an iterator over the elements in the set.
+
+```
+Class HashSetExample{
+  public static void main(String ...){
+    HashSet<String> hashSet = new HashSet<>();
+    hashSet.add("Manjinder Singh Rooprai");
+    Iterator itr = hashSet.iteractor();
+    while(itr.hasNext()){
+      System.out.println(itr.next());
+    }
+  }
+}
+```
+
