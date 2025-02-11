@@ -42,3 +42,14 @@
 | 17  | default Spliterator<E> spliterator()                 | It generates a Spliterator over the specified elements in the collection.  |
 | 18  | public boolean equals(Object element)                | It matches two collections.                                                |
 | 19  | public int hashCode()                                | It returns the hash code number of the collection.                         |
+
+### Iterator interface
+Iterator interface provides the facility of iterating the elements in a forward direction only. The Iterable interface is the root interface for all the collection classes. The Collection interface extends the Iterable interface and therefore all the subclasses of Collection interface also implement the Iterable interface.
+It contains only one abstract method. i.e.,
+`Iterator<T> iterator()`
+| No. | Method                  | Description                                                                 |
+| --- | ----------------------- | --------------------------------------------------------------------------- |
+| 1   | public boolean hasNext() | It returns true if the iterator has more elements otherwise it returns false. |
+| 2   | public Object next()     | It returns the element and moves the cursor pointer to the next element.    |
+| 3   | public void remove()     | It removes the last element returned by the iterator. It is less used.      |
+
