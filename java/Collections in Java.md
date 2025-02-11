@@ -95,10 +95,27 @@ Class LinkedListExample{
 
 ### Vector
 Vector uses a **dynamic array** to store the data elements. It is similar to ArrayList. However, it **is synchronized** and **contains many methods that are not the part of Collection framework.**
+```
 Class VectorExample{
   public static void main(String ...){
     Vector<String> vector = new Vector<>();
     vector.add("Manjinder Singh Rooprai");
+    Iterator itr = vector.iteractor();
+    while(itr.hasNext()){
+    System.out.println(itr.next());
+    }
+  }
+}
+```
+
+### Stack
+The stack is the **subclass of Vector.** It implements the **last-in-first-out data structure, i.e., Stack.** The stack **contains all of the methods of Vector class** and also provides its methods like **boolean push(), boolean peek(), boolean push(object o), which defines its properties.**
+```
+Class StackExample{
+  public static void main(String ...){
+    Stack<String> stack = new Stack<>();
+    stack.push("Manjinder Singh Rooprai");
+    stack.pop
     Iterator itr = vector.iteractor();
     while(itr.hasNext()){
     System.out.println(itr.next());
