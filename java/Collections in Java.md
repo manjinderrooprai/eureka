@@ -55,3 +55,12 @@ Iterator<T> iterator()
 | 2   | public Object next()     | It returns the element and moves the cursor pointer to the next element.    |
 | 3   | public void remove()     | It removes the last element returned by the iterator. It is less used.      |
 
+## List Interface
+List interface is the child interface of Collection interface. It inhibits a list type data structure in which we can store the ordered collection of objects. It can have duplicate values.
+
+`
+List <data-type> list1= new ArrayList();  
+List <data-type> list2 = new LinkedList();  
+List <data-type> list3 = new Vector();  
+List <data-type> list4 = new Stack();  
+`
