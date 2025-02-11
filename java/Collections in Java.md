@@ -58,6 +58,19 @@ Iterator<T> iterator()
 # List Interface
 List interface is the child interface of Collection interface. It inhibits a list type data structure in which we can store the ordered collection of objects. It can have duplicate values.
 
+**Key Methods of List:**
+- **add(E e):** Adds the specified element to the end of the list.
+- **get(int index):** Returns the element at the specified index.
+- **set(int index, E element):** Replaces the element at the specified index with the given element.
+- **remove(int index):** Removes the element at the specified index.
+- **remove(Object o):** Removes the first occurrence of the specified element (if it exists).
+- **size():** Returns the number of elements in the list.
+- **isEmpty():** Returns true if the list contains no elements.
+- **contains(Object o):** Returns true if the list contains the specified element.
+- **clear():** Removes all elements from the list.
+- **indexOf(Object o):** Returns the index of the first occurrence of the specified element.
+- **toArray():** Converts the ArrayList to an array.
+
 ```
 List <data-type> list1 = new ArrayList();
 List <data-type> list2 = new LinkedList();  
@@ -65,7 +78,26 @@ List <data-type> list3 = new Vector();
 List <data-type> list4 = new Stack();  
 ```
 ### ArrayList
-The ArrayList class implements the List interface. It uses **a dynamic array to store the duplicate element of different data types.** The ArrayList class **maintains the insertion order and is non-synchronized.** The elements stored in the ArrayList class **can be randomly accessed.**
+ArrayList is a **resizable array** implementation of the List interface. It is part of the **java.util package** and allows for the storage of **ordered elements** that can be **accessed by index**.
+
+**Key Characteristics of ArrayList:**
+- **Dynamic Size:** Unlike arrays, an ArrayList can resize itself automatically as elements are added. It grows dynamically as needed.
+- **Indexed Access:** Elements in an ArrayList are ordered, and you can access them directly using an index. Indexing starts from 0.
+- **Allows Duplicates:** ArrayList allows duplicate elements, meaning that multiple occurrences of the same object can be stored.
+- **Maintains Insertion Order:** Elements are stored in the order they are added, and this order is maintained when iterating over the ArrayList.
+- **Not Synchronized:** ArrayList is not thread-safe. If multiple threads are accessing and modifying an ArrayList concurrently, external synchronization is required.
+
+**Performance:**
+
+**Time Complexity:**
+- **Accessing elements:** get(index) and set(index, element) have O(1) time complexity (constant time).
+- **Adding elements:** Adding an element at the end of the list is generally O(1), but occasionally resizing the array (when it is full) can cause O(n) time complexity.
+- **Inserting or removing elements:** Inserting or removing elements at a specific index requires shifting elements, which takes O(n) time.
+- **Searching for an element:** Searching for an element (using contains()) takes O(n) time since it involves iterating over the list.
+
+**Space Complexity:**
+- The space complexity of an ArrayList is proportional to the number of elements stored in it. It is backed by an array, so the list consumes more memory than an equivalent array.
+
 ```
 Class ArrayListExample{
   public static void main(String ...){
