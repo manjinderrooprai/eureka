@@ -140,7 +140,7 @@ The elements in a PriorityQueue **are ordered according to their natural orderin
 - **Efficient Operations:** Operations like add(), poll(), and peek() are efficient, typically logarithmic in time complexity (O(log n)).
 - **Heap-based Implementation:** Internally, PriorityQueue uses a binary heap, which ensures that both insertion and removal of the highest-priority element are fast.
 ```
-Class StackExample{
+Class PriorityQueueExample{
   public static void main(String ...){
     PriorityQueue<String> priorityQueue = new PriorityQueue<>();
     priorityQueue.add("Manjinder Singh Rooprai");
@@ -154,6 +154,61 @@ Class StackExample{
     }
     priorityQueue.remove();
     priorityQueue.poll();
+  }
+}
+```
+
+**Important Methods:**
+- **add(E e):** Inserts the element into the priority queue.
+- **offer(E e):** Similar to add(), but it returns false if the element cannot be added (useful when capacity is limited).
+- **poll():** Removes and returns the highest-priority element. If the queue is empty, it returns null.
+- **peek():** Returns the highest-priority element without removing it. If the queue is empty, it returns null.
+- **remove(Object o):** Removes a specific element from the queue.
+- **size():** Returns the number of elements in the queue.
+
+**Performance Considerations:**
+- Insertion (add(), offer()): **O(log n)**
+- Removal (poll()): **O(log n)**
+- Peek (peek()): **O(1)**
+
+# Deque Interface
+Deque interface **(short for Double-Ended Queue)** is a part of the **java.util package** and **extends the Queue interface**. It represents a **linear collection** that allows elements **to be added or removed from both ends—front and back—providing** more flexibility than a regular queue.
+
+**Key Characteristics of Deque:**
+-**Double-Ended:** A Deque allows you to insert and remove elements from both the front and the back of the queue, unlike a standard FIFO (First-In-First-Out) queue that only allows insertions at the rear and removals from the front.
+-**Interfaces in Java Collections:** It extends the Queue interface, meaning it **inherits the methods from Queue, such as offer(), poll(), and peek().** Additionally, it **provides extra methods for operations at both ends, such as addFirst(), addLast(), removeFirst(), and removeLast().**
+-**Versatile:** You can use it as **both a queue and a stack (Last-In-First-Out)**. This versatility makes it ideal for many **use cases, such as undo/redo operations, task scheduling, or windowed operations.**
+
+**Key Methods of Deque:**
+**Adding elements:**
+- **addFirst(E e):** Inserts the specified element at the front of the deque.
+- **addLast(E e):** Inserts the specified element at the end of the deque.
+- **offerFirst(E e):** Inserts the specified element at the front of the deque, returns true if successful, or false if the deque is full.
+- **offerLast(E e):** Inserts the specified element at the end of the deque, returns true if successful, or false if the deque is full.
+
+**Removing elements:**
+- **removeFirst():** Removes and returns the first element from the deque.
+- **removeLast():** Removes and returns the last element from the deque.
+- **pollFirst():** Removes and returns the first element from the deque, or returns null if the deque is empty.
+- **pollLast():** Removes and returns the last element from the deque, or returns null if the deque is empty.
+
+**Peeking elements:**
+- **getFirst():** Returns the first element without removing it.
+- **getLast():** Returns the last element without removing it.
+- **peekFirst():** Returns the first element without removing it, or null if the deque is empty.
+- **peekLast():** Returns the last element without removing it, or null if the deque is empty.
+
+```
+Class DequeExample{
+  public static void main(String ...){
+    Deque<String> deque = new ArrayDeque<>();
+    deque.addFirst("Manjinder Singh Rooprai");
+    deque.addLast("Manjinder");
+
+    System.out.println(deque.peekLast());
+    System.out.println(deque.peekFirst());
+    deque.removeFirst();
+    deque .clear();
   }
 }
 ```
