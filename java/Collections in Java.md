@@ -179,7 +179,17 @@ Deque interface **(short for Double-Ended Queue)** is a part of the **java.util 
 - **Interfaces in Java Collections:** It extends the Queue interface, meaning it **inherits the methods from Queue, such as offer(), poll(), and peek().** Additionally, it **provides extra methods for operations at both ends, such as addFirst(), addLast(), removeFirst(), and removeLast().**
 - **Versatile:** You can use it as **both a queue and a stack (Last-In-First-Out)**. This versatility makes it ideal for many **use cases, such as undo/redo operations, task scheduling, or windowed operations.**
 
-**Key Methods of Deque:**
+### ArrayDeque
+ArrayDeque class implements the Deque interface. It facilitates us to use the Deque. Unlike queue, we can add or delete the elements from both the ends.
+
+**Key Features of ArrayDeque:**
+- **Resizable Array:** Internally, ArrayDeque uses a **dynamic array** to store the elements. This allows it to grow or shrink as needed, providing **better space efficiency compared to LinkedList** for most use cases.
+- **No Capacity Limitation:** Unlike a regular array, the underlying array in ArrayDeque resizes automatically when needed (when elements are added or removed).
+- **Faster than LinkedList for Most Operations:** Since ArrayDeque uses an array, operations at both ends (like adding/removing elements) are typically faster and use less memory than operations in a LinkedList (which requires pointer manipulation).
+- **Not Thread-Safe:** ArrayDeque is not thread-safe, meaning that if multiple threads access the deque concurrently, external synchronization is required.
+- **No Capacity Limit (unless specified):** By default, ArrayDeque does not have a fixed size, and its size dynamically adjusts based on the number of elements.
+
+**Key Methods of ArrayDeque:**
 **Adding elements:**
 - **addFirst(E e):** Inserts the specified element at the front of the deque.
 - **addLast(E e):** Inserts the specified element at the end of the deque.
@@ -199,7 +209,7 @@ Deque interface **(short for Double-Ended Queue)** is a part of the **java.util 
 - **peekLast():** Returns the last element without removing it, or null if the deque is empty.
 
 ```
-Class DequeExample{
+Class ArrayDequeExample{
   public static void main(String ...){
     Deque<String> deque = new ArrayDeque<>();
     deque.addFirst("Manjinder Singh Rooprai");
