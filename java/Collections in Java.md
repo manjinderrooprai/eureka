@@ -117,8 +117,9 @@ LinkedList is a class that **implements both the List and Deque interfaces**, an
 - **Doubly-Linked List:** Internally, LinkedList is implemented as a doubly linked list, where each element (node) has references to both its previous and next elements. This allows for efficient operations at both the head (front) and tail (back) of the list.
 - **Indexed Access:** You can access elements via index (just like ArrayList), but the performance is O(n) because it requires traversing the list to reach the desired index. This makes LinkedList slower for random access compared to ArrayList (which has O(1) random access).
 - **Efficient Insertions and Deletions:** Inserting or removing elements at the beginning or end of the list is very efficient, taking O(1) time. Inserting or removing elements in the middle takes O(n) time, because it requires traversing the list.
-- **Allows Duplicates: **LinkedList allows duplicate elements, just like an ArrayList.
+- **Allows Duplicates:** LinkedList allows duplicate elements, just like an ArrayList.
 - **Not Synchronized:** LinkedList is not thread-safe. If multiple threads are accessing and modifying the list concurrently, you may need to use **Collections.synchronizedList()** or use a CopyOnWriteArrayList for thread-safety.
+- **Insertion order is preserved.**
 
 **Performance:**
 
