@@ -17,3 +17,5 @@
 
 ### Hierarchy of Collection Framework
 ![Hierarchy of Collection Framework](diagrams/java-collection-hierarchy.png)
+- **Class:** A class is a **blueprint from which individual objects are created.** It encapsulates data for objects through fields (attributes) and defines behavior via methods.
+- **Interface:** An interface is a reference type in Java that can **contain constants and abstract methods (methods without a body).** Interfaces **specify what a class must do but not how it does it,** enforcing a set of methods that the class must implement.
