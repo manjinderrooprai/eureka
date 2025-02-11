@@ -111,7 +111,26 @@ Class ArrayListExample{
 }
 ```
 ### LinkedList
-LinkedList implements the **Collection interface.** It uses a **doubly linked list** internally to store the elements. It can **store the duplicate elements.** It **maintains the insertion order and is not synchronized.** In LinkedList, the **manipulation is fast** because no shifting is required.
+LinkedList is a class that **implements both the List and Deque interfaces**, and is part of the **java.util package.** It is a **doubly-linked list** that **allows for efficient insertion and deletion of elements** at **both ends** of the list, as well as in the **middle** of the list.
+
+**Key Characteristics of LinkedList:**
+- **Doubly-Linked List:** Internally, LinkedList is implemented as a doubly linked list, where each element (node) has references to both its previous and next elements. This allows for efficient operations at both the head (front) and tail (back) of the list.
+- **Indexed Access:** You can access elements via index (just like ArrayList), but the performance is O(n) because it requires traversing the list to reach the desired index. This makes LinkedList slower for random access compared to ArrayList (which has O(1) random access).
+- **Efficient Insertions and Deletions:** Inserting or removing elements at the beginning or end of the list is very efficient, taking O(1) time. Inserting or removing elements in the middle takes O(n) time, because it requires traversing the list.
+- **Allows Duplicates: **LinkedList allows duplicate elements, just like an ArrayList.
+- **Not Synchronized:** LinkedList is not thread-safe. If multiple threads are accessing and modifying the list concurrently, you may need to use **Collections.synchronizedList()** or use a CopyOnWriteArrayList for thread-safety.
+
+**Performance:**
+
+**Time Complexity:**
+- **Accessing elements:** Using get(index) or set(index, element) **requires traversing the list to the desired index**, so it takes **O(n)** time.
+- **Adding elements:** Adding elements to the head or tail of the list takes **O(1)** time.
+- **Removing elements:** Removing elements from the head or tail also takes **O(1)** time.
+- **Inserting or removing elements in the middle:** Inserting or removing elements at arbitrary positions **requires traversing the list**, taking **O(n)** time.
+
+**Space Complexity:** 
+- Each node in the LinkedList **needs to store two references** (to the **previous** and** next node**), so it **requires more memory** per element compared to an ArrayList.
+
 ```
 Class LinkedListExample{
   public static void main(String ...){
@@ -126,7 +145,28 @@ Class LinkedListExample{
 ```
 
 ### Vector
-Vector uses a **dynamic array** to store the data elements. It is similar to ArrayList. However, it **is synchronized** and **contains many methods that are not the part of Collection framework.**
+Vector is a **growable array** of objects that can **dynamically increase its size** as elements are added to it. Although Vector is similar to ArrayList, there are some important differences between the two, mainly in terms of synchronization and performance.
+
+**Key Characteristics of Vector:**
+- **Resizable Array:** Like ArrayList, Vector grows dynamically when more elements are added. The array automatically resizes itself to accommodate more elements.
+- **Synchronized:** Vector is synchronized, which makes it **thread-safe**. This means **multiple threads can access a Vector concurrently without causing data corruption.** However, **synchronization comes with a performance cost,** which **makes Vector slower** than ArrayList in single-threaded environments.
+- **Growth Factor:** When the Vector reaches its capacity (the number of elements it can hold before resizing), **it increases its size by a default factor (usually doubling its size)**. This resizing behavior is configurable.
+- **Indexed Access:** Like ArrayList, Vector allows you to access elements via an index. The index starts at 0.
+- **Allows Duplicates:** Vector allows duplicate elements, so **multiple occurrences of the same object can be stored.**
+- **Legacy Class:** Vector is** considered a legacy class** and has been **largely replaced by ArrayList** in modern Java programming due to its better performance and flexibility in single-threaded environments.
+
+**Performance:**
+
+**Time Complexity:**
+
+- **Accessing elements:** **get(index) and set(index, element)** have **O(1)** time complexity (constant time), similar to ArrayList.
+- **Adding elements:** Adding an element at the end of the list is generally **O(1)**. However, **when the vector needs to resize, it can take O(n) time.**
+- **Inserting or removing elements:** Inserting or removing elements in the middle of the list takes **O(n)** time, just like ArrayList.
+- **Synchronization Overhead:** Since **Vector is synchronized**, all its methods are **thread-safe**, but this synchronization introduces an overhead, making it **slower compared to ArrayList in single-threaded use cases.**
+
+**Space Complexity:**
+- Vector has a similar space complexity to ArrayList, but because it **resizes by doubling its capacity**, it may sometimes **use more memory than necessary.** The **resizing operation involves allocating a new array and copying the old elements over to the new one.**
+
 ```
 Class VectorExample{
   public static void main(String ...){
