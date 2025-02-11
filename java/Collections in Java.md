@@ -237,10 +237,10 @@ The PriorityQueue class **implements the Queue interface.** It holds the element
 The elements in a PriorityQueue **are ordered according to their natural ordering (e.g., numeric or lexicographical order) or by a custom comparator** provided at the time of creation.
 
 **Key Features of PriorityQueue:**
-- **Order of Elements:** The elements are ordered according to their priority, with the highest priority element being at the front of the queue.
-- **Not FIFO:** Unlike a regular queue (which follows FIFO—First In, First Out), the PriorityQueue orders elements based on their priority, not the order they were inserted.
-- **Efficient Operations:** Operations like add(), poll(), and peek() are efficient, typically logarithmic in time complexity (O(log n)).
-- **Heap-based Implementation:** Internally, PriorityQueue uses a binary heap, which ensures that both insertion and removal of the highest-priority element are fast.
+- **Order of Elements:** The elements are **ordered according to their priority**, with the **highest priority element being at the front** of the queue.
+- **Not FIFO:** Unlike a regular queue (which follows FIFO—First In, First Out), the PriorityQueue orders elements **based on their priority**, not the order they were inserted.
+- **Efficient Operations:** Operations like **add(), poll(), and peek() are efficient**, typically logarithmic in time complexity **(O(log n))**.
+- **Heap-based Implementation:** Internally, PriorityQueue uses a **binary heap,** which ensures that both **insertion and removal of the highest-priority element are fast.**
 ```
 Class PriorityQueueExample{
   public static void main(String ...){
