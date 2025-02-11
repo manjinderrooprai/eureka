@@ -45,8 +45,10 @@
 
 ### Iterator interface
 Iterator interface provides the facility of iterating the elements in a forward direction only. The Iterable interface is the root interface for all the collection classes. The Collection interface extends the Iterable interface and therefore all the subclasses of Collection interface also implement the Iterable interface.
-It contains only one abstract method. i.e.,
-`Iterator<T> iterator()`
+`
+It contains only one abstract method. i.e.
+Iterator<T> iterator()
+`
 | No. | Method                  | Description                                                                 |
 | --- | ----------------------- | --------------------------------------------------------------------------- |
 | 1   | public boolean hasNext() | It returns true if the iterator has more elements otherwise it returns false. |
