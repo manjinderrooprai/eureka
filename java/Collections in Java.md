@@ -175,9 +175,9 @@ Class PriorityQueueExample{
 Deque interface **(short for Double-Ended Queue)** is a part of the **java.util package** and **extends the Queue interface**. It represents a **linear collection** that allows elements **to be added or removed from both ends—front and back—providing** more flexibility than a regular queue.
 
 **Key Characteristics of Deque:**
--**Double-Ended:** A Deque allows you to insert and remove elements from both the front and the back of the queue, unlike a standard FIFO (First-In-First-Out) queue that only allows insertions at the rear and removals from the front.
--**Interfaces in Java Collections:** It extends the Queue interface, meaning it **inherits the methods from Queue, such as offer(), poll(), and peek().** Additionally, it **provides extra methods for operations at both ends, such as addFirst(), addLast(), removeFirst(), and removeLast().**
--**Versatile:** You can use it as **both a queue and a stack (Last-In-First-Out)**. This versatility makes it ideal for many **use cases, such as undo/redo operations, task scheduling, or windowed operations.**
+- **Double-Ended:** A Deque allows you to insert and remove elements from both the front and the back of the queue, unlike a standard FIFO (First-In-First-Out) queue that only allows insertions at the rear and removals from the front.
+- **Interfaces in Java Collections:** It extends the Queue interface, meaning it **inherits the methods from Queue, such as offer(), poll(), and peek().** Additionally, it **provides extra methods for operations at both ends, such as addFirst(), addLast(), removeFirst(), and removeLast().**
+- **Versatile:** You can use it as **both a queue and a stack (Last-In-First-Out)**. This versatility makes it ideal for many **use cases, such as undo/redo operations, task scheduling, or windowed operations.**
 
 **Key Methods of Deque:**
 **Adding elements:**
