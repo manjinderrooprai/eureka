@@ -257,3 +257,29 @@ Class HashSetExample{
 }
 ```
 
+### LinkedHashSet
+LinkedHashSet is a Set implementation that **combines the properties of a HashSet and a LinkedList.** It is part of the **java.util package** and provides a set that **guarantees the insertion order** of elements while maintaining the **unique elements property (like a HashSet)**. This means that the **elements in a LinkedHashSet are stored in the order they were added**, and **no duplicates are allowed.**
+
+**Key Characteristics of LinkedHashSet:**
+- **Unique Elements:** Like a HashSet, a LinkedHashSet does not allow duplicate elements.
+- **Maintains Insertion Order:** It preserves the order in which elements were inserted into the set. This means that when you iterate through a LinkedHashSet, the elements will be returned in the same order they were added.
+- **Uses a Linked Hash Map:** Internally, it uses a hash table combined with a linked list to maintain the order of insertion. This provides faster access than a LinkedList, while still maintaining order.
+- **Not Thread-Safe:** LinkedHashSet is not thread-safe, so if multiple threads are modifying it, external synchronization is needed.
+- **Allows null:** Just like HashSet, a LinkedHashSet allows one null element, but only one null element is allowed since duplicates are not permitted.
+
+**Performance:**
+- **Time Complexity:** The basic operations (**add(), remove(), contains()) generally have O(1) time complexity**, just like a HashSet. However, since it maintains insertion order, **iteration over elements is done in O(n) time.**
+- **Space Complexity:** Slightly **higher than HashSet because it uses an additional linked list to maintain the order of insertion.**
+
+```
+Class LinkedHashSetExample{
+  public static void main(String ...){
+    LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>();
+    linkedHashSet.add("Manjinder Singh Rooprai");
+    Iterator itr = linkedHashSet.iteractor();
+    while(itr.hasNext()){
+      System.out.println(itr.next());
+    }
+  }
+}
+```
