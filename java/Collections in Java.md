@@ -64,3 +64,17 @@ List <data-type> list2 = new LinkedList();
 List <data-type> list3 = new Vector();  
 List <data-type> list4 = new Stack();  
 ```
+### ArrayList
+The ArrayList class implements the List interface. It uses a dynamic array to store the duplicate element of different data types. The ArrayList class maintains the insertion order and is non-synchronized. The elements stored in the ArrayList class can be randomly accessed.
+```
+Class ArrayListExample{
+  public static void main(String ...){
+    ArrayList<String> list = new ArrayList<>();
+    list.add("Manjinder Singh Rooprai");
+    Iterator itr = list.iteractor();
+    while(itr.hasNext()){
+    System.out.println(itr.next());
+    }
+  }
+}
+```
