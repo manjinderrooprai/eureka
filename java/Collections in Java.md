@@ -132,6 +132,12 @@ Queue<String> queue = new PriorityQueue<>();
 
 ### PriorityQueue
 The PriorityQueue class **implements the Queue interface.** It holds the elements or objects which are **to be processed by their priorities.** PriorityQueue **doesn't allow null values** to be stored in the queue.
+The elements in a PriorityQueue **are ordered according to their natural ordering (e.g., numeric or lexicographical order) or by a custom comparator** provided at the time of creation.
+**Key Features of PriorityQueue:**
+- **Order of Elements:** The elements are ordered according to their priority, with the highest priority element being at the front of the queue.
+- **Not FIFO:** Unlike a regular queue (which follows FIFO—First In, First Out), the PriorityQueue orders elements based on their priority, not the order they were inserted.
+- **Efficient Operations:** Operations like add(), poll(), and peek() are efficient, typically logarithmic in time complexity (O(log n)).
+- **Heap-based Implementation:** Internally, PriorityQueue uses a binary heap, which ensures that both insertion and removal of the highest-priority element are fast.
 ```
 Class StackExample{
   public static void main(String ...){
