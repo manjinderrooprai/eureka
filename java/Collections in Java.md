@@ -16,3 +16,4 @@
 5. **Reduces Effort to Design New APIs:** An additional benefit is the reduced necessity for API designers and implementers to create new collection mechanisms for each new API.
 
 ### Hierarchy of Collection Framework
+![Hierarchy of Collection Framework](diagrams/java-collection-hierarchy.png)
