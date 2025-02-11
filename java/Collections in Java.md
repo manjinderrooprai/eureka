@@ -73,7 +73,7 @@ Class ArrayListExample{
     list.add("Manjinder Singh Rooprai");
     Iterator itr = list.iteractor();
     while(itr.hasNext()){
-    System.out.println(itr.next());
+      System.out.println(itr.next());
     }
   }
 }
@@ -87,7 +87,7 @@ Class LinkedListExample{
     list.add("Manjinder Singh Rooprai");
     Iterator itr = list.iteractor();
     while(itr.hasNext()){
-    System.out.println(itr.next());
+      System.out.println(itr.next());
     }
   }
 }
@@ -102,7 +102,7 @@ Class VectorExample{
     vector.add("Manjinder Singh Rooprai");
     Iterator itr = vector.iteractor();
     while(itr.hasNext()){
-    System.out.println(itr.next());
+      System.out.println(itr.next());
     }
   }
 }
@@ -116,10 +116,37 @@ Class StackExample{
     Stack<String> stack = new Stack<>();
     stack.push("Manjinder Singh Rooprai");
     stack.pop
-    Iterator itr = vector.iteractor();
+    Iterator itr = stack.iteractor();
     while(itr.hasNext()){
-    System.out.println(itr.next());
+      System.out.println(itr.next());
     }
+  }
+}
+```
+
+# Queue Interface
+Queue interface maintains the **first-in-first-out order.** It can be defined as an **ordered list** that is used to hold the elements which are **about to be processed.** There are various classes like **PriorityQueue, Deque, and ArrayDeque which implements the Queue interface.**
+```
+Queue<String> queue = new PriorityQueue<>();
+```
+
+### PriorityQueue
+The PriorityQueue class **implements the Queue interface.** It holds the elements or objects which are **to be processed by their priorities.** PriorityQueue **doesn't allow null values** to be stored in the queue.
+```
+Class StackExample{
+  public static void main(String ...){
+    PriorityQueue<String> priorityQueue = new PriorityQueue<>();
+    priorityQueue.add("Manjinder Singh Rooprai");
+
+    System.out.println(priorityQueue.element());
+    System.out.println(priorityQueue.peek());
+
+    Iterator itr = priorityQueue.iteractor();
+    while(itr.hasNext()){
+      System.out.println(itr.next());
+    }
+    priorityQueue.remove();
+    priorityQueue.poll();
   }
 }
 ```
