@@ -154,7 +154,7 @@ Vector is a **growable array** of objects that can **dynamically increase its si
 - **Growth Factor:** When the Vector reaches its capacity (the number of elements it can hold before resizing), **it increases its size by a default factor (usually doubling its size)**. This resizing behavior is configurable.
 - **Indexed Access:** Like ArrayList, Vector allows you to access elements via an index. The index starts at 0.
 - **Allows Duplicates:** Vector allows duplicate elements, so **multiple occurrences of the same object can be stored.**
-- **Legacy Class:** Vector is** considered a legacy class** and has been **largely replaced by ArrayList** in modern Java programming due to its better performance and flexibility in single-threaded environments.
+- **Legacy Class:** Vector is **considered a legacy class** and has been **largely replaced by ArrayList** in modern Java programming due to its better performance and flexibility in single-threaded environments.
 
 **Performance:**
 
