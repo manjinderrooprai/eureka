@@ -181,7 +181,36 @@ Class VectorExample{
 ```
 
 ### Stack
-The stack is the **subclass of Vector.** It implements the **last-in-first-out data structure, i.e., Stack.** The stack **contains all of the methods of Vector class** and also provides its methods like **boolean push(), boolean peek(), boolean push(object o), which defines its properties.**
+Stack is a class that represents a **last-in, first-out (LIFO)** stack of objects. It is part of the **java.util package** and is considered a **subclass of the Vector class**. This **means that it inherits all the methods of Vector** while adding some additional stack-specific methods, making it a useful data structure for situations where you **need to follow the LIFO (Last In, First Out) order of operations.**
+
+**Key Characteristics of Stack:**
+- **LIFO (Last-In, First-Out):** In a stack, the last element added is the first one to be removed. You can think of it as a stack of plates where you add plates on top and also remove plates from the top.
+- **Methods for Stack Operations:** The primary operations in a stack are:
+  - **Push:** Add an element to the top of the stack.
+  - **Pop:** Remove the element from the top of the stack.
+  - **Peek:** Look at the element at the top of the stack without removing it.
+  - **Empty:** Check if the stack is empty.
+- **Inherited from Vector:** Since Stack extends Vector, it inherits methods like **add(), remove(), and size()**, but it also adds specific methods to operate as a stack.
+- **Thread-Safety:** Like Vector, **Stack is synchronized**, meaning that it is **thread-safe**. However, this comes at a performance cost in single-threaded environments.
+- **Legacy Class:** Similar to Vector, Stack is considered a legacy class in modern Java. The use of **Stack is generally discouraged in favor of other collections or the Deque interface,** specifically ArrayDeque, which can be used as a stack with better performance.
+
+Key Methods of Stack:
+- **push(E item):** Pushes an element onto the top of the stack.
+- **pop():** Removes and returns the top element from the stack. Throws an exception (EmptyStackException) if the stack is empty.
+- **peek():** Returns the top element without removing it. Throws an exception if the stack is empty.
+- **empty():** Returns true if the stack is empty, otherwise returns false.
+- **search(Object o):** Returns the 1-based position of an object in the stack (distance from the top of the stack). Returns -1 if the object is not found.
+
+**Performance:**
+
+**Time Complexity:**
+- **Push and Pop:** Both push() and pop() operations take **O(1)** time.
+- **Peek:** The peek() operation also takes **O(1)** time.
+- **Search:** The search() method takes **O(n)** time because it may need to iterate through the stack to find the element.
+
+**Space Complexity:**
+- Since Stack inherits from Vector, the space complexity is **O(n)**, where n is the number of elements in the stack.
+
 ```
 Class StackExample{
   public static void main(String ...){
