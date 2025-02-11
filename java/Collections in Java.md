@@ -92,3 +92,17 @@ Class LinkedListExample{
   }
 }
 ```
+
+### Vector
+Vector uses a **dynamic array** to store the data elements. It is similar to ArrayList. However, it **is synchronized** and **contains many methods that are not the part of Collection framework.**
+Class VectorExample{
+  public static void main(String ...){
+    Vector<String> vector = new Vector<>();
+    vector.add("Manjinder Singh Rooprai");
+    Iterator itr = vector.iteractor();
+    while(itr.hasNext()){
+    System.out.println(itr.next());
+    }
+  }
+}
+```
