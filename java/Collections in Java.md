@@ -58,6 +58,8 @@ Iterator<T> iterator()
 # List Interface
 List interface is the child interface of Collection interface. It inhibits a list type data structure in which we can store the ordered collection of objects. It can have duplicate values.
 
+**Note:** List **allows null values.** null will be treated just like any other object, except that null represents the **absence of a value**.
+
 **Key Methods of List:**
 - **add(E e):** Adds the specified element to the end of the list.
 - **get(int index):** Returns the element at the specified index.
