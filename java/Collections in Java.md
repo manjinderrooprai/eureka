@@ -387,3 +387,59 @@ Class LinkedHashSetExample{
   }
 }
 ```
+
+# SortedSet Interface
+SortedSet is an **interface** in Java that extends the **Set interface**, providing a set of **unique elements** that are **ordered according to their natural ordering** or **by a comparator provided** at the time of creation. It is part of the **java.util package**, and its most common implementation is the TreeSet class.
+
+**Key Characteristics of SortedSet:**
+- **Sorted Order:** The elements in a SortedSet are **maintained in a sorted order**. The order **can be natural (if the elements implement Comparable)** or **determined by a comparator** (if provided during the set's creation).
+- **Unique Elements:** Like a regular Set, a SortedSet **does not allow duplicate** elements.
+- **Navigation Methods:** SortedSet **provides methods to navigate through the elements** in sorted order.
+- **Subsets:** SortedSet allows operations such as **finding a subset of elements between two given elements**, or **fetching the head or tail of the set.**
+- **Not Thread Safety:** SortedSet itself **does not guarantee thread safety**. However, the **ConcurrentSkipListSet class**, which implements the SortedSet interface, provides thread-safe operations.
+
+**Key Methods of SortedSet:**
+- **first():** Returns the first (lowest) element in the set.
+- **last():** Returns the last (highest) element in the set.
+- **headSet(E toElement):** Returns a view of the portion of the set whose elements are strictly less than toElement.
+- **tailSet(E fromElement):** Returns a view of the portion of the set whose elements are greater than or equal to fromElement.
+- **subSet(E fromElement, E toElement):** Returns a view of the portion of the set whose elements range from fromElement to toElement.
+- **comparator():** Returns the comparator used to order the elements in the set, or null if the set uses the natural ordering of its elements.
+- **size():** Returns the number of elements in the set.
+
+**Performance:**
+
+**Time Complexity:**
+- **add(), remove(), contains():** All of these operations have a time complexity of **O(log n)** for most implementations, **such as TreeSet, which uses a Red-Black tree.**
+- **headSet(), tailSet(), subSet():** These methods have** O(log n)** time complexity as well,** due to the tree structure.**
+- **first() and last():** These operations take O(1) time.
+
+**Space Complexity:**
+- The space complexity of a SortedSet is **O(n),** where **n is the number of elements in the set**. Since the **set is backed by a balanced tree structure (e.g., TreeSet)**, the **space usage grows with the number of elements it stores.**
+
+### TreeSet
+TreeSet is an **implementation of the SortedSet** interface in Java, part of the **java.util package**. It is **backed by a Red-Black tree**, which is a type of **self-balancing binary search tree**. This allows TreeSet to store elements in a **sorted order** and ensures that the **basic operations (like add(), remove(), and contains()) are performed efficiently.**
+
+Since TreeSet implements SortedSet, it automatically provides the features of maintaining elements in a sorted order. It also **does not allow duplicate elements, ensuring uniqueness of its contents.**
+
+**Key Characteristics of TreeSet:**
+- **Sorted Order:** The elements in a TreeSet are **always sorted**, either by their **natural ordering (if the elements are Comparable)** or by a **comparator** provided at the time of creation.
+- **No Duplicates:** TreeSet **does not allow duplicate** elements. **If you try to add an element that already exists in the set, the addition will be ignored.**
+- **Navigable:** Since TreeSet implements NavigableSet (which extends SortedSet), it **provides methods to navigate through elements, such as first(), last(), higher(), lower(), etc.**
+- **Efficient Operations:** Most basic operations like **adding, removing, and checking for the presence of an element are done in O(log n)** time complexity **due to the underlying Red-Black tree structure.**
+- **No Null Elements:** TreeSet **does not allow null elements.** Attempting to add a **null** element will **throw a NullPointerException** if the set is using natural ordering or if the comparator cannot handle null.
+ - **No Thread-Safety:** TreeSet is **not thread-safe**. If you need to perform concurrent operations on a TreeSet, you can use **Collections.synchronizedSet()** or consider using a **ConcurrentSkipListSet.**
+- **Memory Overhead:** TreeSet has more memory overhead than HashSet due to the underlying **tree structure (Red-Black tree)**.
+
+**Performance:**
+
+**Time Complexity:**
+
+- **add(), remove(), contains():** All of these operations take **O(log n)** time because they are implemented using a Red-Black tree.
+- **first() and last():** These operations take **O(1)** time, as they return the first and last element in the tree.
+- **subSet(), headSet(), tailSet():** These methods also take **O(log n)** time.
+
+**Space Complexity:**
+- The space complexity is **O(n)**, where n is the number of elements in the set, because each element is stored as a node in the Red-Black tree.
+
+
