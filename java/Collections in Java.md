@@ -529,3 +529,16 @@ Class HashMapExample{
   }
 }
 ```
+### Hash Collisions in HashMap
+A hash collision occurs **when two different keys produce the same hash code in a HashMap**. This means that both keys would be placed in the same bucket, resulting in a "collision." Since a **HashMap uses a hash table internally, each key is hashed, and its hash code determines which bucket it belongs to.** If two keys have the same hash code, they will end up in the same bucket, which causes a collision.
+
+**Causes of Hash Collisions**
+- **Poor hash function:** If the hashCode() method of the keys is not well-designed (for example, if many keys have the same hash code), collisions are more likely to occur. A poor hash function leads to an uneven distribution of keys across the buckets.
+- **Limited number of buckets:** The HashMap can only have a finite number of buckets, and as more keys are inserted, the likelihood of hash collisions increases, especially if there are many keys with similar hash codes.
+
+**Resolving Hash Collisions**
+- **Override hashCode() and equals() Properly:** When using custom objects as keys in a HashMap, you **need to override both hashCode() and equals()** methods to ensure they are consistent with each other. If two objects are considered equal (via the equals() method), they must also produce the same hash code.
+- **Use a Good Hash Function:** Ensure that the hashCode() method produces a good distribution of hash codes. A good hash function minimizes collisions by spreading the keys evenly across the buckets.
+The Objects.hash() method or using prime numbers for hashing can help in creating better distributions.
+- **Treeification:** Java’s HashMap automatically transforms linked lists into balanced trees when a certain threshold of collisions is met. This improves performance in cases of high collision rates.
+- **Resizing:** he HashMap resizes (doubles the capacity of the internal array) when the load factor exceeds a certain threshold (default is 0.75). Resizing reduces the probability of hash collisions by spreading out the entries across more buckets.
