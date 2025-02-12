@@ -455,3 +455,6 @@ Class TreeSetExample{
 }
 ```
 
+# Map Interface
+### Hierarchy of Map Interface
+![Hierarchy of Map Interface](diagrams/java-map-hierarchy.png)
