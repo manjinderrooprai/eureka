@@ -485,11 +485,47 @@ The Map interface in Java is part of the **java.util package** and represents a 
 **Performance:**
 
 **Time Complexity:**
-- put() and get(): O(1) for HashMap (average case), O(log n) for TreeMap.
-- remove(): O(1) for HashMap, O(log n) for TreeMap.
-- containsKey(): O(1) for HashMap, O(log n) for TreeMap.
-- containsValue(): O(n), as it may require checking all values.
-- keySet(), values(), entrySet(): O(n), as they return a collection view of the map.
+- **put() and get():** O(1) for HashMap (average case), O(log n) for TreeMap.
+- **remove():** O(1) for HashMap, O(log n) for TreeMap.
+- **containsKey():** O(1) for HashMap, O(log n) for TreeMap.
+- **containsValue():** O(n), as it may require checking all values.
+- **keySet(), values(), entrySet():** O(n), as they return a collection view of the map.
 
 **Space Complexity:**
 - The space complexity of a Map is O(n), where n is the number of key-value pairs in the map.
+
+## HashMap
+HashMap is one of the most commonly used implementations of the Map interface in Java. It is part of the **java.util **package and provides a basic implementation of a **hash table to store key-value pairs**. The **keys in a HashMap are unique**, and **each key maps to exactly one value**. The **underlying data structure used by HashMap is a hash table,** which allows for **fast access** to the values based on their keys.
+
+**Key Characteristics of HashMap:**
+- **Key-Value Pairs:** A HashMap stores data as key-value pairs, where each key is unique and maps to one value. **If you try to insert a new value for an already existing key, the old value is replaced by the new one.**
+- **No Duplicates for Keys:** The keys in a HashMap must be unique. However, multiple keys can have the same value.
+- **Unordered:** The entries in a HashMap are unordered, meaning there is no guarantee that the entries will be returned in the same order they were added. If you need to maintain insertion order, consider using LinkedHashMap.
+- **Null Keys and Values:** A HashMap allows one null key and multiple null values. This is different from some other Map implementations, like TreeMap, which do not allow null keys.
+- **Efficient Performance:** The HashMap provides constant-time performance for basic operations like get(), put(), and remove(), on average. This is achieved due to the use of a hash table internally, where keys are hashed into buckets.
+- **Not Synchronized:** HashMap is not thread-safe by default. If thread-safety is needed, you can use Collections.synchronizedMap() to wrap the HashMap or use ConcurrentHashMap for thread-safe operations.
+- **Capacity and Load Factor:** HashMap has an initial capacity and a load factor. The capacity is the number of buckets the HashMap can hold, and the load factor determines when the HashMap should resize (grow).
+**The default capacity is 16, and the default load factor is 0.75, meaning when the map is 75% full, it will resize to double its capacity.**
+
+**Performance:**
+
+**Time Complexity:**
+- **put(), get(), remove(), and containsKey():** **O(1)** on average, because these operations are based on hashing and work with the hash table. **However, in the worst case (due to hash collisions), these operations can take O(n).**
+- **containsValue():** **O(n)**, as it may need to iterate over all the entries to find the value.
+- **keySet(), values(), and entrySet():** **O(n)**, as these methods return a collection view of the map’s entries.
+
+**Space Complexity:**
+- The space complexity of a **HashMap is O(n)**, where **n is the number of key-value pairs** in the map.
+```
+Class HashMapExample{
+  public static void main(String ...){
+    HashMap<String, String> map = new HashMap<>();
+    map.put("A","Australia");
+    map.put("B","Brazil");
+
+    for(Map.Entry<String, String> entry : map.entrySet()){
+      System.out.println(entry.getKey() + ":" + ntry.getValue() );
+    }
+  }
+}
+```
