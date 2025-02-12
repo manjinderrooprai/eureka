@@ -79,7 +79,7 @@ List <data-type> list2 = new LinkedList();
 List <data-type> list3 = new Vector();  
 List <data-type> list4 = new Stack();  
 ```
-### ArrayList
+## ArrayList
 ArrayList is a **resizable array** implementation of the List interface. It is part of the **java.util package** and allows for the storage of **ordered elements** that can be **accessed by index**.
 
 **Key Characteristics of ArrayList:**
@@ -112,7 +112,7 @@ Class ArrayListExample{
   }
 }
 ```
-### LinkedList
+## LinkedList
 LinkedList is a class that **implements both the List and Deque interfaces**, and is part of the **java.util package.** It is a **doubly-linked list** that **allows for efficient insertion and deletion of elements** at **both ends** of the list, as well as in the **middle** of the list.
 
 **Key Characteristics of LinkedList:**
@@ -147,7 +147,7 @@ Class LinkedListExample{
 }
 ```
 
-### Vector
+## Vector
 Vector is a **growable array** of objects that can **dynamically increase its size** as elements are added to it. Although Vector is similar to ArrayList, there are some important differences between the two, mainly in terms of synchronization and performance.
 
 **Key Characteristics of Vector:**
@@ -183,7 +183,7 @@ Class VectorExample{
 }
 ```
 
-### Stack
+## Stack
 Stack is a class that represents a **last-in, first-out (LIFO)** stack of objects. It is part of the **java.util package** and is considered a **subclass of the Vector class**. This **means that it inherits all the methods of Vector** while adding some additional stack-specific methods, making it a useful data structure for situations where you **need to follow the LIFO (Last In, First Out) order of operations.**
 
 **Key Characteristics of Stack:**
@@ -234,7 +234,7 @@ Queue interface maintains the **first-in-first-out order.** It can be defined as
 Queue<String> queue = new PriorityQueue<>();
 ```
 
-### PriorityQueue
+## PriorityQueue
 The PriorityQueue class **implements the Queue interface.** It holds the elements or objects which are **to be processed by their priorities.** PriorityQueue **doesn't allow null values** to be stored in the queue.
 The elements in a PriorityQueue **are ordered according to their natural ordering (e.g., numeric or lexicographical order) or by a custom comparator** provided at the time of creation.
 
@@ -283,7 +283,7 @@ Deque interface **(short for Double-Ended Queue)** is a part of the **java.util 
 - **Interfaces in Java Collections:** It extends the Queue interface, meaning it **inherits the methods from Queue, such as offer(), poll(), and peek().** Additionally, it **provides extra methods for operations at both ends, such as addFirst(), addLast(), removeFirst(), and removeLast().**
 - **Versatile:** You can use it as **both a queue and a stack (Last-In-First-Out)**. This versatility makes it ideal for many **use cases, such as undo/redo operations, task scheduling, or windowed operations.**
 
-### ArrayDeque
+## ArrayDeque
 ArrayDeque class implements the Deque interface. It facilitates us to use the Deque. Unlike queue, we can add or delete the elements from both the ends.
 
 **Key Features of ArrayDeque:**
@@ -329,7 +329,7 @@ Class ArrayDequeExample{
 # Set Interface
 The Set Interface in Java represents a collection of **unique elements**, where **duplicate elements are not allowed.** It **extends the Collection Interface** and provides methods for handling sets. The most common implementing classes of the Set interface are **HashSet, LinkedHashSet, and TreeSet.** We can store at **most one null** value in Set.
 
-### HashSet
+## HashSet
 HashSet is a collection class that **implements the Set interface** and is part of the **java.util package.** It is a collection that **does not allow duplicate elements** and **does not guarantee any specific order** of the elements. This class is **backed by a hash table (actually a HashMap instance)**, which allows for **constant-time performance (O(1))** for basic operations like **add(), remove(), and contains().**
 
 **Key Characteristics of HashSet:**
@@ -361,7 +361,7 @@ Class HashSetExample{
 }
 ```
 
-### LinkedHashSet
+## LinkedHashSet
 LinkedHashSet is a Set implementation that **combines the properties of a HashSet and a LinkedList.** It is part of the **java.util package** and provides a set that **guarantees the insertion order** of elements while maintaining the **unique elements property (like a HashSet)**. This means that the **elements in a LinkedHashSet are stored in the order they were added**, and **no duplicates are allowed.**
 
 **Key Characteristics of LinkedHashSet:**
@@ -417,7 +417,7 @@ SortedSet is an **interface** in Java that extends the **Set interface**, provid
 **Space Complexity:**
 - The space complexity of a SortedSet is **O(n),** where **n is the number of elements in the set**. Since the **set is backed by a balanced tree structure (e.g., TreeSet)**, the **space usage grows with the number of elements it stores.**
 
-### TreeSet
+## TreeSet
 TreeSet is an **implementation of the SortedSet** interface in Java, part of the **java.util package**. It is **backed by a Red-Black tree**, which is a type of **self-balancing binary search tree**. This allows TreeSet to store elements in a **sorted order** and ensures that the **basic operations (like add(), remove(), and contains()) are performed efficiently.**
 
 Since TreeSet implements SortedSet, it automatically provides the features of maintaining elements in a sorted order. It also **does not allow duplicate elements, ensuring uniqueness of its contents.**
