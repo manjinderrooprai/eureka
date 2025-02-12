@@ -43,7 +43,7 @@
 | 18  | public boolean equals(Object element)                | It matches two collections.                                                |
 | 19  | public int hashCode()                                | It returns the hash code number of the collection.                         |
 
-## Iterator interface
+# Iterator interface
 Iterator interface provides the facility of iterating the elements in a forward direction only. The Iterable interface is the root interface for all the collection classes. The Collection interface extends the Iterable interface and therefore all the subclasses of Collection interface also implement the Iterable interface.
 ```
 It contains only one abstract method. i.e.
@@ -441,5 +441,17 @@ Since TreeSet implements SortedSet, it automatically provides the features of ma
 
 **Space Complexity:**
 - The space complexity is **O(n)**, where n is the number of elements in the set, because each element is stored as a node in the Red-Black tree.
-
+```
+Class TreeSetExample{
+  public static void main(String ...){
+    TreeSet<String> treeSet = new TreeSet<>();
+    treeSet.add("Manjinder Singh Rooprai");
+    treeSet.add("Manjinder");
+    Iterator itr = treeSet.iteractor();
+    while(itr.hasNext()){
+      System.out.println(itr.next());
+    }
+  }
+}
+```
 
