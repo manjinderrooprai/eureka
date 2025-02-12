@@ -458,3 +458,38 @@ Class TreeSetExample{
 # Map Interface
 ### Hierarchy of Map Interface
 ![Hierarchy of Map Interface](diagrams/java-map-hierarchy.png)
+
+The Map interface in Java is part of the **java.util package** and represents a collection of** key-value pairs**. It allows you to store **unique keys,** each associated with a value. The **Map interface is not a subclass of Collection** but is **still a part of the Java Collections Framework.** It provides a way to associate a value with a unique key, making it one of the most widely used data structures for tasks such as **lookups, caching, and data mapping.**
+
+**Key Characteristics of Map:**
+- **Key-Value Pairs:** A Map stores entries, each consisting of a **key and its associated value.** Each **key is unique**, and each key maps to one value. **If you try to put a new value for an already existing key**, the **old value gets replaced** with the new one.
+- **No Duplicates for Keys:** A Map **does not allow duplicate keys**. If you try to insert a duplicate key, **it will overwrite the previous value** associated with that key.
+- **Null Keys and Values:** Some implementations of Map allow null keys and values, while others do not (e.g., **Hashtable does not allow null for keys or values**, while **HashMap allows one null key and multiple null values**).
+- **Unordered:** The elements in a **Map are not necessarily ordered**. Some implementations, such as HashMap, do not maintain any order, while others like **TreeMap maintain elements in sorted order according to the natural ordering of keys or by a comparator**.
+- **Not Part of Collection Framework:** While Map is part of the Java Collections Framework, it does not implement the Collection interface. However, you can get a collection view of the keys, values, and entries using methods like keySet(), values(), and entrySet().
+- **Thread-Safety:** By default, most Map implementations, such as **HashMap, are not thread-safe.** If thread-safety is needed, you can use **ConcurrentHashMap** or wrap a map with **Collections.synchronizedMap().**
+
+**Key Methods of Map:**
+- **put(K key, V value):** Adds a key-value pair to the map. If the key already exists, the existing value is replaced. **Time Complexity:** O(1) for HashMap (average), O(log n) for TreeMap (since it maintains sorted order).
+- **get(Object key):** Retrieves the value associated with the given key. **Time Complexity:** O(1) for HashMap, O(log n) for TreeMap.
+- **remove(Object key):** Removes the key-value pair associated with the given key. **Time Complexity:** O(1) for HashMap, O(log n) for TreeMap.
+- **containsKey(Object key):** Checks if the map contains the specified key. Time Complexity: O(1) for HashMap, O(log n) for TreeMap.
+- **containsValue(Object value):** Checks if the map contains the specified value. **Time Complexity:** O(n), as it may need to check all values.
+- **keySet():** Returns a Set view of the keys contained in the map.
+- **values():** Returns a Collection view of the values contained in the map.
+- **entrySet():** Returns a Set view of the key-value pairs (entries) contained in the map.
+- **clear():** Removes all the key-value pairs from the map.
+- **size():** Returns the number of key-value pairs in the map.
+- **isEmpty():** Checks if the map is empty (i.e., contains no key-value pairs).
+
+**Performance:**
+
+**Time Complexity:**
+- put() and get(): O(1) for HashMap (average case), O(log n) for TreeMap.
+- remove(): O(1) for HashMap, O(log n) for TreeMap.
+- containsKey(): O(1) for HashMap, O(log n) for TreeMap.
+- containsValue(): O(n), as it may require checking all values.
+- keySet(), values(), entrySet(): O(n), as they return a collection view of the map.
+
+**Space Complexity:**
+- The space complexity of a Map is O(n), where n is the number of key-value pairs in the map.
