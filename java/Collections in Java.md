@@ -495,7 +495,7 @@ The Map interface in Java is part of the **java.util package** and represents a 
 - The space complexity of a Map is O(n), where n is the number of key-value pairs in the map.
 
 ## HashMap
-HashMap is one of the most commonly used implementations of the Map interface in Java. It is part of the **java.util **package and provides a basic implementation of a **hash table to store key-value pairs**. The **keys in a HashMap are unique**, and **each key maps to exactly one value**. The **underlying data structure used by HashMap is a hash table,** which allows for **fast access** to the values based on their keys.
+HashMap is one of the most commonly used implementations of the Map interface in Java. It is part of the **java.util** package and provides a basic implementation of a **hash table to store key-value pairs**. The **keys in a HashMap are unique**, and **each key maps to exactly one value**. The **underlying data structure used by HashMap is a hash table,** which allows for **fast access** to the values based on their keys.
 
 **Key Characteristics of HashMap:**
 - **Key-Value Pairs:** A HashMap stores data as key-value pairs, where each key is unique and maps to one value. **If you try to insert a new value for an already existing key, the old value is replaced by the new one.**
