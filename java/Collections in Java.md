@@ -459,7 +459,7 @@ Class TreeSetExample{
 ### Hierarchy of Map Interface
 ![Hierarchy of Map Interface](diagrams/java-map-hierarchy.png)
 
-The Map interface in Java is part of the **java.util package** and represents a collection of ** key-value pairs**. It allows you to store **unique keys,** each associated with a value. The **Map interface is not a subclass of Collection** but is **still a part of the Java Collections Framework.** It provides a way to associate a value with a unique key, making it one of the most widely used data structures for tasks such as **lookups, caching, and data mapping.**
+The Map interface in Java is part of the **java.util package** and represents a collection of **key-value pairs**. It allows you to store **unique keys,** each associated with a value. The **Map interface is not a subclass of Collection** but is **still a part of the Java Collections Framework.** It provides a way to associate a value with a unique key, making it one of the most widely used data structures for tasks such as **lookups, caching, and data mapping.**
 
 **Key Characteristics of Map:**
 - **Key-Value Pairs:** A Map stores entries, each consisting of a **key and its associated value.** Each **key is unique**, and each key maps to one value. **If you try to put a new value for an already existing key**, the **old value gets replaced** with the new one.
