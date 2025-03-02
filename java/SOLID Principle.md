@@ -40,3 +40,38 @@ class ReportPrinter {
     }
 }
 ```
+## O – Open/Closed Principle (OCP)
+A class should be open for extension but closed for modification.
+### Example (Violation):
+```
+class PaymentProcessor {
+    void processPayment(String paymentType) {
+        if (paymentType.equals("CreditCard")) {
+            // Process credit card payment
+        } else if (paymentType.equals("PayPal")) {
+            // Process PayPal payment
+        }
+    }
+}
+```
+### Refactored (Following OCP using polymorphism):
+```
+interface Payment {
+    void processPayment();
+}
+class CreditCardPayment implements Payment {
+    public void processPayment() {
+        // Process credit card payment
+    }
+}
+class PayPalPayment implements Payment {
+    public void processPayment() {
+        // Process PayPal payment
+    }
+}
+class PaymentProcessor {
+    void process(Payment payment) {
+        payment.processPayment();
+    }
+}
+```
