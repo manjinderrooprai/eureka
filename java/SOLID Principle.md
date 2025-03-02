@@ -75,3 +75,136 @@ class PaymentProcessor {
     }
 }
 ```
+
+## L – Liskov Substitution Principle (LSP)
+Subtypes should be substitutable for their base types without affecting the correctness of the program.
+
+### Example (Violation):
+```
+class Bird {
+    void fly() {
+        System.out.println("Bird is flying");
+    }
+}
+class Penguin extends Bird {
+    void fly() {
+        throw new UnsupportedOperationException("Penguins cannot fly");
+    }
+}
+```
+### Refactored (Following LSP by using better abstraction):
+```
+abstract class Bird { }
+interface Flyable {
+    void fly();
+}
+class Sparrow extends Bird implements Flyable {
+    public void fly() {
+        System.out.println("Sparrow is flying");
+    }
+}
+class Penguin extends Bird {
+    // Penguins do not implement Flyable
+}
+```
+## I – Interface Segregation Principle (ISP)
+A class should not be forced to implement interfaces it does not use.
+### Example (Violation):
+```
+interface Worker {
+    void work();
+    void eat();
+}
+class Robot implements Worker {
+    public void work() {
+        System.out.println("Robot working...");
+    }
+
+    public void eat() {
+        throw new UnsupportedOperationException("Robot doesn't eat");
+    }
+}
+```
+### Refactored (Following ISP by splitting interfaces):
+```
+interface Workable {
+    void work();
+}
+interface Eatable {
+    void eat();
+}
+class HumanWorker implements Workable, Eatable {
+    public void work() {
+        System.out.println("Human working...");
+    }
+
+    public void eat() {
+        System.out.println("Human eating...");
+    }
+}
+class Robot implements Workable {
+    public void work() {
+        System.out.println("Robot working...");
+    }
+}
+```
+## D – Dependency Inversion Principle (DIP)
+High-level modules should not depend on low-level modules. Both should depend on abstractions.
+### Example (Violation):
+```
+class MySQLDatabase {
+    void connect() {
+        System.out.println("Connected to MySQL");
+    }
+}
+class Application {
+    private MySQLDatabase database;
+
+    public Application() {
+        this.database = new MySQLDatabase();
+    }
+
+    void start() {
+        database.connect();
+    }
+}
+```
+### Refactored (Following DIP using dependency injection):
+```
+interface Database {
+    void connect();
+}
+class MySQLDatabase implements Database {
+    public void connect() {
+        System.out.println("Connected to MySQL");
+    }
+}
+class PostgreSQLDatabase implements Database {
+    public void connect() {
+        System.out.println("Connected to PostgreSQL");
+    }
+}
+class Application {
+    private Database database;
+
+    public Application(Database database) {
+        this.database = database;
+    }
+
+    void start() {
+        database.connect();
+    }
+}
+```
+### Usage:
+```
+public class Main {
+    public static void main(String[] args) {
+        Database db = new MySQLDatabase(); // Or new PostgreSQLDatabase()
+        Application app = new Application(db);
+        app.start();
+    }
+}
+```
+By following the SOLID principles in Java, we ensure that our code is modular, testable, and scalable, making it easier to maintain and extend over time.
+
