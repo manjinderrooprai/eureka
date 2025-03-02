@@ -13,7 +13,7 @@ class Report {
     void generateReport() {
         // Code to generate a report
     }
-    // This method violates SRP because printing should be handled separately
+        // This method violates SRP because printing should be handled separately
     void printReport() {
         // Code to print the report
     }
@@ -25,19 +25,18 @@ class Report {
 class Report {
     private String name;
     private String ReportDetails;
-
     // constructor, getter and setter
 }
 class ReportGenerator {
     private Report report;
     void generateReport() {
-        // Code to generate a report
+    // Code to generate a report
     }
 }
 class ReportPrinter {
     private Report report;
     void printReport(Report report) {
-        // Code to print the report
+    // Code to print the report
     }
 }
 ```
