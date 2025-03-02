@@ -17,3 +17,17 @@ class Report {
     }
 }
 ```
+### Refactored (Following SRP):
+```
+// Each class has single responsibility and has only one reason to change
+class Report {
+    void generateReport() {
+        // Code to generate a report
+    }
+}
+class ReportPrinter {
+    void printReport(Report report) {
+        // Code to print the report
+    }
+}
+```
