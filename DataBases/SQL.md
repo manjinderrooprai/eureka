@@ -11,6 +11,17 @@ SQL stands for Structured Query Language and It lets you access and manipulate d
 ## **Uses of SQL**
 SQL is used in various domains such as **web applications, banking, e-commerce, data analytics, and enterprise software**.  
 
+## **Types of SQL Commands**
+SQL commands are categorized into five main types:  
+
+| Type | Description | Example |
+|------|------------|---------|
+| **DDL (Data Definition Language)** | Defines database structure | `CREATE`, `ALTER`, `DROP` |
+| **DML (Data Manipulation Language)** | Modifies database records | `INSERT`, `UPDATE`, `DELETE` |
+| **DQL (Data Query Language)** | Retrieves data | `SELECT` |
+| **DCL (Data Control Language)** | Controls database access | `GRANT`, `REVOKE` |
+| **TCL (Transaction Control Language)** | Manages transactions | `COMMIT`, `ROLLBACK` |
+
 ### **1. Data Retrieval**
 SQL helps retrieve specific data from a database using queries.  
 Example:  
@@ -72,16 +83,15 @@ UPDATE accounts SET balance = balance + 500 WHERE id = 2;
 COMMIT;
 ```
 
-## **Types of SQL Commands**
-SQL commands are categorized into five main types:  
+## Keywords in SQL
 
-| Type | Description | Example |
-|------|------------|---------|
-| **DDL (Data Definition Language)** | Defines database structure | `CREATE`, `ALTER`, `DROP` |
-| **DML (Data Manipulation Language)** | Modifies database records | `INSERT`, `UPDATE`, `DELETE` |
-| **DQL (Data Query Language)** | Retrieves data | `SELECT` |
-| **DCL (Data Control Language)** | Controls database access | `GRANT`, `REVOKE` |
-| **TCL (Transaction Control Language)** | Manages transactions | `COMMIT`, `ROLLBACK` |
+### 1. DISTINCT
+It used to remove duplicate values from a query result and return only unique records.
+```sql
+SELECT DISTINCT Country FROM Customers;
+````
+
+
 
 ## **Popular SQL Database Management Systems**
 SQL is used in various RDBMS (Relational Database Management Systems), including:
