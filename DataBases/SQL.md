@@ -438,6 +438,88 @@ LEFT JOIN employees e2 ON e1.manager_id = e2.id;
 | **CROSS JOIN** | ✅ Yes (All Combinations) | ❌ No |
 | **SELF JOIN** | ✅ Yes | ✅ (Self-Join Use Case) |
 
+## **SQL Stored Procedure**  
+👉 A **Stored Procedure** is a **precompiled set of SQL statements** stored in the database that can be **executed multiple times** with different parameters.  
+
+### **Why Use Stored Procedures?**  
+✅ **Reusability** – Write once, use multiple times.  
+✅ **Performance** – Precompiled, runs faster than executing raw queries.  
+✅ **Security** – Prevents SQL injection by using parameters.  
+✅ **Reduces Network Traffic** – Executes on the database server, minimizing data transfer.  
+
+### **Syntax: Creating a Stored Procedure**  
+📌 **Example:** Create a stored procedure to fetch employees by department  
+```sql
+DELIMITER $$  
+CREATE PROCEDURE GetEmployeesByDept(IN dept_id INT)  
+BEGIN  
+    SELECT * FROM employees WHERE department_id = dept_id;  
+END $$  
+DELIMITER ;
+```
+✅ **`IN dept_id INT`** – Takes department ID as input.  
+✅ **`SELECT * FROM employees`** – Fetches employees from that department.  
+
+### **Executing a Stored Procedure**  
+📌 **Example:** Call the procedure for department `5`  
+```sql
+CALL GetEmployeesByDept(5);
+```
+✅ Retrieves all employees from department **5**.
+
+### **Stored Procedure with Multiple Parameters**  
+📌 **Example:** Insert a new employee  
+```sql
+DELIMITER $$  
+CREATE PROCEDURE AddEmployee(IN emp_name VARCHAR(50), IN dept_id INT, IN salary DECIMAL(10,2))  
+BEGIN  
+    INSERT INTO employees (name, department_id, salary)  
+    VALUES (emp_name, dept_id, salary);  
+END $$  
+DELIMITER ;
+```
+✅ Adds a new employee with **name, department ID, and salary**.
+
+📌 **Calling the Procedure**  
+```sql
+CALL AddEmployee('John Doe', 3, 75000.00);
+```
+✅ Inserts **John Doe** into department **3** with a salary of **75,000**.
+
+### **Stored Procedure with Output Parameter**  
+📌 **Example:** Get employee count from a department  
+```sql
+DELIMITER $$  
+CREATE PROCEDURE GetEmployeeCount(IN dept_id INT, OUT emp_count INT)  
+BEGIN  
+    SELECT COUNT(*) INTO emp_count FROM employees WHERE department_id = dept_id;  
+END $$  
+DELIMITER ;
+```
+✅ `OUT emp_count INT` – Stores the result in `emp_count`.  
+
+📌 **Executing the Procedure**  
+```sql
+CALL GetEmployeeCount(3, @total);  
+SELECT @total AS EmployeeCount;
+```
+✅ Retrieves **total employees in department 3**.
+
+
+### **Modifying & Deleting a Stored Procedure**  
+📌 **Modify a Stored Procedure**  
+```sql
+DROP PROCEDURE IF EXISTS GetEmployeesByDept;  
+```
+📌 **Delete a Stored Procedure**  
+```sql
+ALTER PROCEDURE GetEmployeesByDept …;  -- Not supported in all databases
+```
+✅ **To modify, drop and recreate the procedure**.
+
+### **Conclusion**
+Stored procedures **enhance performance, security, and maintainability** in SQL. Need help with **advanced procedures like loops or transactions?** 🚀
+
 ## **Popular SQL Database Management Systems**
 SQL is used in various RDBMS (Relational Database Management Systems), including:
 1. **MySQL** – Open-source, widely used in web applications.  
