@@ -92,7 +92,7 @@ SELECT DISTINCT Country FROM Customers;
 ````
 
 ### 1.1 COUNT(DISTINCT)
-By using the DISTINCT keyword in a **function called COUNT**, we can return the number of different countries.
+By using the **DISTINCT** keyword in a **function called COUNT**, we can return the number of different countries.
 ```sql
 SELECT COUNT(DISTINCT Country) FROM Customers;
 
@@ -100,8 +100,8 @@ SELECT Count(*) AS DistinctCountries
 FROM (SELECT DISTINCT Country FROM Customers);
 ````
 
-### 2. WHERE Clause
-The WHERE clause is used to filter records.
+### 2. WHERE
+The **WHERE** clause is used to filter records.
 ```sql
 # SQL requires single quotes around text values:
 SELECT * FROM Customers WHERE Country='Mexico';
@@ -110,7 +110,7 @@ SELECT * FROM Customers WHERE Country='Mexico';
 SELECT * FROM Customers WHERE CustomerID=1;
 ````
 ### 3. ORDER BY
-The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+The **ORDER BY** keyword is used to sort the result-set in ascending or descending order.
 ```sql
 SELECT * FROM Products ORDER BY Price;
 SELECT * FROM Products ORDER BY Price DESC;
@@ -118,6 +118,32 @@ SELECT * FROM Customers ORDER BY Country, CustomerName;
 SELECT * FROM Customers ORDER BY Country ASC, CustomerName DESC;
 ```
 
+### 4. Operators:
+### 4.1 AND Operator
+```sql
+SELECT * FROM Customers WHERE Country = 'Spain' AND CustomerName LIKE 'G%';
+SELECT * FROM Customers WHERE Country = 'Germany' AND City = 'Berlin' AND PostalCode > 12000;
+SELECT * FROM Customers WHERE Country = 'Spain' AND (CustomerName LIKE 'G%' OR CustomerName LIKE 'R%');
+```
+### 4.2 OR Operator
+```sql
+# Select all customers from Germany or Spain:
+SELECT * FROM Customers WHERE Country = 'Germany' OR Country = 'Spain';
+
+# At Least One Condition Must Be True
+SELECT * FROM Customers WHERE City = 'Berlin' OR CustomerName LIKE 'G%' OR Country = 'Norway';
+
+# Combining AND and OR
+SELECT * FROM Customers WHERE Country = 'Spain' AND (CustomerName LIKE 'G%' OR CustomerName LIKE 'R%');
+```
+### 4.3 NOT Operator
+```sql
+# Select only the customers that are NOT from Spain:
+SELECT * FROM Customers WHERE NOT Country = 'Spain';
+
+# Select customers that does not start with the letter 'A':
+SELECT * FROM Customers WHERE CustomerName NOT LIKE 'A%';
+```
 ## **Popular SQL Database Management Systems**
 SQL is used in various RDBMS (Relational Database Management Systems), including:
 1. **MySQL** – Open-source, widely used in web applications.  
