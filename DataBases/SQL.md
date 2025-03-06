@@ -83,7 +83,7 @@ UPDATE accounts SET balance = balance + 500 WHERE id = 2;
 COMMIT;
 ```
 
-## Keywords in SQL
+## Keywords
 
 ### 1. DISTINCT
 It used to remove duplicate values from a query result and return only unique records.
@@ -255,6 +255,118 @@ FROM employees
 WHERE department = 'IT';
 ```
 ✅ Retrieves the **name and salary** of all employees in the **IT** department.
+
+### 6. Clauses:
+Clauses are used to **limit the number of rows** returned by a SQL query. Different databases use different keywords for this functionality.
+
+## **Comparison Table**
+| Clause | Database | Usage Example |
+|--------|----------|--------------|
+| `TOP` | SQL Server | `SELECT TOP 5 * FROM employees;` |
+| `LIMIT` | MySQL, PostgreSQL | `SELECT * FROM employees LIMIT 5;` |
+| `FETCH FIRST` | Oracle 12c+, PostgreSQL | `SELECT * FROM employees FETCH FIRST 5 ROWS ONLY;` |
+| `ROWNUM` | Oracle | `SELECT * FROM employees WHERE ROWNUM <= 5;` |
+
+
+
+### **Conclusion**
+- Use `TOP` in **SQL Server**.
+- Use `LIMIT` in **MySQL and PostgreSQL**.
+- Use `FETCH FIRST` in **Oracle 12c+ and PostgreSQL**.
+- Use `ROWNUM` in **older Oracle versions**.
+
+### **7. Aggregate Functions**  
+SQL **aggregate functions** perform calculations on a set of values and return a **single** result. These functions are commonly used with the `GROUP BY` clause.  
+
+### **7.1. COUNT()**  
+👉 **Counts the number of rows** in a result set.  
+
+📌 **Example:**  
+```sql
+SELECT COUNT(*) AS total_employees FROM employees;
+```
+✅ **Returns** the total number of employees.
+
+
+### **7.2. SUM()**  
+👉 **Calculates the total sum** of a numeric column.  
+
+📌 **Example:**  
+```sql
+SELECT SUM(salary) AS total_salary FROM employees;
+```
+✅ **Returns** the sum of all employee salaries.
+
+
+### **7.3. AVG()**  
+👉 **Finds the average value** of a numeric column.  
+
+📌 **Example:**  
+```sql
+SELECT AVG(salary) AS average_salary FROM employees;
+```
+✅ **Returns** the average salary of employees.
+
+
+### **7.4. MIN()**  
+👉 **Finds the minimum value** in a column.  
+
+📌 **Example:**  
+```sql
+SELECT MIN(salary) AS lowest_salary FROM employees;
+```
+✅ **Returns** the lowest salary in the table.
+
+
+### **7.5. MAX()**  
+👉 **Finds the maximum value** in a column.  
+
+📌 **Example:**  
+```sql
+SELECT MAX(salary) AS highest_salary FROM employees;
+```
+✅ **Returns** the highest salary in the table.
+
+
+### **7.6. GROUP BY with Aggregate Functions**  
+👉 **Used to group results** before applying an aggregate function.  
+
+📌 **Example:** Get the total salary for each department:  
+```sql
+SELECT department, SUM(salary) AS total_salary  
+FROM employees  
+GROUP BY department;
+```
+✅ **Returns** the total salary for each department.
+
+
+### **7.7. HAVING with Aggregate Functions**  
+👉 **Filters grouped records** based on aggregate function conditions.  
+
+📌 **Example:** Show departments where the total salary is more than 500,000:  
+```sql
+SELECT department, SUM(salary) AS total_salary  
+FROM employees  
+GROUP BY department  
+HAVING SUM(salary) > 500000;
+```
+✅ **Filters** groups based on aggregate conditions.
+
+---
+
+### **Summary Table**
+| Function | Description | Example |
+|----------|-------------|---------|
+| `COUNT()` | Counts rows | `COUNT(*)` |
+| `SUM()` | Adds values | `SUM(salary)` |
+| `AVG()` | Calculates average | `AVG(salary)` |
+| `MIN()` | Finds minimum | `MIN(salary)` |
+| `MAX()` | Finds maximum | `MAX(salary)` |
+
+---
+
+### **Conclusion**
+Aggregate functions **summarize data** and are useful for **analytics and reporting**. Want examples on **complex queries or performance optimization**? 🚀
 
 ## **Popular SQL Database Management Systems**
 SQL is used in various RDBMS (Relational Database Management Systems), including:
