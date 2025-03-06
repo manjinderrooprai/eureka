@@ -8,8 +8,6 @@ SQL stands for Structured Query Language and It lets you access and manipulate d
 4. **Supports Multiple Operations** – CRUD (Create, Read, Update, Delete) operations for database management.  
 5. **Security Features** – User authentication, access control, and encryption capabilities.  
 
----
-
 ## **Uses of SQL**
 SQL is used in various domains such as **web applications, banking, e-commerce, data analytics, and enterprise software**.  
 
