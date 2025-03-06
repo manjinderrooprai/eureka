@@ -119,31 +119,70 @@ SELECT * FROM Customers ORDER BY Country ASC, CustomerName DESC;
 ```
 
 ### 4. Operators:
-### 4.1 AND Operator
-```sql
-SELECT * FROM Customers WHERE Country = 'Spain' AND CustomerName LIKE 'G%';
-SELECT * FROM Customers WHERE Country = 'Germany' AND City = 'Berlin' AND PostalCode > 12000;
-SELECT * FROM Customers WHERE Country = 'Spain' AND (CustomerName LIKE 'G%' OR CustomerName LIKE 'R%');
-```
-### 4.2 OR Operator
-```sql
-# Select all customers from Germany or Spain:
-SELECT * FROM Customers WHERE Country = 'Germany' OR Country = 'Spain';
+Operators in SQL are **symbols or keywords** used to perform operations on data. They are mainly used in **WHERE, SELECT, and HAVING** clauses to filter, compare, and manipulate data.
 
-# At Least One Condition Must Be True
-SELECT * FROM Customers WHERE City = 'Berlin' OR CustomerName LIKE 'G%' OR Country = 'Norway';
+## **Types of SQL Operators**  
 
-# Combining AND and OR
-SELECT * FROM Customers WHERE Country = 'Spain' AND (CustomerName LIKE 'G%' OR CustomerName LIKE 'R%');
-```
-### 4.3 NOT Operator
+### **4.1. Arithmetic Operators** *(Used for mathematical calculations)*
+| Operator | Description | Example |
+|----------|------------|---------|
+| `+`  | Addition | `SELECT 10 + 5;` → **15** |
+| `-`  | Subtraction | `SELECT 10 - 5;` → **5** |
+| `*`  | Multiplication | `SELECT 10 * 5;` → **50** |
+| `/`  | Division | `SELECT 10 / 5;` → **2** |
+| `%`  | Modulus (Remainder) | `SELECT 10 % 3;` → **1** |
+
+### **4.2. Comparison (Relational) Operators** *(Used for filtering data)*
+| Operator | Description | Example |
+|----------|------------|---------|
+| `=`  | Equal to | `SELECT * FROM employees WHERE age = 30;` |
+| `!=` or `<>` | Not equal to | `SELECT * FROM employees WHERE age <> 30;` |
+| `>`  | Greater than | `SELECT * FROM employees WHERE salary > 50000;` |
+| `<`  | Less than | `SELECT * FROM employees WHERE age < 25;` |
+| `>=` | Greater than or equal to | `SELECT * FROM employees WHERE age >= 40;` |
+| `<=` | Less than or equal to | `SELECT * FROM employees WHERE age <= 50;` |
+
+### **4.3. Logical Operators** *(Used to combine multiple conditions)*
+| Operator | Description | Example |
+|----------|------------|---------|
+| `AND`  | Returns true if **both** conditions are true | `SELECT * FROM employees WHERE age > 25 AND salary > 50000;` |
+| `OR`  | Returns true if **at least one** condition is true | `SELECT * FROM employees WHERE age < 25 OR department = 'HR';` |
+| `NOT`  | Reverses the condition | `SELECT * FROM employees WHERE NOT department = 'IT';` |
+
+### **4.4. Bitwise Operators** *(Used for bitwise operations on numbers)*
+| Operator | Description | Example |
+|----------|------------|---------|
+| `&`  | Bitwise AND | `SELECT 5 & 3;` → **1** |
+| `|`  | Bitwise OR | `SELECT 5 | 3;` → **7** |
+| `^`  | Bitwise XOR | `SELECT 5 ^ 3;` → **6** |
+| `~`  | Bitwise NOT | `SELECT ~5;` (Result depends on system) |
+
+### **4.5. String Operators** *(Used to compare or manipulate strings)*
+| Operator | Description | Example |
+|----------|------------|---------|
+| `LIKE`  | Matches a pattern | `SELECT * FROM employees WHERE name LIKE 'A%';` (Names starting with 'A') |
+| `ILIKE` | Case-insensitive pattern match (PostgreSQL) | `SELECT * FROM employees WHERE name ILIKE 'john%';` |
+| `||` | String concatenation (Some databases use `+`) | `SELECT 'Hello' || ' World';` → **Hello World** |
+
+### **4.6. Special Operators** *(Used for advanced filtering)*
+| Operator | Description | Example |
+|----------|------------|---------|
+| `IN` | Matches any value in a list | `SELECT * FROM employees WHERE department IN ('IT', 'HR', 'Sales');` |
+| `NOT IN` | Excludes values in a list | `SELECT * FROM employees WHERE department NOT IN ('HR', 'Sales');` |
+| `BETWEEN` | Checks if value is in a range | `SELECT * FROM employees WHERE salary BETWEEN 30000 AND 60000;` |
+| `IS NULL` | Checks if value is NULL | `SELECT * FROM employees WHERE age IS NULL;` |
+| `IS NOT NULL` | Checks if value is NOT NULL | `SELECT * FROM employees WHERE age IS NOT NULL;` |
+| `EXISTS` | Checks if a subquery returns results | `SELECT * FROM employees WHERE EXISTS (SELECT 1 FROM departments WHERE department = 'IT');` |
+
+
+## **Example Query Using Multiple Operators**
 ```sql
-# Select only the customers that are NOT from Spain:
-SELECT * FROM Customers WHERE NOT Country = 'Spain';
-
-# Select customers that does not start with the letter 'A':
-SELECT * FROM Customers WHERE CustomerName NOT LIKE 'A%';
+SELECT * FROM employees 
+WHERE (salary > 50000 OR department = 'IT') 
+AND age BETWEEN 25 AND 40 
+AND name LIKE 'J%';
 ```
+
 ## **Popular SQL Database Management Systems**
 SQL is used in various RDBMS (Relational Database Management Systems), including:
 1. **MySQL** – Open-source, widely used in web applications.  
