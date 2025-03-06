@@ -175,13 +175,86 @@ Operators in SQL are **symbols or keywords** used to perform operations on data.
 | `EXISTS` | Checks if a subquery returns results | `SELECT * FROM employees WHERE EXISTS (SELECT 1 FROM departments WHERE department = 'IT');` |
 
 
-## **Example Query Using Multiple Operators**
+## **4.7Example Query Using Multiple Operators**
 ```sql
 SELECT * FROM employees 
 WHERE (salary > 50000 OR department = 'IT') 
 AND age BETWEEN 25 AND 40 
 AND name LIKE 'J%';
 ```
+
+### **5. DML (Data Manipulation Language) Statements **  
+DML (Data Manipulation Language) statements in SQL are used to **insert, update, delete, and retrieve** data from a database. These statements allow users to manipulate the data stored in database tables.  
+
+## **5.1. `INSERT` Statement** (Adds new data to a table)  
+Used to insert new rows into a table.  
+
+### **Syntax:**
+```sql
+INSERT INTO table_name (column1, column2, column3)  
+VALUES (value1, value2, value3);
+```
+
+### **Example:**
+```sql
+INSERT INTO employees (id, name, department, salary)  
+VALUES (1, 'John Doe', 'IT', 60000);
+```
+✅ Adds a new employee to the `employees` table.
+
+## **5.2. `UPDATE` Statement** (Modifies existing data in a table)  
+Used to update existing records in a table.
+
+### **Syntax:**
+```sql
+UPDATE table_name  
+SET column1 = value1, column2 = value2  
+WHERE condition;
+```
+
+### **Example:**
+```sql
+UPDATE employees  
+SET salary = 70000  
+WHERE name = 'John Doe';
+```
+✅ Updates the salary of **John Doe** in the `employees` table.
+
+⚠️ **Without a `WHERE` clause, all rows will be updated!**
+
+## **5.3. `DELETE` Statement** (Removes data from a table)  
+Used to delete specific rows from a table.
+
+### **Syntax:**
+```sql
+DELETE FROM table_name  
+WHERE condition;
+```
+
+### **Example:**
+```sql
+DELETE FROM employees  
+WHERE department = 'HR';
+```
+✅ Deletes all employees in the **HR** department.
+
+⚠️ **Without a `WHERE` clause, all rows will be deleted!**
+
+## **5.4. `SELECT` Statement** (Retrieves data from a table)  
+Used to fetch data from a database.
+
+### **Syntax:**
+```sql
+SELECT column1, column2 FROM table_name WHERE condition;
+```
+
+### **Example:**
+```sql
+SELECT name, salary  
+FROM employees  
+WHERE department = 'IT';
+```
+✅ Retrieves the **name and salary** of all employees in the **IT** department.
 
 ## **Popular SQL Database Management Systems**
 SQL is used in various RDBMS (Relational Database Management Systems), including:
