@@ -543,7 +543,25 @@ The Objects.hash() method or using prime numbers for hashing can help in creatin
 - **Treeification:** Java’s HashMap automatically transforms linked lists into balanced trees when a certain threshold of collisions is met. This improves performance in cases of high collision rates.
 - **Resizing:** he HashMap resizes (doubles the capacity of the internal array) when the load factor exceeds a certain threshold (default is 0.75). Resizing reduces the probability of hash collisions by spreading out the entries across more buckets.
 
-# Comparison
+## LinkedHashMap
+LinkedHashMap<K, V> is a subclass of HashMap that maintains the insertion order of keys. It extends HashMap and retains a doubly-linked list of entries.
+### **Key Features of LinkedHashMap**  
+
+| Feature                | Description |
+|------------------------|-------------|
+| **Ordering**          | Maintains **insertion order** of keys |
+| **Implementation**    | Uses a **hash table + doubly linked list** |
+| **Duplicates Allowed** | **Keys:** No, **Values:** Yes |
+| **Null Values**       | **Keys:** One null key allowed, **Values:** Multiple null values allowed |
+| **Access Time Complexity** | **O(1) on average** (like HashMap) |
+| **Insertion Complexity**  | **O(1) on average** |
+| **Deletion Complexity** | **O(1) on average** |
+| **Thread Safety**     | **Not thread-safe** (must be synchronized externally for concurrent access) |
+| **Performance**       | Slightly slower than HashMap due to maintaining the linked list |
+| **Use Case**          | When you need a **key-value map with predictable iteration order** |
+| **Special Feature**   | Supports **access-order mode** (useful for implementing LRU cache) |
+
+## Comparison
 
 | Feature             | **ArrayList** | **LinkedList** | **HashSet** | **LinkedHashSet** | **HashMap** | **LinkedHashMap** |
 |---------------------|--------------|---------------|------------|-----------------|-----------|----------------|
