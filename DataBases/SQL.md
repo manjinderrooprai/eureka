@@ -72,8 +72,6 @@ UPDATE accounts SET balance = balance + 500 WHERE id = 2;
 COMMIT;
 ```
 
----
-
 ## **Types of SQL Commands**
 SQL commands are categorized into five main types:  
 
@@ -97,8 +95,6 @@ SQL commands are categorized into five main types:
 - **DROP TABLE** - deletes a table
 - **CREATE INDEX** - creates an index (search key)
 - **DROP INDEX** - deletes an index
-  
----
 
 ## **Popular SQL Database Management Systems**
 SQL is used in various RDBMS (Relational Database Management Systems), including:
@@ -108,8 +104,6 @@ SQL is used in various RDBMS (Relational Database Management Systems), including
 4. **Oracle Database** – High-performance database used in large organizations.  
 5. **SQLite** – Lightweight, embedded database used in mobile apps.  
 
----
-
 ## **SQL vs. NoSQL**
 | Feature | SQL (Relational) | NoSQL (Non-Relational) |
 |---------|----------------|----------------|
@@ -117,8 +111,6 @@ SQL is used in various RDBMS (Relational Database Management Systems), including
 | **Schema** | Fixed schema | Flexible schema |
 | **Scalability** | Vertical scaling | Horizontal scaling |
 | **Examples** | MySQL, PostgreSQL, SQL Server | MongoDB, Cassandra, Redis |
-
----
 
 ## **Conclusion**
 SQL is the **backbone of modern data management**, helping organizations efficiently store, retrieve, and manipulate data. Whether it's **web applications, financial systems, or data analytics**, SQL remains a crucial tool for handling structured data.
