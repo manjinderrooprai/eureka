@@ -120,8 +120,7 @@ SELECT * FROM Customers ORDER BY Country ASC, CustomerName DESC;
 
 ### 4. Operators:
 Operators in SQL are **symbols or keywords** used to perform operations on data. They are mainly used in **WHERE, SELECT, and HAVING** clauses to filter, compare, and manipulate data.
-
-## **Types of SQL Operators**  
+### **Types of SQL Operators**  
 
 ### **4.1. Arithmetic Operators** *(Used for mathematical calculations)*
 | Operator | Description | Example |
@@ -174,8 +173,7 @@ Operators in SQL are **symbols or keywords** used to perform operations on data.
 | `IS NOT NULL` | Checks if value is NOT NULL | `SELECT * FROM employees WHERE age IS NOT NULL;` |
 | `EXISTS` | Checks if a subquery returns results | `SELECT * FROM employees WHERE EXISTS (SELECT 1 FROM departments WHERE department = 'IT');` |
 
-
-## **4.7 Example Query Using Multiple Operators**
+### **4.7 Example Query Using Multiple Operators**
 ```sql
 SELECT * FROM employees 
 WHERE (salary > 50000 OR department = 'IT') 
@@ -186,7 +184,7 @@ AND name LIKE 'J%';
 ### **5. DML (Data Manipulation Language) Statements**  
 DML (Data Manipulation Language) statements in SQL are used to **insert, update, delete, and retrieve** data from a database. These statements allow users to manipulate the data stored in database tables.  
 
-## **5.1. `INSERT` Statement** (Adds new data to a table)  
+### **5.1. `INSERT` Statement** (Adds new data to a table)  
 Used to insert new rows into a table.  
 
 ### **Syntax:**
@@ -202,7 +200,7 @@ VALUES (1, 'John Doe', 'IT', 60000);
 ```
 ✅ Adds a new employee to the `employees` table.
 
-## **5.2. `UPDATE` Statement** (Modifies existing data in a table)  
+### **5.2. `UPDATE` Statement** (Modifies existing data in a table)  
 Used to update existing records in a table.
 
 ### **Syntax:**
@@ -222,7 +220,7 @@ WHERE name = 'John Doe';
 
 ⚠️ **Without a `WHERE` clause, all rows will be updated!**
 
-## **5.3. `DELETE` Statement** (Removes data from a table)  
+### **5.3. `DELETE` Statement** (Removes data from a table)  
 Used to delete specific rows from a table.
 
 ### **Syntax:**
@@ -240,7 +238,7 @@ WHERE department = 'HR';
 
 ⚠️ **Without a `WHERE` clause, all rows will be deleted!**
 
-## **5.4. `SELECT` Statement** (Retrieves data from a table)  
+### **5.4. `SELECT` Statement** (Retrieves data from a table)  
 Used to fetch data from a database.
 
 ### **Syntax:**
@@ -259,7 +257,7 @@ WHERE department = 'IT';
 ### 6. Clauses:
 Clauses are used to **limit the number of rows** returned by a SQL query. Different databases use different keywords for this functionality.
 
-## **Comparison Table**
+### **Comparison Table**
 | Clause | Database | Usage Example |
 |--------|----------|--------------|
 | `TOP` | SQL Server | `SELECT TOP 5 * FROM employees;` |
