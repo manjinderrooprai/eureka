@@ -5,7 +5,7 @@ The Java Stream API is a powerful feature introduced in Java 8 that allows you t
 ### What is a Stream?
 A Stream is a sequence of elements that supports various operations to process data. It does not store data but instead operates on data from a source (like a List, Set, or Map).
 
-![Java Stream Api](diagrams/Java_Stream_Api.webp)
+![Java Stream Api](diagrams/Java-Stream-Api.webp)
 
 **Key Characteristics of Streams:**
 - ✅ Functional-style processing
