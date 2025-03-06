@@ -175,7 +175,7 @@ Operators in SQL are **symbols or keywords** used to perform operations on data.
 | `EXISTS` | Checks if a subquery returns results | `SELECT * FROM employees WHERE EXISTS (SELECT 1 FROM departments WHERE department = 'IT');` |
 
 
-## **4.7Example Query Using Multiple Operators**
+## **4.7 Example Query Using Multiple Operators**
 ```sql
 SELECT * FROM employees 
 WHERE (salary > 50000 OR department = 'IT') 
@@ -183,7 +183,7 @@ AND age BETWEEN 25 AND 40
 AND name LIKE 'J%';
 ```
 
-### **5. DML (Data Manipulation Language) Statements **  
+### **5. DML (Data Manipulation Language) Statements**  
 DML (Data Manipulation Language) statements in SQL are used to **insert, update, delete, and retrieve** data from a database. These statements allow users to manipulate the data stored in database tables.  
 
 ## **5.1. `INSERT` Statement** (Adds new data to a table)  
@@ -266,8 +266,6 @@ Clauses are used to **limit the number of rows** returned by a SQL query. Differ
 | `LIMIT` | MySQL, PostgreSQL | `SELECT * FROM employees LIMIT 5;` |
 | `FETCH FIRST` | Oracle 12c+, PostgreSQL | `SELECT * FROM employees FETCH FIRST 5 ROWS ONLY;` |
 | `ROWNUM` | Oracle | `SELECT * FROM employees WHERE ROWNUM <= 5;` |
-
-
 
 ### **Conclusion**
 - Use `TOP` in **SQL Server**.
