@@ -109,7 +109,14 @@ SELECT * FROM Customers WHERE Country='Mexico';
 # However, numeric fields should not be enclosed in quotes:
 SELECT * FROM Customers WHERE CustomerID=1;
 ````
-
+### 3. ORDER BY
+The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+```sql
+SELECT * FROM Products ORDER BY Price;
+SELECT * FROM Products ORDER BY Price DESC;
+SELECT * FROM Customers ORDER BY Country, CustomerName;
+SELECT * FROM Customers ORDER BY Country ASC, CustomerName DESC;
+```
 
 ## **Popular SQL Database Management Systems**
 SQL is used in various RDBMS (Relational Database Management Systems), including:
