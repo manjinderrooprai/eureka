@@ -91,6 +91,24 @@ It used to remove duplicate values from a query result and return only unique re
 SELECT DISTINCT Country FROM Customers;
 ````
 
+### 1.1 COUNT(DISTINCT)
+By using the DISTINCT keyword in a **function called COUNT**, we can return the number of different countries.
+```sql
+SELECT COUNT(DISTINCT Country) FROM Customers;
+
+SELECT Count(*) AS DistinctCountries
+FROM (SELECT DISTINCT Country FROM Customers);
+````
+
+### 2. WHERE Clause
+The WHERE clause is used to filter records.
+```sql
+# SQL requires single quotes around text values:
+SELECT * FROM Customers WHERE Country='Mexico';
+
+# However, numeric fields should not be enclosed in quotes:
+SELECT * FROM Customers WHERE CustomerID=1;
+````
 
 
 ## **Popular SQL Database Management Systems**
