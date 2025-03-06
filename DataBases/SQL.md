@@ -348,8 +348,6 @@ HAVING SUM(salary) > 500000;
 ```
 ✅ **Filters** groups based on aggregate conditions.
 
----
-
 ### **Summary Table**
 | Function | Description | Example |
 |----------|-------------|---------|
@@ -359,10 +357,86 @@ HAVING SUM(salary) > 500000;
 | `MIN()` | Finds minimum | `MIN(salary)` |
 | `MAX()` | Finds maximum | `MAX(salary)` |
 
----
+### **8. Joins**  
+👉 **Joins** in SQL are used to **combine rows** from two or more tables based on a **related column**.  
 
-### **Conclusion**
-Aggregate functions **summarize data** and are useful for **analytics and reporting**. Want examples on **complex queries or performance optimization**? 🚀
+### **Types of Joins**
+### **8.1. INNER JOIN** (Most Common)  
+✅ Returns only **matching rows** from both tables.  
+
+📌 **Example:** Get employees and their department names  
+```sql
+SELECT employees.name, departments.department_name  
+FROM employees  
+INNER JOIN departments ON employees.department_id = departments.id;
+```
+✅ **Only employees with a matching department appear** in the result.
+
+
+### **8.2. LEFT JOIN (LEFT OUTER JOIN)**  
+✅ Returns **all rows from the left table** and **matching rows from the right table** (if no match, NULL is returned).  
+
+📌 **Example:** Get all employees, including those without a department  
+```sql
+SELECT employees.name, departments.department_name  
+FROM employees  
+LEFT JOIN departments ON employees.department_id = departments.id;
+```
+✅ Employees without a department will have `NULL` in `department_name`.
+
+### **8.3. RIGHT JOIN (RIGHT OUTER JOIN)**  
+✅ Returns **all rows from the right table** and **matching rows from the left table** (if no match, NULL is returned).  
+
+📌 **Example:** Get all departments, even those with no employees  
+```sql
+SELECT employees.name, departments.department_name  
+FROM employees  
+RIGHT JOIN departments ON employees.department_id = departments.id;
+```
+✅ Departments without employees will have `NULL` in `employees.name`.
+
+### **8.4. FULL JOIN (FULL OUTER JOIN)**  
+✅ Returns **all rows from both tables**, filling `NULL` where there’s no match.  
+
+📌 **Example:** Get all employees and all departments, even if they don’t match  
+```sql
+SELECT employees.name, departments.department_name  
+FROM employees  
+FULL JOIN departments ON employees.department_id = departments.id;
+```
+✅ Unmatched employees and departments will show `NULL` in missing columns.
+
+### **8.5. CROSS JOIN**  
+✅ **Cartesian product** – returns all possible combinations of rows from both tables.  
+
+📌 **Example:** Get all combinations of employees and departments  
+```sql
+SELECT employees.name, departments.department_name  
+FROM employees  
+CROSS JOIN departments;
+```
+✅ If there are 10 employees and 5 departments, **50 rows** will be returned.
+
+### **8.6. SELF JOIN**  
+✅ Joins a table **to itself**, useful for **hierarchical relationships** (e.g., managers & employees).  
+
+📌 **Example:** Get employees and their managers  
+```sql
+SELECT e1.name AS Employee, e2.name AS Manager  
+FROM employees e1  
+LEFT JOIN employees e2 ON e1.manager_id = e2.id;
+```
+✅ Returns employee names and their managers.
+
+### **Comparison Table**
+| Join Type | Includes Matching Rows | Includes Non-Matching Rows |
+|-----------|----------------------|---------------------------|
+| **INNER JOIN** | ✅ Yes | ❌ No |
+| **LEFT JOIN** | ✅ Yes | ✅ From Left Table |
+| **RIGHT JOIN** | ✅ Yes | ✅ From Right Table |
+| **FULL JOIN** | ✅ Yes | ✅ From Both Tables |
+| **CROSS JOIN** | ✅ Yes (All Combinations) | ❌ No |
+| **SELF JOIN** | ✅ Yes | ✅ (Self-Join Use Case) |
 
 ## **Popular SQL Database Management Systems**
 SQL is used in various RDBMS (Relational Database Management Systems), including:
