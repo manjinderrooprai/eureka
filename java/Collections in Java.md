@@ -542,3 +542,28 @@ A hash collision occurs **when two different keys produce the same hash code in 
 The Objects.hash() method or using prime numbers for hashing can help in creating better distributions.
 - **Treeification:** Java’s HashMap automatically transforms linked lists into balanced trees when a certain threshold of collisions is met. This improves performance in cases of high collision rates.
 - **Resizing:** he HashMap resizes (doubles the capacity of the internal array) when the load factor exceeds a certain threshold (default is 0.75). Resizing reduces the probability of hash collisions by spreading out the entries across more buckets.
+
+# Comparison
+
+| Feature             | **ArrayList** | **LinkedList** | **HashSet** | **LinkedHashSet** | **HashMap** | **LinkedHashMap** |
+|---------------------|--------------|---------------|------------|-----------------|-----------|----------------|
+| **Implementation**  | Dynamic array | Doubly linked list | Hash table | Hash table + linked list | Hash table | Hash table + linked list |
+| **Ordering**        | Insertion order | Insertion order | No ordering | Insertion order | No ordering | Insertion order |
+| **Duplicates Allowed** | Yes | Yes | No | No | Keys: No, Values: Yes | Keys: No, Values: Yes |
+| **Null Allowed**    | Yes | Yes | Yes (only one null) | Yes (only one null) | Yes (one null key, multiple null values) | Yes (one null key, multiple null values) |
+| **Access Time Complexity** | O(1) (for get) | O(n) | O(1) (on average) | O(1) (on average) | O(1) (on average) | O(1) (on average) |
+| **Insertion Time Complexity** | O(1) (amortized) | O(1) | O(1) (amortized) | O(1) (amortized) | O(1) (amortized) | O(1) (amortized) |
+| **Deletion Time Complexity** | O(n) (shift elements) | O(1) (if node reference is known) | O(1) (on average) | O(1) (on average) | O(1) (on average) | O(1) (on average) |
+| **Search Time Complexity** | O(n) | O(n) | O(1) (on average) | O(1) (on average) | O(1) (on average) | O(1) (on average) |
+| **Thread Safety**   | No | No | No | No | No | No |
+| **Performance Best Case** | Fast random access (O(1)) | Fast insert/delete at ends | Fast lookup, insertion, deletion (O(1)) | Fast lookup with predictable order | Fast lookup with hashing | Fast lookup with predictable order |
+| **Performance Worst Case** | O(n) for remove or insert at the beginning | O(n) for searching | O(n) (due to hash collisions) | O(n) (due to hash collisions) | O(n) (due to hash collisions) | O(n) (due to hash collisions) |
+| **Use Case**        | Frequent reads, less insertions/deletions | Frequent insertions/deletions | Unordered unique elements | Unique elements with predictable iteration order | Key-value mapping with fast access | Key-value mapping with predictable iteration order |
+
+### Summary:
+- **ArrayList**: Best for fast random access but slow for frequent insertions/deletions.
+- **LinkedList**: Best for frequent insertions/deletions but slow for random access.
+- **HashSet**: Best for storing unique elements without order.
+- **LinkedHashSet**: Best for unique elements while maintaining insertion order.
+- **HashMap**: Best for key-value mapping with no specific order.
+- **LinkedHashMap**: Best for key-value mapping while maintaining insertion order.
