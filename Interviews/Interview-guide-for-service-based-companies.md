@@ -231,3 +231,128 @@ public class Main {
 - **Polymorphism**: Allows flexibility in using objects of different types through a common interface.
 - **Abstraction**: Simplifies complexity by focusing on what an object does rather than how it does it.
 
+# Java Collections Framework
+The **Java Collections Framework** is a set of classes and interfaces that provide implementations of commonly used data structures. The three main interfaces in the framework are **List**, **Set**, and **Map**. Each of these interfaces has different characteristics and use cases. Let's break them down and discuss their implementations like **ArrayList**, **HashSet**, and **HashMap**.
+
+### 1. **List**
+- **Definition**: A **List** is an ordered collection (also called a sequence). It allows duplicate elements and maintains the insertion order.
+- **Key Features**:
+  - Elements can be accessed by their index.
+  - Allows multiple `null` elements.
+  - Common implementations: **ArrayList**, **LinkedList**, **Vector**.
+
+#### **ArrayList**
+- **Description**: `ArrayList` is a resizable array implementation of the `List` interface. It provides fast random access and is ideal for scenarios where you need to frequently access elements by their index.
+- **Example**:
+  ```java
+  import java.util.ArrayList;
+  import java.util.List;
+
+  public class Main {
+      public static void main(String[] args) {
+          List<String> fruits = new ArrayList<>();
+          fruits.add("Apple");  // Add elements
+          fruits.add("Banana");
+          fruits.add("Orange");
+
+          System.out.println(fruits.get(1)); // Output: Banana (access by index)
+          System.out.println(fruits); // Output: [Apple, Banana, Orange] (maintains order)
+      }
+  }
+  ```
+- **When to Use**: Use `ArrayList` when you need fast access to elements by index and don't need to frequently insert or delete elements in the middle of the list.
+
+### 2. **Set**
+- **Definition**: A **Set** is a collection that does **not allow duplicate elements**. It does not maintain any order (unless using a specific implementation like `LinkedHashSet` or `TreeSet`).
+- **Key Features**:
+  - No duplicate elements allowed.
+  - Allows at most one `null` element.
+  - Common implementations: **HashSet**, **LinkedHashSet**, **TreeSet**.
+
+#### **HashSet**
+- **Description**: `HashSet` is a hash table-based implementation of the `Set` interface. It provides constant-time performance for basic operations like `add`, `remove`, and `contains`.
+- **Example**:
+  ```java
+  import java.util.HashSet;
+  import java.util.Set;
+
+  public class Main {
+      public static void main(String[] args) {
+          Set<String> fruits = new HashSet<>();
+          fruits.add("Apple");
+          fruits.add("Banana");
+          fruits.add("Orange");
+          fruits.add("Apple"); // Duplicate, will not be added
+
+          System.out.println(fruits); // Output: [Apple, Banana, Orange] (no duplicates)
+      }
+  }
+  ```
+- **When to Use**: Use `HashSet` when you need to store unique elements and do not care about the order of elements.
+
+### 3. **Map**
+- **Definition**: A **Map** is a collection that stores key-value pairs. Each key is unique, and it maps to exactly one value. Unlike `List` and `Set`, `Map` is not a subtype of the `Collection` interface.
+- **Key Features**:
+  - Keys are unique, but values can be duplicated.
+  - Allows one `null` key and multiple `null` values.
+  - Common implementations: **HashMap**, **LinkedHashMap**, **TreeMap**.
+
+#### **HashMap**
+- **Description**: `HashMap` is a hash table-based implementation of the `Map` interface. It provides constant-time performance for basic operations like `put`, `get`, and `remove`.
+- **Example**:
+  ```java
+  import java.util.HashMap;
+  import java.util.Map;
+
+  public class Main {
+      public static void main(String[] args) {
+          Map<String, Integer> fruitPrices = new HashMap<>();
+          fruitPrices.put("Apple", 50);  // Add key-value pairs
+          fruitPrices.put("Banana", 20);
+          fruitPrices.put("Orange", 30);
+
+          System.out.println(fruitPrices.get("Banana")); // Output: 20 (access by key)
+          System.out.println(fruitPrices); // Output: {Apple=50, Banana=20, Orange=30}
+      }
+  }
+  ```
+- **When to Use**: Use `HashMap` when you need to store key-value pairs and require fast access, insertion, and deletion.
+
+### Comparison Table
+
+| Feature                | **List** (e.g., ArrayList)       | **Set** (e.g., HashSet)       | **Map** (e.g., HashMap)       |
+|------------------------|----------------------------------|-------------------------------|-------------------------------|
+| **Duplicates**         | Allows duplicates               | No duplicates allowed         | Keys are unique, values can be duplicated |
+| **Order**              | Maintains insertion order       | No order (unless using `LinkedHashSet` or `TreeSet`) | No order (unless using `LinkedHashMap` or `TreeMap`) |
+| **Null Elements**      | Allows multiple `null` elements | Allows at most one `null` element | Allows one `null` key and multiple `null` values |
+| **Access**             | Access by index                 | No index-based access         | Access by key                 |
+| **Common Use Case**    | Ordered collections with duplicates | Unique elements, no order     | Key-value pairs               |
+
+### Key Points to Remember
+1. **List**:
+   - Ordered collection with duplicates.
+   - Use `ArrayList` for fast random access and `LinkedList` for frequent insertions/deletions.
+
+2. **Set**:
+   - Unordered collection with no duplicates.
+   - Use `HashSet` for general-purpose unique collections and `TreeSet` for sorted unique collections.
+
+3. **Map**:
+   - Stores key-value pairs with unique keys.
+   - Use `HashMap` for general-purpose key-value storage and `TreeMap` for sorted key-value pairs.
+
+### Common Interview Questions
+1. **What is the difference between `ArrayList` and `LinkedList`?**
+   - `ArrayList` is backed by a dynamic array, providing fast random access but slower insertions/deletions in the middle.
+   - `LinkedList` is backed by a doubly-linked list, providing fast insertions/deletions but slower random access.
+
+2. **What is the difference between `HashSet` and `TreeSet`?**
+   - `HashSet` uses a hash table for storage and does not maintain any order.
+   - `TreeSet` uses a Red-Black tree and stores elements in sorted order.
+
+3. **What is the difference between `HashMap` and `TreeMap`?**
+   - `HashMap` uses a hash table and does not maintain any order of keys.
+   - `TreeMap` uses a Red-Black tree and stores keys in sorted order.
+
+4. **How does `HashMap` handle collisions?**
+   - `HashMap` uses **chaining** (linked lists) to handle collisions. In Java 8+, it uses a balanced tree (instead of a linked list) for buckets with a large number of collisions.
