@@ -1281,3 +1281,173 @@ public class MyApplication implements CommandLineRunner {
 
 ### **Summary**
 Spring Boot annotations simplify development by reducing boilerplate code and providing sensible defaults. They cover a wide range of use cases, including dependency injection, web development, configuration, and testing.
+
+# ApplicationContext
+
+The **Spring Boot context** refers to the **ApplicationContext** in a Spring Boot application, which is the central interface for managing the lifecycle of beans, dependency injection, and configuration. The ApplicationContext is essentially the Spring IoC (Inversion of Control) container that holds all the beans (objects) and their dependencies, and it is responsible for creating, configuring, and managing these beans.
+
+In Spring Boot, the context is automatically set up and configured, making it easier to develop and deploy applications. Let's break down the key aspects of the Spring Boot context:
+
+### **1. What is the Spring Boot Context?**
+- The **ApplicationContext** is the core of a Spring Boot application. It is responsible for:
+  - **Bean Management**: Creating, configuring, and managing beans (objects) in the application.
+  - **Dependency Injection (DI)**: Injecting dependencies into beans.
+  - **Configuration**: Loading configuration properties and managing profiles.
+  - **Event Handling**: Publishing and listening to application events.
+  - **Resource Management**: Accessing resources like files, URLs, etc.
+
+- In Spring Boot, the context is initialized automatically when the application starts, and it is configured based on the dependencies and settings in the application.
+
+### **2. How is the Spring Boot Context Created?**
+- The Spring Boot context is created when the application starts, typically via the `SpringApplication.run()` method in the main class.
+- The context is built using **auto-configuration** and **component scanning**, which are key features of Spring Boot.
+
+**Example**:
+```java
+@SpringBootApplication
+public class MyApplication {
+    public static void main(String[] args) {
+        ApplicationContext context = SpringApplication.run(MyApplication.class, args);
+    }
+}
+```
+- Here, `SpringApplication.run()` initializes the Spring Boot context and returns an instance of `ApplicationContext`.
+
+### **3. Key Features of the Spring Boot Context**
+
+#### **Auto-Configuration**
+- Spring Boot automatically configures the context based on the dependencies in the classpath.
+- For example, if you include `spring-boot-starter-web`, Spring Boot automatically configures a web application context with an embedded Tomcat server.
+
+#### **Component Scanning**
+- Spring Boot scans for components (e.g., `@Component`, `@Service`, `@Repository`, `@Controller`) in the specified packages and registers them as beans in the context.
+- By default, Spring Boot scans the package of the main class and its sub-packages.
+
+#### **Externalized Configuration**
+- Spring Boot allows you to externalize configuration using properties files (e.g., `application.properties` or `application.yml`).
+- The context loads these configurations and makes them available for dependency injection using `@Value` or `@ConfigurationProperties`.
+
+#### **Profiles**
+- Spring Boot supports **profiles**, which allow you to define different configurations for different environments (e.g., `dev`, `prod`).
+- The context activates the appropriate profile based on the `spring.profiles.active` property.
+
+#### **Bean Lifecycle Management**
+- The context manages the lifecycle of beans, including their creation, initialization, and destruction.
+- You can use annotations like `@PostConstruct` and `@PreDestroy` to define lifecycle callbacks.
+
+
+### **4. Accessing the Spring Boot Context**
+You can access the Spring Boot context in several ways:
+
+#### **1. Using `ApplicationContext` in the Main Class**
+```java
+@SpringBootApplication
+public class MyApplication {
+    public static void main(String[] args) {
+        ApplicationContext context = SpringApplication.run(MyApplication.class, args);
+        MyService myService = context.getBean(MyService.class);
+        myService.doSomething();
+    }
+}
+```
+
+#### **2. Injecting `ApplicationContext` into a Bean**
+```java
+@Service
+public class MyService {
+    @Autowired
+    private ApplicationContext context;
+
+    public void doSomething() {
+        MyRepository repository = context.getBean(MyRepository.class);
+        repository.save();
+    }
+}
+```
+
+#### **3. Using `@Autowired` to Inject Beans**
+```java
+@Service
+public class MyService {
+    @Autowired
+    private MyRepository myRepository;
+
+    public void doSomething() {
+        myRepository.save();
+    }
+}
+```
+
+
+### **5. Spring Boot Context Hierarchy**
+Spring Boot supports a **hierarchical context** structure, where you can have a **parent context** and a **child context**:
+- The **parent context** typically contains shared beans (e.g., services, repositories).
+- The **child context** is often used for web-specific beans (e.g., controllers).
+
+**Example**:
+```java
+@SpringBootApplication
+public class MyApplication {
+    public static void main(String[] args) {
+        SpringApplicationBuilder builder = new SpringApplicationBuilder(MyApplication.class);
+        builder.parent(ParentConfig.class).child(ChildConfig.class).run(args);
+    }
+}
+```
+
+
+### **6. Spring Boot Context Events**
+The Spring Boot context publishes several events during its lifecycle, which you can listen to and handle:
+- **ApplicationStartingEvent**: Published when the application starts.
+- **ApplicationReadyEvent**: Published when the application is ready to serve requests.
+- **ApplicationFailedEvent**: Published if the application fails to start.
+
+**Example**:
+```java
+@Component
+public class MyContextListener implements ApplicationListener<ApplicationReadyEvent> {
+    @Override
+    public void onApplicationEvent(ApplicationReadyEvent event) {
+        System.out.println("Application is ready!");
+    }
+}
+```
+
+
+### **7. Customizing the Spring Boot Context**
+You can customize the Spring Boot context by:
+- **Defining custom beans** using `@Bean` in a `@Configuration` class.
+- **Overriding auto-configuration** using `@Conditional` annotations.
+- **Adding custom properties** in `application.properties` or `application.yml`.
+
+**Example**:
+```java
+@Configuration
+public class MyConfig {
+    @Bean
+    public MyService myService() {
+        return new MyService();
+    }
+}
+```
+
+
+### **8. Common Interview Questions**
+
+1. **What is the Spring Boot context?**
+   - The Spring Boot context is the `ApplicationContext` that manages the lifecycle of beans, dependency injection, and configuration in a Spring Boot application.
+
+2. **How is the Spring Boot context initialized?**
+   - The context is initialized when the application starts, typically via the `SpringApplication.run()` method.
+
+3. **What is auto-configuration in Spring Boot?**
+   - Auto-configuration automatically configures the context based on the dependencies in the classpath.
+
+4. **How do you access the Spring Boot context?**
+   - You can access the context by injecting it using `@Autowired` or by calling `SpringApplication.run()`.
+
+5. **What are Spring Boot profiles?**
+   - Profiles allow you to define different configurations for different environments (e.g., `dev`, `prod`).
+
+6. **What are some common Spring Boot context events?**
+   - `ApplicationStartingEvent`, `ApplicationReadyEvent`, and `ApplicationFailedEvent`.
