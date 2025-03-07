@@ -695,3 +695,96 @@ Java provides thread-safe collections in the `java.util.concurrent` package. The
 
 5. **What is a `BlockingQueue`?**
    - A `BlockingQueue` is a thread-safe queue that supports operations that wait for the queue to become non-empty or for space to become available.
+
+# Spring Boot
+**Spring Boot** is a popular framework built on top of the **Spring Framework** that simplifies the development of stand-alone, production-grade Spring-based applications. It is designed to reduce the complexity of configuring and deploying Spring applications, allowing developers to focus more on writing business logic rather than boilerplate code.
+
+### **What is Spring Boot?**
+Spring Boot is an extension of the Spring Framework that provides:
+1. **Auto-Configuration**: Automatically configures your application based on the dependencies you add.
+2. **Stand-Alone Applications**: Allows you to create stand-alone Spring applications with embedded servers (e.g., Tomcat, Jetty).
+3. **Production-Ready Features**: Includes features like health checks, metrics, and externalized configuration out of the box.
+4. **Opinionated Defaults**: Provides sensible defaults for configuration, reducing the need for manual setup.
+
+### **Advantages of Spring Boot Over Traditional Spring**
+
+| Feature                  | **Spring Boot**                              | **Traditional Spring**                     |
+|--------------------------|----------------------------------------------|--------------------------------------------|
+| **Configuration**         | Auto-configuration reduces boilerplate code. | Requires manual configuration (e.g., XML, Java config). |
+| **Embedded Server**       | Comes with embedded servers (e.g., Tomcat).  | Requires external server setup.            |
+| **Dependency Management** | Simplifies dependency management with starter POMs. | Manual dependency management.             |
+| **Production-Ready**      | Built-in support for metrics, health checks, etc. | Requires additional setup for production features. |
+| **Development Speed**     | Faster development with opinionated defaults. | Slower due to manual configuration.       |
+| **Deployment**            | Stand-alone JAR files for easy deployment.   | Requires WAR files and external servers.  |
+
+### **Key Features of Spring Boot**
+
+1. **Auto-Configuration**:
+   - Spring Boot automatically configures your application based on the dependencies you include. For example, if you add `spring-boot-starter-web`, it automatically sets up a web application with an embedded Tomcat server.
+
+2. **Starter POMs**:
+   - Spring Boot provides a set of "starter" dependencies (e.g., `spring-boot-starter-web`, `spring-boot-starter-data-jpa`) that simplify dependency management. These starters include all the necessary dependencies for common use cases.
+
+3. **Embedded Servers**:
+   - Spring Boot applications can run with embedded servers like Tomcat, Jetty, or Undertow, eliminating the need for external server setup.
+
+4. **Production-Ready Features**:
+   - Spring Boot includes built-in support for monitoring and managing your application in production environments. Features like health checks, metrics, and externalized configuration are available out of the box.
+
+5. **Stand-Alone Applications**:
+   - Spring Boot applications can be packaged as stand-alone JAR files, making them easy to deploy and run.
+
+### **Example: Creating a Simple Spring Boot Application**
+
+1. **Add Dependencies** (in `pom.xml` for Maven):
+   ```xml
+   <dependencies>
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-web</artifactId>
+       </dependency>
+   </dependencies>
+   ```
+
+2. **Create a Spring Boot Application**:
+   ```java
+   import org.springframework.boot.SpringApplication;
+   import org.springframework.boot.autoconfigure.SpringBootApplication;
+   import org.springframework.web.bind.annotation.GetMapping;
+   import org.springframework.web.bind.annotation.RestController;
+
+   @SpringBootApplication
+   @RestController
+   public class MyApplication {
+       public static void main(String[] args) {
+           SpringApplication.run(MyApplication.class, args);
+       }
+
+       @GetMapping("/hello")
+       public String sayHello() {
+           return "Hello, Spring Boot!";
+       }
+   }
+   ```
+
+3. **Run the Application**:
+   - Run the `main` method in `MyApplication`. The application starts on port 8080 by default.
+   - Access `http://localhost:8080/hello` in your browser to see the output: `Hello, Spring Boot!`.
+
+### **Common Interview Questions**
+
+1. **What is Spring Boot, and how is it different from the Spring Framework?**
+   - Spring Boot is an extension of the Spring Framework that simplifies the development of Spring applications by providing auto-configuration, embedded servers, and production-ready features. Traditional Spring requires manual configuration and setup.
+
+2. **What are the advantages of using Spring Boot?**
+   - Faster development, simplified dependency management, embedded servers, production-ready features, and stand-alone applications.
+
+3. **What is auto-configuration in Spring Boot?**
+   - Auto-configuration automatically configures your application based on the dependencies you include, reducing the need for manual configuration.
+
+4. **What are starter POMs in Spring Boot?**
+   - Starter POMs are a set of dependencies that simplify dependency management by including all necessary dependencies for common use cases (e.g., `spring-boot-starter-web` for web applications).
+
+5. **How does Spring Boot simplify deployment?**
+   - Spring Boot applications can be packaged as stand-alone JAR files with embedded servers, making them easy to deploy and run.
+
