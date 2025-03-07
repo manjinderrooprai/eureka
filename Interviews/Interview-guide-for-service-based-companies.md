@@ -356,3 +356,142 @@ The **Java Collections Framework** is a set of classes and interfaces that provi
 
 4. **How does `HashMap` handle collisions?**
    - `HashMap` uses **chaining** (linked lists) to handle collisions. In Java 8+, it uses a balanced tree (instead of a linked list) for buckets with a large number of collisions.
+
+# Exception handling
+
+Exception handling is a critical aspect of Java programming. Exceptions are events that disrupt the normal flow of a program. Java categorizes exceptions into two main types: **checked exceptions** and **unchecked exceptions**. Let's break down the differences between them and discuss how to handle them.
+
+### 1. **Checked Exceptions**
+- **Definition**: Checked exceptions are exceptions that are checked at **compile-time**. This means the compiler ensures that these exceptions are either caught using a `try-catch` block or declared to be thrown using the `throws` keyword.
+- **When to Use**: Checked exceptions are used for scenarios where the program can reasonably anticipate and recover from an exception (e.g., file not found, network issues).
+- **Examples**:
+  - `IOException` (e.g., file I/O operations)
+  - `SQLException` (e.g., database access issues)
+  - `ClassNotFoundException` (e.g., class not found during runtime)
+
+#### **Handling Checked Exceptions**
+You must either:
+1. **Catch the exception** using a `try-catch` block.
+2. **Declare the exception** using the `throws` keyword in the method signature.
+
+**Example**:
+```java
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            FileInputStream file = new FileInputStream("nonexistent.txt"); // Checked exception
+            int data = file.read();
+            file.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("IO error: " + e.getMessage());
+        }
+    }
+}
+```
+- **Explanation**: The `FileInputStream` constructor and `read()` method can throw `FileNotFoundException` and `IOException`, which are checked exceptions. We handle them using a `try-catch` block.
+
+### 2. **Unchecked Exceptions**
+- **Definition**: Unchecked exceptions are exceptions that are **not checked at compile-time**. They occur at runtime and are usually caused by programming errors (e.g., null pointer, array index out of bounds).
+- **When to Use**: Unchecked exceptions are used for scenarios that are typically caused by bugs in the code (e.g., logic errors, invalid input).
+- **Examples**:
+  - `NullPointerException` (e.g., accessing a null object)
+  - `ArrayIndexOutOfBoundsException` (e.g., accessing an array with an invalid index)
+  - `ArithmeticException` (e.g., division by zero)
+
+#### **Handling Unchecked Exceptions**
+Unchecked exceptions do not need to be explicitly caught or declared. However, you can still handle them using a `try-catch` block if needed.
+
+**Example**:
+```java
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {1, 2, 3};
+        try {
+            System.out.println(numbers[5]); // Unchecked exception (ArrayIndexOutOfBoundsException)
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array index out of bounds: " + e.getMessage());
+        }
+    }
+}
+```
+- **Explanation**: Accessing `numbers[5]` throws an `ArrayIndexOutOfBoundsException`, which is an unchecked exception. We handle it using a `try-catch` block.
+
+### Key Differences Between Checked and Unchecked Exceptions
+
+| Feature                  | **Checked Exceptions**                          | **Unchecked Exceptions**                     |
+|--------------------------|------------------------------------------------|----------------------------------------------|
+| **Checked at Compile-Time** | Yes                                           | No                                           |
+| **Caused by**            | External factors (e.g., file not found)        | Programming errors (e.g., null pointer)      |
+| **Handling**             | Must be caught or declared using `throws`      | Optional (can be caught but not required)    |
+| **Examples**             | `IOException`, `SQLException`                  | `NullPointerException`, `ArrayIndexOutOfBoundsException` |
+
+### Best Practices for Exception Handling
+1. **Use Checked Exceptions for Recoverable Errors**:
+   - Use checked exceptions when the program can reasonably recover from the error (e.g., retrying a file operation).
+
+2. **Use Unchecked Exceptions for Programming Errors**:
+   - Use unchecked exceptions for errors that indicate bugs in the code (e.g., null pointer, invalid input).
+
+3. **Catch Specific Exceptions**:
+   - Always catch specific exceptions rather than using a generic `Exception` catch block. This makes debugging easier.
+
+4. **Avoid Empty Catch Blocks**:
+   - Never leave a catch block empty. At a minimum, log the exception or provide meaningful feedback.
+
+5. **Use Finally for Cleanup**:
+   - Use the `finally` block to release resources (e.g., closing files, database connections) regardless of whether an exception occurs.
+
+**Example of `finally` Block**:
+```java
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) {
+        FileInputStream file = null;
+        try {
+            file = new FileInputStream("example.txt");
+            int data = file.read();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("IO error: " + e.getMessage());
+        } finally {
+            try {
+                if (file != null) {
+                    file.close(); // Ensure the file is closed
+                }
+            } catch (IOException e) {
+                System.out.println("Error closing file: " + e.getMessage());
+            }
+        }
+    }
+}
+```
+
+### Common Interview Questions
+1. **What is the difference between checked and unchecked exceptions?**
+   - Checked exceptions are checked at compile-time and must be handled, while unchecked exceptions occur at runtime and do not need to be explicitly handled.
+
+2. **When should you use checked exceptions vs. unchecked exceptions?**
+   - Use checked exceptions for recoverable errors (e.g., file not found) and unchecked exceptions for programming errors (e.g., null pointer).
+
+3. **What is the `finally` block used for?**
+   - The `finally` block is used to execute code that must run regardless of whether an exception occurs (e.g., releasing resources).
+
+4. **Can you catch multiple exceptions in a single `catch` block?**
+   - Yes, in Java 7+, you can use a multi-catch block:
+     ```java
+     try {
+         // Code that may throw exceptions
+     } catch (IOException | SQLException e) {
+         System.out.println("Exception caught: " + e.getMessage());
+     }
+     ```
