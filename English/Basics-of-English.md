@@ -1,6 +1,6 @@
 # Basics of English grammar
 
-Sure! Let's start with the basics of English grammar step by step.  
+Let's start with the basics of English grammar step by step.  
 
 ## 1. **Parts of Speech**  
 English grammar is based on eight parts of speech:  
