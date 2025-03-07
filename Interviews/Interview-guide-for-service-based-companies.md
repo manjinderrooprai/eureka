@@ -1,4 +1,5 @@
-Certainly! Preparing for an interview, especially with a company like TCS (Tata Consultancy Services), requires a good understanding of both technical and behavioral aspects. Given your extensive experience in Java and Spring Boot, here are some tailored tips and potential questions to help you prepare:
+# Interview guide for service based companies
+Certainly! Preparing for an interview, especially for service based companies, requires a good understanding of both technical and behavioral aspects. Here are some tailored tips and potential questions to help you prepare:
 
 ### Technical Preparation
 
