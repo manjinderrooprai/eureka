@@ -495,3 +495,202 @@ public class Main {
          System.out.println("Exception caught: " + e.getMessage());
      }
      ```
+     # Multithreading
+     Certainly! Multithreading is a powerful feature in Java that allows you to execute multiple threads concurrently, enabling better utilization of CPU resources and improved application performance. Let's break down the basics of **threading**, **synchronization**, and **concurrent collections**.
+
+### 1. **Threading Basics**
+A **thread** is the smallest unit of execution within a process. Java provides built-in support for multithreading through the `Thread` class and the `Runnable` interface.
+
+#### **Creating Threads**
+There are two ways to create a thread in Java:
+1. **Extending the `Thread` class**:
+   ```java
+   class MyThread extends Thread {
+       @Override
+       public void run() {
+           System.out.println("Thread is running");
+       }
+   }
+
+   public class Main {
+       public static void main(String[] args) {
+           MyThread thread = new MyThread();
+           thread.start(); // Start the thread
+       }
+   }
+   ```
+
+2. **Implementing the `Runnable` interface**:
+   ```java
+   class MyRunnable implements Runnable {
+       @Override
+       public void run() {
+           System.out.println("Thread is running");
+       }
+   }
+
+   public class Main {
+       public static void main(String[] args) {
+           Thread thread = new Thread(new MyRunnable());
+           thread.start(); // Start the thread
+       }
+   }
+   ```
+
+- **Key Points**:
+  - The `start()` method begins the execution of the thread, and the JVM calls the `run()` method.
+  - Prefer implementing `Runnable` over extending `Thread` because Java does not support multiple inheritance, and `Runnable` is more flexible.
+
+### 2. **Synchronization**
+When multiple threads access shared resources, it can lead to **race conditions** (where the output depends on the sequence of thread execution). Synchronization ensures that only one thread can access a shared resource at a time.
+
+#### **Synchronized Methods**
+You can use the `synchronized` keyword to synchronize methods or blocks of code.
+
+**Example**:
+```java
+class Counter {
+    private int count = 0;
+
+    // Synchronized method
+    public synchronized void increment() {
+        count++;
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        Counter counter = new Counter();
+
+        // Create two threads that increment the counter
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+            }
+        });
+
+        Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+            }
+        });
+
+        t1.start();
+        t2.start();
+
+        t1.join(); // Wait for t1 to finish
+        t2.join(); // Wait for t2 to finish
+
+        System.out.println("Count: " + counter.getCount()); // Output: 2000
+    }
+}
+```
+- **Explanation**: The `increment()` method is synchronized, so only one thread can execute it at a time, preventing race conditions.
+
+#### **Synchronized Blocks**
+You can also synchronize specific blocks of code instead of entire methods.
+
+**Example**:
+```java
+public void increment() {
+    synchronized (this) { // Synchronized block
+        count++;
+    }
+}
+```
+
+### 3. **Concurrent Collections**
+Java provides thread-safe collections in the `java.util.concurrent` package. These collections are optimized for multithreaded environments and eliminate the need for explicit synchronization.
+
+#### **Common Concurrent Collections**
+1. **`ConcurrentHashMap`**:
+   - A thread-safe version of `HashMap`.
+   - Allows concurrent read and write operations without locking the entire map.
+
+   **Example**:
+   ```java
+   import java.util.concurrent.ConcurrentHashMap;
+
+   public class Main {
+       public static void main(String[] args) {
+           ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
+           map.put("Apple", 50);
+           map.put("Banana", 20);
+
+           System.out.println(map.get("Apple")); // Output: 50
+       }
+   }
+   ```
+
+2. **`CopyOnWriteArrayList`**:
+   - A thread-safe version of `ArrayList`.
+   - Creates a new copy of the list whenever it is modified, ensuring thread safety for read operations.
+
+   **Example**:
+   ```java
+   import java.util.concurrent.CopyOnWriteArrayList;
+
+   public class Main {
+       public static void main(String[] args) {
+           CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+           list.add("Apple");
+           list.add("Banana");
+
+           System.out.println(list); // Output: [Apple, Banana]
+       }
+   }
+   ```
+
+3. **`BlockingQueue`**:
+   - A thread-safe queue that supports operations that wait for the queue to become non-empty when retrieving an element and wait for space to become available when storing an element.
+   - Common implementations: `ArrayBlockingQueue`, `LinkedBlockingQueue`.
+
+   **Example**:
+   ```java
+   import java.util.concurrent.BlockingQueue;
+   import java.util.concurrent.ArrayBlockingQueue;
+
+   public class Main {
+       public static void main(String[] args) throws InterruptedException {
+           BlockingQueue<String> queue = new ArrayBlockingQueue<>(10);
+           queue.put("Apple"); // Add to the queue
+           String fruit = queue.take(); // Remove from the queue
+           System.out.println(fruit); // Output: Apple
+       }
+   }
+   ```
+
+### Key Points to Remember
+1. **Threading**:
+   - Use `Thread` or `Runnable` to create threads.
+   - The `start()` method begins thread execution, and the JVM calls the `run()` method.
+
+2. **Synchronization**:
+   - Use `synchronized` methods or blocks to prevent race conditions.
+   - Synchronization ensures that only one thread can access a shared resource at a time.
+
+3. **Concurrent Collections**:
+   - Use `ConcurrentHashMap`, `CopyOnWriteArrayList`, and `BlockingQueue` for thread-safe operations.
+   - These collections eliminate the need for explicit synchronization.
+
+
+### Common Interview Questions
+1. **What is the difference between `Thread` and `Runnable`?**
+   - `Thread` is a class, while `Runnable` is an interface.
+   - Implementing `Runnable` is preferred because Java does not support multiple inheritance.
+
+2. **What is a race condition?**
+   - A race condition occurs when multiple threads access shared resources concurrently, leading to unpredictable results.
+
+3. **What is the purpose of the `synchronized` keyword?**
+   - The `synchronized` keyword ensures that only one thread can execute a method or block of code at a time, preventing race conditions.
+
+4. **What is `ConcurrentHashMap`?**
+   - `ConcurrentHashMap` is a thread-safe version of `HashMap` that allows concurrent read and write operations without locking the entire map.
+
+5. **What is a `BlockingQueue`?**
+   - A `BlockingQueue` is a thread-safe queue that supports operations that wait for the queue to become non-empty or for space to become available.
