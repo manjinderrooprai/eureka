@@ -960,4 +960,324 @@ public class MyApplication implements CommandLineRunner {
 
 6. **What is the difference between `@Autowired` and `@Resource`?**
    - `@Autowired` is Spring-specific and injects by type. `@Resource` is Java EE-specific and injects by name.
-  
+
+# Annotations
+**Spring Boot** provides a wide range of annotations that simplify the development of Spring-based applications. These annotations reduce the need for boilerplate code and make it easier to configure and manage your application. Below is a list of commonly used Spring Boot annotations, categorized by their purpose:
+
+### **Core Spring Boot Annotations**
+
+1. **`@SpringBootApplication`**:
+   - Combines `@Configuration`, `@EnableAutoConfiguration`, and `@ComponentScan`.
+   - Marks the main class of a Spring Boot application.
+
+   **Example**:
+   ```java
+   @SpringBootApplication
+   public class MyApplication {
+       public static void main(String[] args) {
+           SpringApplication.run(MyApplication.class, args);
+       }
+   }
+   ```
+
+2. **`@Configuration`**:
+   - Indicates that the class can be used as a source of bean definitions.
+   - Often used with `@Bean` to define beans.
+
+   **Example**:
+   ```java
+   @Configuration
+   public class AppConfig {
+       @Bean
+       public MyService myService() {
+           return new MyService();
+       }
+   }
+   ```
+
+3. **`@ComponentScan`**:
+   - Configures component scanning directives for finding and registering beans in the application context.
+   - Automatically scans for components (e.g., `@Component`, `@Service`, `@Repository`) in the specified package.
+
+   **Example**:
+   ```java
+   @ComponentScan(basePackages = "com.example")
+   public class MyApplication {
+   }
+   ```
+
+4. **`@EnableAutoConfiguration`**:
+   - Enables Spring Boot's auto-configuration mechanism, which automatically configures the application based on the dependencies in the classpath.
+
+   **Example**:
+   ```java
+   @EnableAutoConfiguration
+   public class MyApplication {
+   }
+   ```
+
+### **Stereotype Annotations (Component Scanning)**
+
+1. **`@Component`**:
+   - Marks a class as a Spring bean. It is a generic stereotype for any Spring-managed component.
+
+   **Example**:
+   ```java
+   @Component
+   public class MyComponent {
+   }
+   ```
+
+2. **`@Service`**:
+   - Indicates that the class is a service component in the business layer.
+   - Specialized form of `@Component`.
+
+   **Example**:
+   ```java
+   @Service
+   public class MyService {
+   }
+   ```
+
+3. **`@Repository`**:
+   - Marks the class as a repository (data access object) in the persistence layer.
+   - Specialized form of `@Component`.
+
+   **Example**:
+   ```java
+   @Repository
+   public class MyRepository {
+   }
+   ```
+
+4. **`@Controller`**:
+   - Marks the class as a controller in the presentation layer (e.g., for handling HTTP requests).
+   - Specialized form of `@Component`.
+
+   **Example**:
+   ```java
+   @Controller
+   public class MyController {
+   }
+   ```
+
+5. **`@RestController`**:
+   - Combines `@Controller` and `@ResponseBody`.
+   - Used for creating RESTful web services.
+
+   **Example**:
+   ```java
+   @RestController
+   public class MyRestController {
+       @GetMapping("/hello")
+       public String sayHello() {
+           return "Hello, World!";
+       }
+   }
+   ```
+
+### **Dependency Injection Annotations**
+
+1. **`@Autowired`**:
+   - Injects dependencies automatically by type.
+   - Can be used on fields, constructors, or setter methods.
+
+   **Example**:
+   ```java
+   @Service
+   public class MyService {
+       @Autowired
+       private MyRepository myRepository;
+   }
+   ```
+
+2. **`@Qualifier`**:
+   - Used with `@Autowired` to specify which bean to inject when multiple beans of the same type exist.
+
+   **Example**:
+   ```java
+   @Service
+   public class MyService {
+       @Autowired
+       @Qualifier("myRepositoryImpl")
+       private MyRepository myRepository;
+   }
+   ```
+
+3. **`@Primary`**:
+   - Indicates that a bean should be given preference when multiple candidates are qualified to autowire a single-valued dependency.
+
+   **Example**:
+   ```java
+   @Component
+   @Primary
+   public class MyRepositoryImpl implements MyRepository {
+   }
+   ```
+
+4. **`@Value`**:
+   - Injects values from properties files or environment variables into fields.
+
+   **Example**:
+   ```java
+   @Component
+   public class MyComponent {
+       @Value("${app.name}")
+       private String appName;
+   }
+   ```
+
+### **Web Annotations (REST and MVC)**
+
+1. **`@RequestMapping`**:
+   - Maps HTTP requests to handler methods in a controller.
+   - Can be used at the class or method level.
+
+   **Example**:
+   ```java
+   @RestController
+   @RequestMapping("/api")
+   public class MyController {
+       @RequestMapping("/hello")
+       public String sayHello() {
+           return "Hello, World!";
+       }
+   }
+   ```
+
+2. **`@GetMapping`**, **`@PostMapping`**, **`@PutMapping`**, **`@DeleteMapping`**:
+   - Shortcut annotations for `@RequestMapping` with specific HTTP methods.
+
+   **Example**:
+   ```java
+   @RestController
+   public class MyController {
+       @GetMapping("/hello")
+       public String sayHello() {
+           return "Hello, World!";
+       }
+   }
+   ```
+
+3. **`@PathVariable`**:
+   - Extracts values from the URI template.
+
+   **Example**:
+   ```java
+   @GetMapping("/users/{id}")
+   public String getUser(@PathVariable Long id) {
+       return "User ID: " + id;
+   }
+   ```
+
+4. **`@RequestParam`**:
+   - Extracts query parameters from the URL.
+
+   **Example**:
+   ```java
+   @GetMapping("/users")
+   public String getUser(@RequestParam String name) {
+       return "User Name: " + name;
+   }
+   ```
+
+5. **`@RequestBody`**:
+   - Binds the body of the HTTP request to a Java object.
+
+   **Example**:
+   ```java
+   @PostMapping("/users")
+   public String createUser(@RequestBody User user) {
+       return "User created: " + user.getName();
+   }
+   ```
+
+6. **`@ResponseBody`**:
+   - Indicates that the return value of a method should be used as the response body.
+
+   **Example**:
+   ```java
+   @GetMapping("/hello")
+   @ResponseBody
+   public String sayHello() {
+       return "Hello, World!";
+   }
+   ```
+
+### **Configuration and Properties**
+
+1. **`@ConfigurationProperties`**:
+   - Binds external configuration properties (e.g., from `application.properties`) to a Java object.
+
+   **Example**:
+   ```java
+   @ConfigurationProperties(prefix = "app")
+   public class AppConfig {
+       private String name;
+       // Getters and setters
+   }
+   ```
+
+2. **`@PropertySource`**:
+   - Specifies the location of a properties file to be loaded into the Spring environment.
+
+   **Example**:
+   ```java
+   @Configuration
+   @PropertySource("classpath:app.properties")
+   public class AppConfig {
+   }
+   ```
+
+
+### **Testing Annotations**
+
+1. **`@SpringBootTest`**:
+   - Used for integration testing in Spring Boot applications.
+
+   **Example**:
+   ```java
+   @SpringBootTest
+   public class MyIntegrationTest {
+   }
+   ```
+
+2. **`@MockBean`**:
+   - Adds a mock of a bean to the Spring application context.
+
+   **Example**:
+   ```java
+   @SpringBootTest
+   public class MyServiceTest {
+       @MockBean
+       private MyRepository myRepository;
+   }
+   ```
+
+
+### **Other Useful Annotations**
+
+1. **`@Profile`**:
+   - Specifies that a component is eligible for registration only if a specific profile is active.
+
+   **Example**:
+   ```java
+   @Component
+   @Profile("dev")
+   public class DevDataSource {
+   }
+   ```
+
+2. **`@Scheduled`**:
+   - Marks a method to be executed on a fixed schedule.
+
+   **Example**:
+   ```java
+   @Scheduled(fixedRate = 5000)
+   public void runTask() {
+       System.out.println("Task executed");
+   }
+   ```
+
+### **Summary**
+Spring Boot annotations simplify development by reducing boilerplate code and providing sensible defaults. They cover a wide range of use cases, including dependency injection, web development, configuration, and testing.
