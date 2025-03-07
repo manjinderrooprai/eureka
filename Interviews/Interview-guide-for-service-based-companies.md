@@ -697,6 +697,7 @@ Java provides thread-safe collections in the `java.util.concurrent` package. The
    - A `BlockingQueue` is a thread-safe queue that supports operations that wait for the queue to become non-empty or for space to become available.
 
 # Spring Boot
+
 **Spring Boot** is a popular framework built on top of the **Spring Framework** that simplifies the development of stand-alone, production-grade Spring-based applications. It is designed to reduce the complexity of configuring and deploying Spring applications, allowing developers to focus more on writing business logic rather than boilerplate code.
 
 ### **What is Spring Boot?**
@@ -788,3 +789,175 @@ Spring Boot is an extension of the Spring Framework that provides:
 5. **How does Spring Boot simplify deployment?**
    - Spring Boot applications can be packaged as stand-alone JAR files with embedded servers, making them easy to deploy and run.
 
+# Dependency Injection (DI)
+**Dependency Injection (DI)** is a core concept in the **Spring Framework** that promotes loose coupling and makes your code more modular, testable, and maintainable. Let's break down how DI works in Spring and its benefits.
+
+### **What is Dependency Injection (DI)?**
+Dependency Injection is a design pattern in which the dependencies of a class are provided (injected) by an external entity (e.g., the Spring container) rather than the class creating or managing its own dependencies.
+
+- **Dependency**: An object that another object depends on (e.g., a service class used by a controller).
+- **Injection**: The process of providing the dependency to the dependent object (e.g., passing a service object to a controller).
+
+### **How Dependency Injection Works in Spring**
+Spring implements DI using its **Inversion of Control (IoC)** container. The IoC container is responsible for:
+1. **Creating objects** (beans).
+2. **Managing dependencies** between objects.
+3. **Injecting dependencies** into objects.
+
+#### **Types of Dependency Injection in Spring**
+1. **Constructor Injection**:
+   - Dependencies are injected via the constructor.
+   - Recommended for mandatory dependencies.
+
+   **Example**:
+   ```java
+   @Service
+   public class UserService {
+       private final UserRepository userRepository;
+
+       @Autowired // Constructor injection
+       public UserService(UserRepository userRepository) {
+           this.userRepository = userRepository;
+       }
+   }
+   ```
+
+2. **Setter Injection**:
+   - Dependencies are injected via setter methods.
+   - Suitable for optional dependencies.
+
+   **Example**:
+   ```java
+   @Service
+   public class UserService {
+       private UserRepository userRepository;
+
+       @Autowired // Setter injection
+       public void setUserRepository(UserRepository userRepository) {
+           this.userRepository = userRepository;
+       }
+   }
+   ```
+
+3. **Field Injection**:
+   - Dependencies are injected directly into fields using reflection.
+   - Less recommended because it makes testing harder and hides dependencies.
+
+   **Example**:
+   ```java
+   @Service
+   public class UserService {
+       @Autowired // Field injection
+       private UserRepository userRepository;
+   }
+   ```
+
+### **Benefits of Dependency Injection**
+
+1. **Loose Coupling**:
+   - DI promotes loose coupling between classes. Classes depend on abstractions (interfaces) rather than concrete implementations, making the system more modular and flexible.
+
+2. **Easier Testing**:
+   - Dependencies can be easily mocked or stubbed in unit tests, making testing simpler and more effective.
+
+3. **Reusability**:
+   - Dependencies can be reused across multiple classes, reducing code duplication.
+
+4. **Maintainability**:
+   - Changes to dependencies are centralized in the Spring configuration, making the code easier to maintain.
+
+5. **Configuration Management**:
+   - Spring's IoC container manages the lifecycle and configuration of beans, reducing boilerplate code.
+
+### **Example: Dependency Injection in Action**
+
+#### **Step 1: Define Dependencies**
+```java
+public interface UserRepository {
+    void save(User user);
+}
+
+@Repository
+public class UserRepositoryImpl implements UserRepository {
+    @Override
+    public void save(User user) {
+        System.out.println("User saved: " + user.getName());
+    }
+}
+```
+
+#### **Step 2: Inject Dependencies**
+```java
+@Service
+public class UserService {
+    private final UserRepository userRepository;
+
+    @Autowired // Constructor injection
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public void createUser(String name) {
+        User user = new User(name);
+        userRepository.save(user);
+    }
+}
+```
+
+#### **Step 3: Use the Service**
+```java
+@SpringBootApplication
+public class MyApplication implements CommandLineRunner {
+    @Autowired
+    private UserService userService;
+
+    public static void main(String[] args) {
+        SpringApplication.run(MyApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) {
+        userService.createUser("John Doe");
+    }
+}
+```
+
+#### **Step 4: Run the Application**
+- When you run the application, Spring will:
+  1. Create an instance of `UserRepositoryImpl`.
+  2. Inject it into `UserService` via constructor injection.
+  3. Call the `createUser` method, which saves the user.
+
+### **Key Points to Remember**
+1. **Spring IoC Container**:
+   - Manages the lifecycle and dependencies of beans.
+   - Uses annotations like `@Autowired` to inject dependencies.
+
+2. **Types of Injection**:
+   - Constructor injection (recommended for mandatory dependencies).
+   - Setter injection (for optional dependencies).
+   - Field injection (less recommended).
+
+3. **Benefits of DI**:
+   - Loose coupling, easier testing, reusability, maintainability, and centralized configuration.
+
+### **Common Interview Questions**
+
+1. **What is Dependency Injection (DI)?**
+   - DI is a design pattern where dependencies are provided to a class by an external entity (e.g., Spring IoC container) rather than the class creating them itself.
+
+2. **What are the types of Dependency Injection in Spring?**
+   - Constructor injection, setter injection, and field injection.
+
+3. **Why is Constructor Injection preferred?**
+   - Constructor injection ensures that all mandatory dependencies are provided at the time of object creation, making the class immutable and easier to test.
+
+4. **What is the role of the Spring IoC container?**
+   - The Spring IoC container manages the lifecycle of beans and injects dependencies into them.
+
+5. **What are the benefits of Dependency Injection?**
+   - Loose coupling, easier testing, reusability, maintainability, and centralized configuration.
+
+6. **What is the difference between `@Autowired` and `@Resource`?**
+   - `@Autowired` is Spring-specific and injects by type. `@Resource` is Java EE-specific and injects by name.
+  
