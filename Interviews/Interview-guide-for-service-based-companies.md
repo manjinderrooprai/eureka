@@ -495,8 +495,9 @@ public class Main {
          System.out.println("Exception caught: " + e.getMessage());
      }
      ```
-     # Multithreading
-     Certainly! Multithreading is a powerful feature in Java that allows you to execute multiple threads concurrently, enabling better utilization of CPU resources and improved application performance. Let's break down the basics of **threading**, **synchronization**, and **concurrent collections**.
+
+# Multithreading
+Certainly! Multithreading is a powerful feature in Java that allows you to execute multiple threads concurrently, enabling better utilization of CPU resources and improved application performance. Let's break down the basics of **threading**, **synchronization**, and **concurrent collections**.
 
 ### 1. **Threading Basics**
 A **thread** is the smallest unit of execution within a process. Java provides built-in support for multithreading through the `Thread` class and the `Runnable` interface.
