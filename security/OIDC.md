@@ -3,15 +3,11 @@ OpenID Connect (OIDC) is an authentication protocol built on top of **OAuth 2.0*
 
 OIDC enables **single sign-on (SSO)** and provides a way to obtain identity information about the user in a secure and standardized manner.
 
----
-
 ## **OIDC vs. OAuth 2.0**
 - **OAuth 2.0**: Used for **authorization** (grants access to resources).
 - **OIDC**: Used for **authentication** (verifies user identity).
 
 OIDC extends OAuth 2.0 by introducing the **ID Token**, which contains information about the authenticated user.
-
----
 
 ## **OIDC Flow (Authorization Code Flow)**
 ### **1. User Requests Authentication**
@@ -28,8 +24,6 @@ https://appleid.apple.com/auth/authorize
   &state=RANDOM_STRING
 ```
 
----
-
 ### **2. User Authenticates with the IdP**
 - The user logs in at the **Identity Provider (IdP)** (e.g., Apple, Google).
 - If authentication is successful, the IdP generates an **authorization code**.
@@ -39,8 +33,6 @@ Example callback:
 ```
 https://your-app.com/callback?code=AUTH_CODE&state=RANDOM_STRING
 ```
-
----
 
 ### **3. App Exchanges Code for Tokens**
 The application sends a **POST request** to the **IdP’s Token Endpoint** to exchange the **authorization code** for **tokens**.
@@ -68,8 +60,6 @@ The IdP responds with:
 }
 ```
 
----
-
 ### **4. App Validates the ID Token**
 - The **ID Token** is a **JWT (JSON Web Token)** containing user identity details.
 - The app **validates the ID token** using the IdP’s public key.
@@ -93,14 +83,10 @@ The IdP responds with:
 - Ensure `aud` (audience) matches your client ID.
 - Ensure `exp` (expiration) is valid.
 
----
-
 ### **5. User is Authenticated**
 - The app now recognizes the user as **authenticated**.
 - The app can create a **session** or issue an **application token** to keep the user logged in.
 - The app can now make **authorized requests** using the `access_token`.
-
----
 
 ### **6. Access Protected Resources (Optional)**
 If the app needs to access **protected user data** (e.g., calendar, photos), it can use the **access token**.
@@ -110,8 +96,6 @@ Example API request using the access token:
 GET https://api.example.com/userinfo
 Authorization: Bearer xyz123
 ```
-
----
 
 ### **7. Refresh Token (Optional)**
 If the user session expires, the app can use the **refresh token** to get a new **access token** without requiring the user to log in again.
@@ -127,8 +111,6 @@ client_id=YOUR_CLIENT_ID
 &refresh_token=abcd456
 ```
 
----
-
 ## **Summary of OIDC Components**
 | **Component**  | **Purpose** |
 |---------------|------------|
@@ -137,8 +119,6 @@ client_id=YOUR_CLIENT_ID
 | **Access Token** | Token for accessing protected resources. |
 | **Refresh Token** | Used to get a new access token without re-authentication. |
 | **UserInfo Endpoint** | API that provides user profile details. |
-
----
 
 ## **OIDC Authentication Flow Diagram**
 ```
@@ -151,16 +131,12 @@ client_id=YOUR_CLIENT_ID
 7. User is authenticated and logged in
 ```
 
----
-
 ## **Best Practices**
 ✅ **Always Validate the ID Token**  
 ✅ **Use HTTPS for Secure Communication**  
 ✅ **Rotate Client Secrets Regularly**  
 ✅ **Use Short-Lived Access Tokens & Refresh Tokens**  
 ✅ **Restrict Scopes to Only Necessary Information**  
-
----
 
 ## **Conclusion**
 OIDC is a secure and standardized way to authenticate users while leveraging OAuth 2.0. It ensures strong authentication, user identity verification, and SSO capabilities across different applications.
