@@ -82,6 +82,20 @@ List <data-type> list4 = new Stack();
 ## ArrayList
 ArrayList is a **resizable array** implementation of the List interface. It is part of the **java.util package** and allows for the storage of **ordered elements** that can be **accessed by index**.
 
+ArrayList class automatically increases its size when more elements are added than it currently has capacity for. Here's how the size increase works under the hood:
+1. Initial Capacity
+When you create a new ArrayList, its default initial capacity is 10 (if no initial capacity is specified).
+2. Growth Policy
+When the ArrayList runs out of space, it increases its capacity using the formula:
+```
+newCapacity = oldCapacity + (oldCapacity >> 1);
+```
+This means it grows by **approximately 50%** of its current size.
+**For example:**
+If capacity is 10, it becomes 15.
+If capacity is 15, it becomes 22.
+And so on...
+
 **Key Characteristics of ArrayList:**
 - **Dynamic Size:** Unlike arrays, an ArrayList can resize itself automatically as elements are added. It grows dynamically as needed.
 - **Indexed Access:** Elements in an ArrayList are ordered, and you can access them directly using an index. Indexing starts from 0.
