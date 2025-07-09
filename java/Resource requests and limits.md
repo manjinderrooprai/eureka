@@ -1,4 +1,4 @@
-To figure out the **right memory and CPU size** (i.e., **resource requests and limits**) for your EKS-deployed application (`peloton`), you can use a combination of **profiling, monitoring, load testing, and observability tools**.
+To figure out the **right memory and CPU size** (i.e., **resource requests and limits**) for your EKS-deployed application, you can use a combination of **profiling, monitoring, load testing, and observability tools**.
 
 Here’s a **step-by-step guide with tools and techniques** to determine optimal CPU & memory allocation:
 
