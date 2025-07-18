@@ -122,18 +122,14 @@ Here is the **complete syllabus** for the **AWS Certified AI Practitioner (AIF-C
 ## 🔐 Domain 5: Security, Compliance, Governance (14%)
 
 ### ✅ 5.1 Secure AI systems
-* AWS services:
-  * IAM roles/policies, Macie, PrivateLink, KMS, Secrets Manager
-    Security is crucial when building, training, and deploying AI/ML models — especially due to:
-    
+* ### AWS services:
+  * IAM roles/policies, Macie, PrivateLink, KMS, Secrets Manager.
+  * Security is crucial when building, training, and deploying AI/ML models — especially due to:
     * **Sensitive data (PII, PHI, financials)** used in training
     * **Model integrity** concerns (tampering, model theft)
     * **Endpoint protection** (prediction APIs)
     
-    ---
-    
     ### ✅ **Key AWS Services for AI Security**
-    
     | **Service**                              | **Purpose in AI Security**               | **Examples**                                            |
     | ---------------------------------------- | ---------------------------------------- | ------------------------------------------------------- |
     | **IAM (Identity and Access Management)** | Fine-grained access control              | Grant SageMaker access to S3 using roles                |
@@ -144,7 +140,6 @@ Here is the **complete syllabus** for the **AWS Certified AI Practitioner (AIF-C
     
     
     ### 🔐 **How These Fit in ML Pipelines**
-    
     | **Stage**                     | **Security Practices**                                                                                                            |
     | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
     | **Data Collection & Storage** | - Encrypt data using **KMS**<br>- Scan S3 using **Macie**<br>- Restrict access with **IAM policies**                              |
@@ -159,7 +154,7 @@ Here is the **complete syllabus** for the **AWS Certified AI Practitioner (AIF-C
     4. Credentials (e.g., for downstream APIs) stored in **Secrets Manager**
     5. **Macie** continuously monitors S3 for sensitive data exposure
 
-* Security principles:
+* ### Security principles:
   * Encryption (at rest/in-transit), data integrity, threat detection
     **Security in AI Systems** with a special focus on:
     ### ✅ 1. **Encryption**
