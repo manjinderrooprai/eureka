@@ -218,8 +218,71 @@ Here is the **complete syllabus** for the **AWS Certified AI Practitioner (AIF-C
     | Threat Detection      | Macie, GuardDuty          | Spot PII exposure or suspicious behavior |
     | Secret Handling       | Secrets Manager           | Store API tokens securely                |
 
-* Best practices:
+* ### Best practices:
   * Data quality checks, privacy-enhancing tech, source citation (data lineage)
+    ### ✅ 1. **Data Quality Checks**
+    Good AI is impossible without good data.
+    
+    #### 📌 What to Check:
+    | Check Type         | Purpose                   | Examples                               |
+    | ------------------ | ------------------------- | -------------------------------------- |
+    | **Completeness**   | No missing values         | Imputing or removing nulls             |
+    | **Consistency**    | Data format uniformity    | Dates in same format (ISO)             |
+    | **Validity**       | Correct ranges            | Age: 0–120 only                        |
+    | **Accuracy**       | Reflects real-world truth | Correct product categories             |
+    | **Duplication**    | Remove repeated data      | Clean duplicated rows                  |
+    | **Bias/Ambiguity** | Fair and clear data       | Balanced class labels, no stereotyping |
+    
+    #### 🛠️ Tools/Services:
+    * **AWS Glue DataBrew**: Visual data preparation and profiling
+    * **Amazon SageMaker Data Wrangler**: Data transformation and exploration
+    
+    ### ✅ 2. **Privacy-Enhancing Technologies (PETs)**
+    Protect individuals' data and ensure regulatory compliance (GDPR, HIPAA, etc.)
+    | Technology               | Description                              | Use Case                                 |
+    | ------------------------ | ---------------------------------------- | ---------------------------------------- |
+    | **Differential Privacy** | Add noise to prevent tracing individuals | Anonymized data insights                 |
+    | **Data Anonymization**   | Remove PII                               | Customer data masking                    |
+    | **Federated Learning**   | Train models without moving raw data     | Edge-device model training               |
+    | **Tokenization**         | Replace PII with random tokens           | Replace SSNs with non-sensitive values   |
+    | **Encryption (KMS)**     | Protect at-rest/in-transit data          | Secure training sets and model endpoints |
+    | **Secrets Manager**      | Securely manage credentials              | API keys, DB passwords in ML pipeline    |
+    
+    #### 🛠️ Related AWS Services:
+    * **Amazon Macie** – detect PII
+    * **AWS KMS** – data encryption
+    * **Amazon SageMaker** – supports encrypted model training
+    * **Secrets Manager** – secure storage of sensitive secrets
+    
+    ### ✅ 3. **Source Citation / Data Lineage**
+    Ensures **transparency**, **accountability**, and **auditability** in ML workflows.
+    
+    #### 📌 Why It Matters:
+    * Helps verify model reliability and bias
+    * Supports compliance (e.g., knowing if a model used copyrighted or personal data)
+    * Helps with reproducibility
+    
+    #### 🔹 Data Lineage Best Practices:
+    | Best Practice              | Example                                          |
+    | -------------------------- | ------------------------------------------------ |
+    | Track dataset source       | Document S3 bucket origin, database used         |
+    | Version control datasets   | Use naming/versioning: `customer_data_v2.csv`    |
+    | Log transformation steps   | Document normalization, filtering, encoding      |
+    | Use reproducible pipelines | With **SageMaker Pipelines**, **Glue workflows** |
+    | Store metadata             | Add tags/labels on datasets and models           |
+    
+    #### 🛠️ AWS Tools:
+    * **AWS Glue Data Catalog**: Central metadata store
+    * **Amazon SageMaker Model Registry**: Track model versions and training inputs
+    * **S3 Object Versioning**: Keep historical copies of data
+    * **AWS Config + CloudTrail**: Resource change history and access logging
+    
+    ### ✅ Summary Table
+    | Best Practice Area | Key Practice              | AWS Tools                               |
+    | ------------------ | ------------------------- | --------------------------------------- |
+    | **Data Quality**   | Validation, profiling     | Glue DataBrew, SageMaker Data Wrangler  |
+    | **Privacy**        | Anonymization, encryption | Macie, KMS, Secrets Manager             |
+    | **Data Lineage**   | Track source and changes  | Glue Catalog, S3 Versioning, CloudTrail |
 
 ### ✅ 5.2 Governance and compliance
 * Standards:
