@@ -124,7 +124,6 @@ Here is the **complete syllabus** for the **AWS Certified AI Practitioner (AIF-C
 ### ✅ 5.1 Secure AI systems
 * AWS services:
   * IAM roles/policies, Macie, PrivateLink, KMS, Secrets Manager
-  * ### ✅ **Key AWS Services for AI Security**
      | **Service**                              | **Purpose in AI Security**               | **Examples**                                            |
      | ---------------------------------------- | ---------------------------------------- | ------------------------------------------------------- |
      | **IAM (Identity and Access Management)** | Fine-grained access control              | Grant SageMaker access to S3 using roles                |
