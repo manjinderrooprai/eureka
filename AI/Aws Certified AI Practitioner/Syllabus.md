@@ -135,50 +135,31 @@ Here is the **complete syllabus** for the **AWS Certified AI Practitioner (AIF-C
 * Security principles:
   * Encryption (at rest/in-transit), data integrity, threat detection
     **Security in AI Systems** with a special focus on:
-    > ✅ **Encryption at rest & in-transit**
-    > ✅ **Data integrity**
-    > ✅ **Threat detection**
-    
-    ---
-    
-    ## 🔐 **Encryption, Integrity & Threat Detection in AI Systems**
-    
-    ---
-    
     ### ✅ 1. **Encryption**
-    
     Encryption ensures **confidentiality of data and models**, both during storage (at rest) and during transfer (in transit).
     
     #### 🔹 **Encryption at Rest**
-    
     * Protects data stored in **S3, EBS, SageMaker notebooks/models**, etc.
     * AWS uses **AES-256** and **AWS Key Management Service (KMS)**.
     * You can use **AWS-managed keys** or **Customer Managed Keys (CMKs)**.
     
     **Examples:**
-    
     * Encrypt S3 buckets storing training data using **KMS**.
     * Encrypt EBS volumes used by SageMaker notebook instances.
     * Enable model artifact encryption during training jobs.
     
     #### 🔹 **Encryption in Transit**
-    
     * Protects data when moving between components (e.g., client ↔ API, SageMaker ↔ S3).
     * AWS uses **TLS (Transport Layer Security)**.
     
     **Examples:**
-    
     * Secure prediction requests to SageMaker endpoints using **HTTPS**.
     * Use **VPC endpoints + PrivateLink** to route traffic privately.
-    
-    ---
-    
+      
     ### ✅ 2. **Data Integrity**
-    
     Ensures **data has not been altered** maliciously or accidentally.
     
     #### 🔹 AWS Security Practices
-    
     | Practice                     | Tool/Service                               |
     | ---------------------------- | ------------------------------------------ |
     | **S3 Versioning**            | Track and restore previous data versions   |
@@ -187,18 +168,13 @@ Here is the **complete syllabus** for the **AWS Certified AI Practitioner (AIF-C
     | **KMS with Signed Requests** | Ensures authenticity of users and actions  |
     
     **Examples:**
-    
     * Enable versioning for training datasets in S3.
     * Log access to training/inference data using CloudTrail.
     
-    ---
-    
     ### ✅ 3. **Threat Detection**
-    
     Helps identify **unauthorized access or unusual behavior**.
     
     #### 🔹 Tools for Threat Detection
-    
     | Service                         | Role in Threat Detection                                                          |
     | ------------------------------- | --------------------------------------------------------------------------------- |
     | **Amazon Macie**                | Detects PII in datasets automatically                                             |
@@ -207,15 +183,11 @@ Here is the **complete syllabus** for the **AWS Certified AI Practitioner (AIF-C
     | **AWS Config**                  | Continuously monitors resource compliance                                         |
     
     **Example Threat Scenarios:**
-    
     * Macie alerts you to unencrypted S3 bucket with PII
     * GuardDuty detects an unusual access pattern to SageMaker endpoint
     * CloudWatch triggers an alert when someone accesses SageMaker model from an unusual IP
     
-    ---
-    
     ### ✅ Summary Table
-    
     | **Goal**              | **AWS Tool/Service**      | **Example**                              |
     | --------------------- | ------------------------- | ---------------------------------------- |
     | Encryption at Rest    | KMS + S3/EBS/SageMaker    | Secure model artifacts and data          |
@@ -223,7 +195,6 @@ Here is the **complete syllabus** for the **AWS Certified AI Practitioner (AIF-C
     | Data Integrity        | S3 Versioning, CloudTrail | Track changes, audit logs                |
     | Threat Detection      | Macie, GuardDuty          | Spot PII exposure or suspicious behavior |
     | Secret Handling       | Secrets Manager           | Store API tokens securely                |
-
 
 * Best practices:
   * Data quality checks, privacy-enhancing tech, source citation (data lineage)
