@@ -2,7 +2,7 @@
 This breaks each **OWASP** topic down and includes details on what the vulnerability is, how it occurs and how you can exploit it. You will put the theory into practise by completing supporting challenges.
 - **Injection****
 - **Broken Authentication**
-- **Sensitive Data Exposure****
+- **Sensitive Data Exposure**
 - **XML External Entity**
 - **Broken Access Control**
 - **Security Misconfiguration**
