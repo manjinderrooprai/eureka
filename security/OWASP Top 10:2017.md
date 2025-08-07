@@ -310,4 +310,4 @@ Remember, cross-site scripting is a vulnerability that can be exploited to execu
 - **Port scanning (http://www.xss-payloads.com/payloads/scripts/portscanapi.js.html)** - A mini local port scanner (more information on this is covered in the TryHackMe XSS room).
 - **XSS Keylogger: (http://www.xss-payloads.com/payloads/scripts/simplekeylogger.js.html)** - You can log all keystrokes of a user, capturing their password and other sensitive information they type into the webpage.
 
-**XSS-Payloads.com (http://www.xss-payloads.com/) **- is a website that has XSS related Payloads, Tools, Documentation and more. You can download XSS payloads that take snapshots from a webcam or even get a more capable port and network scanner.
+**XSS-Payloads.com (http://www.xss-payloads.com/) ]** - is a website that has XSS related Payloads, Tools, Documentation and more. You can download XSS payloads that take snapshots from a webcam or even get a more capable port and network scanner.
