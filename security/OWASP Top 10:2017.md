@@ -43,3 +43,37 @@ If an attacker is able to find flaws in an authentication mechanism, they would 
 - To **avoid brute force attacks**, ensure that the application **enforces an automatic lockout after a certain number of attempts**. This would prevent an attacker from launching more brute force attacks.
 - **Implement Multi Factor Authentication** - If a user has multiple methods of authentication, for example, using username and passwords and receiving a code on their mobile device, then it would be difficult for an attacker to get access to both credentials to get access to their account.
 
+## 3. Sensitive Data Exposure 
+**When a webapp accidentally divulges sensitive data**, we refer to it as **"Sensitive Data Exposure"**. This is often **data directly linked to customers (e.g. names, dates-of-birth, financial information, etc)**, but could also be more technical information, such as **usernames and passwords**. At more complex levels this often involves techniques such as a **"Man in The Middle Attack"**, whereby the attacker would force user connections through a device which they control, then take advantage of weak encryption on any transmitted data to gain access to the intercepted information (if the data is even encrypted in the first place...). Of course, many examples are much simpler, and vulnerabilities can be found in web apps which can be exploited without any advanced networking knowledge. Indeed, in some cases, the sensitive data can be found directly on the webserver itself...
+
+The most common way to store a large amount of data in a format that is easily accessible from many locations at once is in a database. This is obviously perfect for something like a web application, as there may be many users interacting with the website at any one time. Database engines usually follow the Structured Query Language (SQL) syntax; however, alternative formats (such as NoSQL) are rising in popularity.
+
+In a production environment it is common to see databases set up on dedicated servers, running a database service such as MySQL or MariaDB; however, databases can also be stored as files. These databases are referred to as "flat-file" databases, as they are stored as a single file on the computer. This is much easier than setting up a full database server, and so could potentially be seen in smaller web applications. Accessing a database server is outwith the scope of today's task, so let's focus instead on flat-file databases.
+
+As mentioned previously, flat-file databases are stored as a file on the disk of a computer. Usually this would not be a problem for a webapp, but what happens if the database is stored underneath the root directory of the website (i.e. one of the files that a user connecting to the website is able to access)? Well, we can download it and query it on our own machine, with full access to everything in the database. Sensitive Data Exposure indeed!
+
+That is a big hint for the challenge, so let's briefly cover some of the syntax we would use to query a flat-file database.
+
+The most common (and simplest) format of flat-file database is an sqlite database. These can be interacted with in most programming languages, and have a dedicated client for querying them on the command line. This client is called "sqlite3", and is installed by default on Kali.
+
+Let's suppose we have successfully managed to download a database:
+<img width="603" height="89" alt="image" src="https://github.com/user-attachments/assets/eb7d6315-e724-483a-843c-a0802a625d22" />
+
+We can see that there is an SQlite database in the current folder.
+
+To access it we use: **sqlite3 <database-name>:**
+<img width="405" height="79" alt="image" src="https://github.com/user-attachments/assets/2203dbb1-835f-4434-94f1-a09c2beb7325" />
+
+From here we can see the tables in the database by using the **.tables**command:
+<img width="406" height="89" alt="image" src="https://github.com/user-attachments/assets/d84520e3-ac99-4fd7-a66e-95b6087d8cc8" />
+
+At this point we can dump all of the data from the table, but we won't necessarily know what each column means unless we look at the table information. First let's use **PRAGMA table_info(customers);** to see the table information, then we'll use **SELECT * FROM customers;** to dump the information from the table:
+<img width="561" height="217" alt="image" src="https://github.com/user-attachments/assets/34993887-cbba-4c4a-a44e-b99ecd5d2ec9" />
+
+We can see from the table information that there are four columns: custID, custName, creditCard and password. You may notice that this matches up with the results. Take the first row:
+
+**0|Joy Paulson|4916 9012 2231 7905|5f4dcc3b5aa765d61d8327deb882cf99**
+ 
+We have the custID (0), the custName (Joy Paulson), the creditCard (4916 9012 2231 7905) and a password hash (5f4dcc3b5aa765d61d8327deb882cf99).
+
+
