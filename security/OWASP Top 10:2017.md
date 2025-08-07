@@ -57,17 +57,21 @@ That is a big hint for the challenge, so let's briefly cover some of the syntax 
 The most common (and simplest) format of flat-file database is an sqlite database. These can be interacted with in most programming languages, and have a dedicated client for querying them on the command line. This client is called "sqlite3", and is installed by default on Kali.
 
 Let's suppose we have successfully managed to download a database:
+
 <img width="603" height="89" alt="image" src="https://github.com/user-attachments/assets/eb7d6315-e724-483a-843c-a0802a625d22" />
 
 We can see that there is an SQlite database in the current folder.
 
 To access it we use: **sqlite3 <database-name>:**
+
 <img width="405" height="79" alt="image" src="https://github.com/user-attachments/assets/2203dbb1-835f-4434-94f1-a09c2beb7325" />
 
 From here we can see the tables in the database by using the **.tables**command:
+
 <img width="406" height="89" alt="image" src="https://github.com/user-attachments/assets/d84520e3-ac99-4fd7-a66e-95b6087d8cc8" />
 
 At this point we can dump all of the data from the table, but we won't necessarily know what each column means unless we look at the table information. First let's use **PRAGMA table_info(customers);** to see the table information, then we'll use **SELECT * FROM customers;** to dump the information from the table:
+
 <img width="561" height="217" alt="image" src="https://github.com/user-attachments/assets/34993887-cbba-4c4a-a44e-b99ecd5d2ec9" />
 
 We can see from the table information that there are four columns: custID, custName, creditCard and password. You may notice that this matches up with the results. Take the first row:
