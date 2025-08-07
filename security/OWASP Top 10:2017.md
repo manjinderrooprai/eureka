@@ -483,6 +483,8 @@ requests from anomalous IP addresses or locations: while this can indicate that 
 Put this knowledge to practise by analysing this sample log file.
 
 [login-logs_1595366583422.txt](https://github.com/user-attachments/files/21667301/login-logs_1595366583422.txt)
+
+```
 200 OK           12.55.22.88 jr22          2019-03-18T09:21:17 /login
 200 OK           14.56.23.11 rand99        2019-03-18T10:19:22 /login
 200 OK           17.33.10.38 afer11        2019-03-18T11:11:44 /login
@@ -492,4 +494,5 @@ Put this knowledge to practise by analysing this sample log file.
 401 Unauthorised 49.99.13.16 admin         2019-03-21T21:08:15 /login
 401 Unauthorised 49.99.13.16 administrator 2019-03-21T21:08:20 /login
 401 Unauthorised 49.99.13.16 anonymous     2019-03-21T21:08:25 /login
-401 Unauthorised 49.99.13.16 root          2019-03-21T21:08:30 /login 
+401 Unauthorised 49.99.13.16 root          2019-03-21T21:08:30 /login
+```
