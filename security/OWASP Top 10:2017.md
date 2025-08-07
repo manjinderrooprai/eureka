@@ -254,12 +254,12 @@ http://example.com/app/admin_getappInfo
 
 If an unauthenticated user can access either page, it’s a flaw. If a non-admin can access the admin page, this is a flaw (reference to scenarios).
 
-To put simply, broken access control allows attackers to bypass authorization which can allow them to view sensitive data or perform tasks as if they were a privileged user.
+#### To put simply, broken access control allows attackers to bypass authorization which can allow them to view sensitive data or perform tasks as if they were a privileged user.
 
 <img width="571" height="341" alt="image" src="https://github.com/user-attachments/assets/1a98c816-30e2-4ac7-9027-bb2135edf3f6" />
 
-IDOR, or Insecure Direct Object Reference, is the act of exploiting a misconfiguration in the way user input is handled, to access resources you wouldn't ordinarily be able to access. IDOR is a type of access control vulnerability.
+**IDOR, or Insecure Direct Object Reference**, is the **act of exploiting a misconfiguration** in the way user input is handled, to access resources you wouldn't ordinarily be able to access. **IDOR is a type of access control vulnerability**.
 
-For example, let's say we're logging into our bank account, and after correctly authenticating ourselves, we get taken to a URL like this https://example.com/bank?account_number=1234. On that page we can see all our important bank details, and a user would do whatever they needed to do and move along their way thinking nothing is wrong.
+For example, let's say we're logging into our bank account, and after correctly authenticating ourselves, we get taken to a URL like this `https://example.com/bank?account_number=1234`. On that page we can see all our important bank details, and a user would do whatever they needed to do and move along their way thinking nothing is wrong.
 
-There is however a potentially huge problem here, a hacker may be able to change the account_number parameter to something else like 1235, and if the site is incorrectly configured, then he would have access to someone else's bank information.
+There is however a potentially huge problem here, **a hacker may be able to change the account_number parameter to something else like 1235, and if the site is incorrectly configured, then he would have access to someone else's bank information**.
