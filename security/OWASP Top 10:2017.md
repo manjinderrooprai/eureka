@@ -211,3 +211,17 @@ Here again, we are defining an `ENTITY` with the name read but the difference is
 If we use this payload then a website vulnerable to XXE(normally) would display the content of the file `/etc/passwd`.
 
 In a similar manner, we can use this kind of payload to read other files but a lot of times you can fail to read files in this manner or the reason for failure could be the file you are trying to read.
+
+Now let us see some payloads in action. The payload that I'll be using is the one we saw in the previous task.
+
+1) Let's see how the website would look if we'll try to use the payload for displaying the name.
+
+<img width="1445" height="374" alt="image" src="https://github.com/user-attachments/assets/fc1d48e7-3ae7-4df0-a635-33502d6964bd" />
+
+
+On the left side, we can see the burp request that was sent with the URL encoded payload and on the right side we can see that the payload was able to successfully display name `falcon feast`
+
+2) Now let's try to read the `/etc/passwd`
+<img width="1609" height="408" alt="image" src="https://github.com/user-attachments/assets/bfa86865-2823-4210-9a13-3dcc69a5352c" />
+
+
