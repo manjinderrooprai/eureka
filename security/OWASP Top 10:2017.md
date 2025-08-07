@@ -414,4 +414,44 @@ Setting cookies in Flask is rather trivial. Simply, this snippet gets the curren
 
 It's as simple as that.
 
+## 9. Components With Known Vulnerabilities
 
+Occasionally, you may find that the company/entity that you're pen-testing is using a program that already has a well documented vulnerability.
+
+For example, let's say that a company hasn't updated their version of WordPress for a few years, and using a tool such as wpscan, you find that it's version 4.6. Some quick research will reveal that WordPress 4.6 is vulnerable to an unauthenticated remote code execution(RCE) exploit, and even better you can find an exploit already made on exploit-db.
+
+As you can see this would be quite devastating, because it requires very little work on the part of the attacker as often times since the vulnerability is already well known, someone else has made an exploit for the vulnerability. The situation becomes even worse when you realize, that it's really quite easy for this to happen, if a company misses a single update for a program they use, they could be vulnerable to any number of attacks.
+
+Hence, why OWASP has rated this a 3(meaning high) on the prevalence scale, it is incredibly easy for a company to miss an update for an application.
+
+Recall that since this is about known vulnerabilities, most of the work has already been done for us. Our main job is to find out the information of the software, and research it until we can find an exploit. Let's go through that with an example web application.
+
+<img width="476" height="327" alt="image" src="https://github.com/user-attachments/assets/6a4f368d-1374-4537-8de2-810cebbab32b" />
+
+Nostromo 1.9.6
+
+What do you know, this server is using the default page for the nostromo web server. Now that we have a version number and a software name, we can use exploit-db to try and find an exploit for this particular version.
+
+(Note: exploit-db is incredibly useful, and for all you beginners you're gonna be using this a lot so it's best to get comfortable with it)
+
+<img width="849" height="265" alt="image" src="https://github.com/user-attachments/assets/d59c18a5-92f6-4889-8612-a8be675ea0db" />
+
+Lucky us, the top result happens to be an exploit script. Let's download it and try and to get code execution. Running this script on it's own actually teaches us a very important lesson.
+
+<img width="335" height="58" alt="image" src="https://github.com/user-attachments/assets/7046c6b8-865c-4cef-a8ec-9755c62c336e" />
+
+It may not work the first time. It helps to have an understanding of the programming language that the script is in, so that if needed you can fix any bugs or make any modifications, as quite a few scripts on exploit-db expect you to make modifications.
+
+<img width="721" height="707" alt="image" src="https://github.com/user-attachments/assets/98b12b76-dc05-44ea-9267-bbf5e74d1b08" />
+
+Fortunately for us, the error was caused by an line that should have been commented, so it's an easy fix.
+
+<img width="319" height="191" alt="image" src="https://github.com/user-attachments/assets/85482a4c-c174-439c-a255-47fd7e334351" />
+
+Fixing that, let's try and run the program again.
+
+Boom! We have RCE. Now it's important to note here that most scripts will just tell you what arguments you need to provide, exploit developers will rarely make you read potentially hundreds of lines of codes just to figure out how to use the script.
+
+It is also worth noting that it may not always be this easy, sometimes you will just be given a version number like in this case, but other times you may need to dig through the HTML source, or even take a lucky guess on an exploit script, but realistically if it is a known vulnerability, there's probably a way to discover what version the application is running.
+
+That's really it, the great thing about this piece of the OWASP 10, is that the work is pretty much already done for us, we just need to do some basic research, and as a penetration tester, you're already doing that quite a bit :).
