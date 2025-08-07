@@ -293,7 +293,4 @@ How did the malware take over the systems? Default passwords. The malware had a 
 
 The DDoS attack was notable because it took many large websites and services offline. Amazon, Twitter, Netflix, GitHub, Xbox Live, PlayStation Network, and many more services went offline for several hours in 3 waves of DDoS attacks on Dyn.
 
-### Practical example
-This VM showcases a `Security Misconfiguration`, as part of the OWASP Top 10 Vulnerabilities list.
 
-Deploy the VM, and hack in by exploiting the Security Misconfiguration!
