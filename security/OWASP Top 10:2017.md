@@ -1,6 +1,6 @@
 # OWASP Top 10:2017
 This breaks each **OWASP** topic down and includes details on what the vulnerability is, how it occurs and how you can exploit it. You will put the theory into practise by completing supporting challenges.
-- **Injection****
+- **Injection**
 - **Broken Authentication**
 - **Sensitive Data Exposure**
 - **XML External Entity**
@@ -27,3 +27,5 @@ Injection flaws are very common in applications today. These flaws occur because
 - **Stripping input:** If the input contains dangerous characters, these characters are removed before they are processed.
 
 **NOTE:** Dangerous characters or input is classified as any input that can change how the underlying data is processed. Instead of manually constructing allow lists or even just stripping input, there are various libraries that perform these actions for you.
+
+## Broken Authentication
