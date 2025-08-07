@@ -346,7 +346,7 @@ For example, a lamp would be a good object. Lamps can have different types of bu
 
 Rather than having to accommodate every type of bulb and whether or not that specific lamp is on or off, you can use methods to simply alter the state and behaviour of the lamp.
 
-#### De(Serialization)
+### De(Serialization)
 
 Learning is best done through analogies
 
@@ -366,7 +366,11 @@ Say you have a password of "password123" from a program that needs to be stored 
 
 <img width="589" height="147" alt="image" src="https://github.com/user-attachments/assets/7f53b06f-c05d-4e1b-b403-40c95746cb0e" />
 
+#### How can we leverage this?
+
 Simply, insecure deserialization occurs when data from an untrusted party (I.e. a hacker) gets executed because there is no filtering or input validation; the system assumes that the data is trustworthy and will execute it no holds barred.
+
+### Cookies
 
 <img width="225" height="225" alt="image" src="https://github.com/user-attachments/assets/8d13e478-d0e6-47ce-a8bf-1526110e65e8" />
 
@@ -409,3 +413,5 @@ Setting cookies in Flask is rather trivial. Simply, this snippet gets the curren
 <img width="676" height="25" alt="image" src="https://github.com/user-attachments/assets/3ab49288-2a16-4da0-9fc4-7495b4baf83e" />
 
 It's as simple as that.
+
+
