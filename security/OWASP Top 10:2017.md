@@ -303,8 +303,6 @@ Cross-site scripting, also known as XSS is a security vulnerability typically fo
 - **Reflected XSS** - the malicious payload is part of the victims request to the website. The website includes this payload in response back to the user. To summarise, an attacker needs to trick a victim into clicking a URL to execute their malicious payload.
 - **DOM-Based XSS** - DOM stands for Document Object Model and is a programming interface for HTML and XML documents. It represents the page so that programs can change the document structure, style and content. A web page is a document and this document can be either displayed in the browser window or as the HTML source.
 
-For more XSS explanations and exercises, check out the XSS room.
-
 ### XSS Payloads
 Remember, cross-site scripting is a vulnerability that can be exploited to execute malicious Javascript on a victim’s machine. Check out some common payloads types used:
 - **Popup's (<script>alert(“Hello World”)</script>)** - Creates a Hello World message popup on a users browser.
