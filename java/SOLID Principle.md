@@ -4,11 +4,11 @@
 
 **SOLID** Stands for: 
 
-- Single Responsibility Principle (SRP)
-- Open/Closed Principle (OCP)
-- Liskov Substitution Principle (LSP)
-- Interface Segregation Principle (ISP)
-- Dependency Inversion Principle (DIP)
+- **Single Responsibility Principle (SRP)**
+- **Open/Closed Principle (OCP)**
+- **Liskov Substitution Principle (LSP)**
+- **Interface Segregation Principle (ISP)**
+- **Dependency Inversion Principle (DIP)**
 
 ## S – Single Responsibility Principle (SRP)
 A class should have only one reason to change, meaning it should have **only one job or responsibility**. 
