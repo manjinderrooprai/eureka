@@ -316,7 +316,7 @@ Remember, cross-site scripting is a vulnerability that can be exploited to execu
 
 ## 7. Insecure Deserialization
 
-**Insecure Deserialization is a vulnerability which occurs when untrusted data is used to abuse the logic of an application** (Acunetix., 2017)
+Insecure Deserialization **is a vulnerability which occurs when untrusted data is used to abuse the logic of an application** (Acunetix., 2017)
 
 This definition is still quite broad to say the least. Simply, insecure deserialization is replacing data processed by an application with malicious code; allowing anything from DoS (Denial of Service) to RCE (Remote Code Execution) that the attacker can use to gain a foothold in a pentesting scenario.
 
@@ -416,9 +416,9 @@ It's as simple as that.
 
 ## 9. Components With Known Vulnerabilities
 
-Occasionally, you may find that the company/entity that you're pen-testing is using a program that already has a well documented vulnerability.
+Occasionally, **you may find that the company/entity that you're pen-testing is using a program that already has a well documented vulnerability**.
 
-For example, let's say that a company hasn't updated their version of WordPress for a few years, and using a tool such as wpscan, you find that it's version 4.6. Some quick research will reveal that WordPress 4.6 is vulnerable to an unauthenticated remote code execution(RCE) exploit, and even better you can find an exploit already made on exploit-db.
+**For example,** let's say that a company hasn't updated their version of WordPress for a few years, and using a tool such as wpscan, you find that it's version 4.6. Some quick research will reveal that WordPress 4.6 is vulnerable to an unauthenticated remote code execution(RCE) exploit, and even better you can find an exploit already made on exploit-db.
 
 As you can see this would be quite devastating, because it requires very little work on the part of the attacker as often times since the vulnerability is already well known, someone else has made an exploit for the vulnerability. The situation becomes even worse when you realize, that it's really quite easy for this to happen, if a company misses a single update for a program they use, they could be vulnerable to any number of attacks.
 
