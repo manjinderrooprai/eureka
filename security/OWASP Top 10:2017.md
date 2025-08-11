@@ -318,13 +318,13 @@ Remember, cross-site scripting is a vulnerability that can be exploited to execu
 
 Insecure Deserialization **is a vulnerability which occurs when untrusted data is used to abuse the logic of an application** (Acunetix., 2017)
 
-This definition is still quite broad to say the least. Simply, insecure deserialization is replacing data processed by an application with malicious code; allowing anything from DoS (Denial of Service) to RCE (Remote Code Execution) that the attacker can use to gain a foothold in a pentesting scenario.
+This definition is still quite broad to say the least. Simply, **insecure deserialization is replacing data processed by an application with malicious code; allowing anything from DoS (Denial of Service) to RCE (Remote Code Execution)** that the attacker can use to gain a foothold in a pentesting scenario.
 
-Specifically, this malicious code leverages the legitimate serialization and deserialization process used by web applications. We'll be explaining this process and why it is so commonplace in modern web applications.
+Specifically, **this malicious code leverages the legitimate serialization and deserialization process used by web applications**. We'll be explaining this process and why it is so commonplace in modern web applications.
 
 #### OWASP rank this vulnerability as 8 out of 10 because of the following reasons:
 - **Low exploitability.** This vulnerability is often a case-by-case basis - there is no reliable tool/framework for it. Because of its nature, attackers need to have a good understanding of the inner-workings of the ToE.
-- The exploit is only as dangerous as the attacker's skill permits, more so, the value of the data that is exposed. For example, someone who can only cause a DoS will make the application unavailable. The business impact of this will vary on the infrastructure - some organisations will recover just fine, others, however, will not.
+- **The exploit is only as dangerous as the attacker's skill permits**, more so, **the value of the data that is exposed**. For example, someone who can only cause a DoS will make the application unavailable. The business impact of this will vary on the infrastructure - some organisations will recover just fine, others, however, will not.
 
 At summary, ultimately, any application that stores or fetches data where there are no validations or integrity checks in place for the data queried or retained. 
 
@@ -337,8 +337,8 @@ At summary, ultimately, any application that stores or fetches data where there 
 ### Objects
 
 #### A prominent element of object-oriented programming (OOP), objects are made up of two things:
-- State
-- Behaviour
+- **State**
+- **Behaviour**
 
 Simply, objects allow you to create similar lines of code without having to do the leg-work of writing the same lines of code again.
 
@@ -352,11 +352,9 @@ Learning is best done through analogies
 
 A Tourist approaches you in the street asking for directions. They're looking for a local landmark and got lost. Unfortunately, English isn't their strong point and nor do you speak their dialect either. What do you do? You draw a map of the route to the landmark because pictures cross language barriers, they were able to find the landmark. Nice! You've just serialised some information, where the tourist then deserialised it to find the landmark.
 
-#### Continued
+**Serialisation** is the process of converting objects used in programming into simpler, compatible formatting for transmitting between systems or networks for further processing or storage.
 
-Serialisation is the process of converting objects used in programming into simpler, compatible formatting for transmitting between systems or networks for further processing or storage.
-
-Alternatively, deserialisation is the reverse of this; converting serialised information into their complex form - an object that the application will understand.
+Alternatively, **deserialisation** is the reverse of this; converting serialised information into their complex form - an object that the application will understand.
 
 #### What does this mean?
 
