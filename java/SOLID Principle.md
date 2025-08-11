@@ -2,6 +2,13 @@
 
 **SOLID** is an acronym that represents **five principles of object-oriented programming** and design that **help create maintainable, scalable, and robust software**. These principles were **introduced by Robert C. Martin (Uncle Bob)** and are widely used in Java development.
 
+**SOLID** Stands for: 
+– Single Responsibility Principle (SRP)
+– Open/Closed Principle (OCP)
+– Liskov Substitution Principle (LSP)
+- Interface Segregation Principle (ISP)
+- Dependency Inversion Principle (DIP)
+
 ## S – Single Responsibility Principle (SRP)
 A class should have only one reason to change, meaning it should have **only one job or responsibility**. 
 ### Example:
