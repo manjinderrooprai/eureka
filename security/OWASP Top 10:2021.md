@@ -18,13 +18,11 @@ This breaks each OWASP topic down and includes details on what the vulnerability
 OWASP introduced notable updates in the 2021 version:
 
 * **Three New Categories Added**:
-
   * **Insecure Design (A04)**
   * **Software and Data Integrity Failures (A08)**
   * **Server-Side Request Forgery (SSRF) (A10)** 
 
 * **Renamed or Broadened Categories**:
-
   * *Sensitive Data Exposure* → **Cryptographic Failures (A02)**
   * *Broken Authentication* → **Identification and Authentication Failures (A07)** 
 
