@@ -13,6 +13,27 @@ This breaks each OWASP topic down and includes details on what the vulnerability
 - **Security Logging & Monitoring Failures**
 - **Server-Side Request Forgery (SSRF)**
 
+### Key Changes from the 2017 List
+
+OWASP introduced notable updates in the 2021 version:
+
+* **Three New Categories Added**:
+
+  * **Insecure Design (A04)**
+  * **Software and Data Integrity Failures (A08)**
+  * **Server-Side Request Forgery (SSRF) (A10)** 
+
+* **Renamed or Broadened Categories**:
+
+  * *Sensitive Data Exposure* → **Cryptographic Failures (A02)**
+  * *Broken Authentication* → **Identification and Authentication Failures (A07)** 
+
+* **Consolidated Categories**:
+
+  * *Cross-Site Scripting (XSS)* is now part of **Injection (A03)**
+  * *XML External Entities (XXE)* merged into **Security Misconfiguration (A05)**
+  * *Insecure Deserialization* included under **Software and Data Integrity Failures (A08)**
+
 ## 1. Broken Access Control
 
 <img width="856" height="448" alt="image" src="https://github.com/user-attachments/assets/f324743b-70f9-457e-b2df-45763ff04b64" />
