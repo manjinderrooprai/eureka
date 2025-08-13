@@ -36,6 +36,26 @@
 
 <img width="941" height="440" alt="Screenshot 2025-08-13 at 11 38 29" src="https://github.com/user-attachments/assets/9f223f6e-555a-473f-8dd2-bf1438dbcd36" />
 
+### 4. Firewall
+
+* **Definition:** A firewall acts as a gatekeeper between your API and incoming traffic, filtering out malicious requests.
+* **Explanation:** It is a security system that monitors and controls incoming and outgoing network traffic based on predefined security rules.
+* **Cause:** It addresses various threats by inspecting traffic for suspicious patterns, preventing known attack vectors from reaching the API.
+* **Solution and Examples:**
+    * A **Web Application Firewall (WAF)**, like the one provided by AWS, can block requests that have unusual HTTP methods or known SQL injection keywords, allowing only legitimate traffic to pass through.
+
+<img width="928" height="554" alt="Screenshot 2025-08-13 at 11 38 52" src="https://github.com/user-attachments/assets/419871f2-d999-4114-8dd8-a0a76fa447d1" />
+
+### 5. Virtual Private Network (VPN)
+
+* **Definition:** A VPN is a technology that restricts API access to a specific, private network, ensuring that only authorized clients can connect.
+* **Explanation:** It creates a secure tunnel for network traffic, hiding your IP address and encrypting your data. When used for an API, it ensures that only devices within the VPN can communicate with it.
+* **Cause:** It addresses the need to protect sensitive, internal APIs from any access from the public internet.
+* **Solution and Examples:**
+    * If you have an internal admin dashboard with an API that should only be accessible by employees, you can place this API within a **company VPN**. Only employees connected to the VPN would be able to access the API, while all external users would be blocked.
+
+<img width="966" height="543" alt="Screenshot 2025-08-13 at 11 39 11" src="https://github.com/user-attachments/assets/45a492fe-8b69-4107-bdee-082b1f98c617" style="border: 5px solid #333; border-radius: 15px;"/>
+
 ### 6. Cross-Site Request Forgery (CSRF)
 
 * **Definition:** An attack where a malicious website or attacker tricks a user's browser into making an unwanted request to an API on their behalf.
