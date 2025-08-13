@@ -1,6 +1,6 @@
 # API Security: 7 Techniques to Protect Your APIs
 
-<img width="870" height="593" alt="Screenshot 2025-08-13 at 11 35 38" src="https://github.com/user-attachments/assets/88a9cbeb-5da2-4248-8098-31eec26b3efd" />
+<img width="870" height="593" alt="API Security" src="https://github.com/user-attachments/assets/88a9cbeb-5da2-4248-8098-31eec26b3efd" />
 
 ### 1. Rate Limiting
 
@@ -12,7 +12,7 @@
     * **Per-Endpoint Limit:** Applying a more restrictive limit on a particular endpoint, like `/comments`, to prevent a single user from spamming.
     * **Global Rate Limit:** Implementing an overall limit across the entire API to protect against large-scale DDoS attacks.
 
-<img width="857" height="575" alt="Screenshot 2025-08-13 at 11 37 41" src="https://github.com/user-attachments/assets/dbf68143-bcb1-4414-a38b-7d607eea2f11" />
+<img width="857" height="575" alt="Rate Limiting" src="https://github.com/user-attachments/assets/dbf68143-bcb1-4414-a38b-7d607eea2f11" />
 
 ### 2. Cross-Origin Resource Sharing (CORS)
 
@@ -23,7 +23,7 @@
     * **Whitelist Specific Domains:** Configuring the API to only accept requests from a trusted domain, such as your own frontend application (`app.yourdomain.com`).
     * **Open Access:** For public APIs, a less restrictive policy might be used that allows requests from any domain, often signified by a wildcard (`*`).
 
-<img width="837" height="544" alt="Screenshot 2025-08-13 at 11 38 15" src="https://github.com/user-attachments/assets/8a490c9e-57dc-4d4a-b8d4-4cb71e23500f" />
+<img width="837" height="544" alt="Cross-Origin Resource Sharing (CORS)" src="https://github.com/user-attachments/assets/8a490c9e-57dc-4d4a-b8d4-4cb71e23500f" />
 
 ### 3. SQL and NoSQL Injections
 
@@ -34,7 +34,7 @@
     * **Parameterized Queries:** Using prepared statements where the query structure is defined first, and the user-provided data is added separately, preventing the input from being executed as code.
     * **Object-Relational Mapper (ORM):** Utilizing an ORM library, which automatically handles the sanitization and secure execution of database queries.
 
-<img width="941" height="440" alt="Screenshot 2025-08-13 at 11 38 29" src="https://github.com/user-attachments/assets/9f223f6e-555a-473f-8dd2-bf1438dbcd36" />
+<img width="941" height="440" alt="SQL and NoSQL Injections" src="https://github.com/user-attachments/assets/9f223f6e-555a-473f-8dd2-bf1438dbcd36" />
 
 ### 4. Firewall
 
@@ -44,7 +44,7 @@
 * **Solution and Examples:**
     * A **Web Application Firewall (WAF)**, like the one provided by AWS, can block requests that have unusual HTTP methods or known SQL injection keywords, allowing only legitimate traffic to pass through.
 
-<img width="928" height="554" alt="Screenshot 2025-08-13 at 11 38 52" src="https://github.com/user-attachments/assets/419871f2-d999-4114-8dd8-a0a76fa447d1" />
+<img width="928" height="554" alt="Firewall" src="https://github.com/user-attachments/assets/419871f2-d999-4114-8dd8-a0a76fa447d1" />
 
 ### 5. Virtual Private Network (VPN)
 
@@ -54,7 +54,7 @@
 * **Solution and Examples:**
     * If you have an internal admin dashboard with an API that should only be accessible by employees, you can place this API within a **company VPN**. Only employees connected to the VPN would be able to access the API, while all external users would be blocked.
 
-<img width="966" height="543" alt="Screenshot 2025-08-13 at 11 39 11" src="https://github.com/user-attachments/assets/45a492fe-8b69-4107-bdee-082b1f98c617" style="border: 5px solid #333; border-radius: 15px;"/>
+<img width="966" height="543" alt="Virtual Private Network (VPN)" src="https://github.com/user-attachments/assets/45a492fe-8b69-4107-bdee-082b1f98c617" />
 
 ### 6. Cross-Site Request Forgery (CSRF)
 
@@ -65,7 +65,7 @@
     * **CSRF Tokens:** A common solution is to include a unique, secret token in every form or request. The API then verifies this token, and if it doesn't match, the request is blocked.
     * **Double Submit Cookie:** A method where a CSRF token is stored in both a cookie and a hidden field in the form. The server validates that both values match.
   
-<img width="723" height="543" alt="Screenshot 2025-08-13 at 11 39 22" src="https://github.com/user-attachments/assets/7f572a4c-75eb-4269-83b9-55451c17da87" />
+<img width="723" height="543" alt="Cross-Site Request Forgery (CSRF)" src="https://github.com/user-attachments/assets/7f572a4c-75eb-4269-83b9-55451c17da87" />
 
 ### 7. Cross-Site Scripting (XSS)
 
@@ -76,5 +76,5 @@
     * **Input Sanitization:** Filtering or removing any potentially malicious characters or tags from user input before saving it to the database.
     * **Output Encoding:** Escaping special characters in the data when it is rendered on the web page, so the browser interprets the input as text rather than executable code.
 
-<img width="1117" height="543" alt="Screenshot 2025-08-13 at 11 39 43" src="https://github.com/user-attachments/assets/ce029c3c-2207-4fe2-bbee-41bacb66be5e" />
+<img width="1117" height="543" alt="Cross-Site Scripting (XSS)" src="https://github.com/user-attachments/assets/ce029c3c-2207-4fe2-bbee-41bacb66be5e" />
 
