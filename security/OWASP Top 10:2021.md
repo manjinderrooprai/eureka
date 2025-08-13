@@ -2,8 +2,6 @@
 
 This breaks each OWASP topic down and includes details on what the vulnerability is, how it occurs and how you can exploit it. You will put the theory into practise by completing supporting challenges.
 
-<img width="768" height="755" alt="image" src="https://github.com/user-attachments/assets/843ec408-d6fc-46b4-87bf-a071100a3b67" />
-
 - **Broken Access Control**
 - **Cryptographic Failures**
 - **Injection**
