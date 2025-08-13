@@ -27,3 +27,17 @@ This breaks each OWASP topic down and includes details on what the vulnerability
 Simply put, **broken access control allows attackers to bypass authorisation**, allowing them to **view sensitive data** or **perform tasks they aren't supposed to**.
 
 **For example**, a vulnerability was found in 2019, where an attacker could get any single frame from a Youtube video marked as private. The researcher who found the vulnerability showed that he could ask for several frames and somewhat reconstruct the video. Since the expectation from a user when marking a video as private would be that nobody had access to it, this was indeed accepted as a broken access control vulnerability.
+
+#### Insecure Direct Object Reference
+
+**IDOR or Insecure Direct Object Reference** refers to an **access control vulnerability** where you can access resources you wouldn't ordinarily be able to see. This **occurs when the programmer exposes a Direct Object Reference**, which is just an identifier that refers to specific objects within the server. **By object, we could mean a file, a user, a bank account in a banking application, or anything really**.
+
+For example, let's say we're logging into our bank account, and after correctly authenticating ourselves, we get taken to a URL like this `https://bank.thm/account?id=111111`. On that page, we can see all our important bank details, and a user would do whatever they need to do and move along their way, thinking nothing is wrong.
+
+<img width="805" height="364" alt="image" src="https://github.com/user-attachments/assets/7735001b-6747-4aca-a0b6-e1b237972fd1" />
+
+There is, however, **a potentially huge problem here**, anyone may be able to change the `id` parameter to something else like `222222`, and if the site is incorrectly configured, then he would have access to someone else's bank information.
+
+<img width="805" height="365" alt="image" src="https://github.com/user-attachments/assets/477e14a8-6e1a-4556-b086-ea38a152673b" />
+
+The application exposes a direct object reference through the id parameter in the URL, which points to specific accounts. **Since the application isn't checking if the logged-in user owns the referenced account**, **an attacker can get sensitive information from other users because of the IDOR vulnerability**. Notice that **direct object references aren't the problem**, **but rather that the application doesn't validate if the logged-in user should have access to the requested account**.
