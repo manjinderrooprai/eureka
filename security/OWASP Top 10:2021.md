@@ -13,7 +13,7 @@ This breaks each OWASP topic down and includes details on what the vulnerability
 - **Security Logging & Monitoring Failures**
 - **Server-Side Request Forgery (SSRF)**
 
-### 1. Broken Access Control
+## 1. Broken Access Control
 
 <img width="856" height="448" alt="image" src="https://github.com/user-attachments/assets/f324743b-70f9-457e-b2df-45763ff04b64" />
 
@@ -41,3 +41,18 @@ There is, however, **a potentially huge problem here**, anyone may be able to ch
 <img width="805" height="365" alt="image" src="https://github.com/user-attachments/assets/477e14a8-6e1a-4556-b086-ea38a152673b" />
 
 The application exposes a direct object reference through the id parameter in the URL, which points to specific accounts. **Since the application isn't checking if the logged-in user owns the referenced account**, **an attacker can get sensitive information from other users because of the IDOR vulnerability**. Notice that **direct object references aren't the problem**, **but rather that the application doesn't validate if the logged-in user should have access to the requested account**.
+
+#### Prevent Broken Access Control and IDOR:
+
+* Enforce **server-side authorization checks** for every request.
+* Verify **both authentication and authorization** before granting access.
+* Use **unpredictable identifiers** (UUIDs, random IDs) instead of sequential numbers.
+* Implement **Role-Based Access Control (RBAC)** or **Attribute-Based Access Control (ABAC)**.
+* Apply the **principle of least privilege**.
+* Validate access at all layers — controller, service, and database query level.
+* Filter DB queries by **current user’s ownership**.
+* Do **not rely on hidden UI elements** or client-side checks for security.
+* **Centralize** access control logic in one place.
+* Regularly perform **security testing** (manual, automated, penetration testing).
+
+## 2. Cryptographic Failures
