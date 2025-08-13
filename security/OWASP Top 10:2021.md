@@ -19,7 +19,7 @@ This breaks each OWASP topic down and includes details on what the vulnerability
 
 **Websites have pages that are protected from regular visitors**. For example, **only the site's admin user should be able to access a page to manage other users**. **If a website visitor can access protected pages they are not meant to see, then the access controls are broken**.
 
-#### A regular visitor being able to access protected pages can lead to the following:
+* #### A regular visitor being able to access protected pages can lead to the following:
 
 - **Being able to view sensitive information from other users**
 - **Accessing unauthorized functionality**
@@ -42,7 +42,7 @@ There is, however, **a potentially huge problem here**, anyone may be able to ch
 
 The application exposes a direct object reference through the id parameter in the URL, which points to specific accounts. **Since the application isn't checking if the logged-in user owns the referenced account**, **an attacker can get sensitive information from other users because of the IDOR vulnerability**. Notice that **direct object references aren't the problem**, **but rather that the application doesn't validate if the logged-in user should have access to the requested account**.
 
-#### Prevent Broken Access Control and IDOR:
+* #### Prevent Broken Access Control and IDOR:
 
 * Enforce **server-side authorization checks** for every request.
 * Verify **both authentication and authorization** before granting access.
