@@ -2,16 +2,16 @@
 
 This breaks each OWASP topic down and includes details on what the vulnerability is, how it occurs and how you can exploit it. You will put the theory into practise by completing supporting challenges.
 
-- **Broken Access Control**
-- **Cryptographic Failures**
-- **Injection**
-- **Insecure Design**
-- **Security Misconfiguration**
-- **Vulnerable and Outdated Components**
-- **Identification and Authentication Failures**
-- **Software and Data Integrity Failures**
-- **Security Logging & Monitoring Failures**
-- **Server-Side Request Forgery (SSRF)**
+1. **A01:2021 Broken Access Control**
+2. **A02:2021 Cryptographic Failures**
+3. **A03:2021 Injection**
+4. **A04:2021 Insecure Design**
+5. **A05:2021 Security Misconfiguration**
+6. **A06:2021 Vulnerable and Outdated Components**
+7. **A07:2021 Identification and Authentication Failures**
+8. **A08:2021 Software and Data Integrity Failures**
+9. **A09:2021 Security Logging and Monitoring Failures**
+10. **A10:2021 Server-Side Request Forgery (SSRF)** 
 
 ### Key Changes from the 2017 List
 
