@@ -206,7 +206,7 @@ Command Injection occurs when server-side code (like PHP) in a web application m
 
 Once the attacker has a foothold on the web server, they can start the usual enumeration of your systems and look for ways to pivot around.
 
-Code Example
+#### Code Example
 
 Let's consider a scenario: MooCorp has started developing a web-based application for cow ASCII art with customisable text. While searching for ways to implement their app, they've come across the cowsay command in Linux, which does just that! Instead of coding a whole web application and the logic required to make cows talk in ASCII, they decide to write some simple code that calls the cowsay command from the operating system's console and sends back its contents to the website.
 
@@ -222,7 +222,7 @@ The program then executes the function `passthru("perl /usr/bin/cowsay -f $cow $
 
 <img width="1438" height="420" alt="image" src="https://github.com/user-attachments/assets/51ea3879-cd64-4fec-a1c9-d063a5d120ed" />
 
-Exploiting Command Injection
+#### Exploiting Command Injection
 
 Now that we know how the application works behind the curtains, we will take advantage of a bash feature called "inline commands" to abuse the cowsay server and execute any arbitrary command we want. Bash allows you to run commands within commands. This is useful for many reasons, but in our case, it will be used to inject a command within the cowsay server to get it executed.
 
