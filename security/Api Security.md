@@ -1,4 +1,7 @@
 # API Security: 7 Techniques to Protect Your APIs
+
+<img width="870" height="593" alt="Screenshot 2025-08-13 at 11 35 38" src="https://github.com/user-attachments/assets/88a9cbeb-5da2-4248-8098-31eec26b3efd" />
+
 ### Rate Limiting
 
 * **Definition:** A security measure that restricts the number of requests a client can make to an API within a defined period.
