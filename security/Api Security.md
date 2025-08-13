@@ -1,4 +1,4 @@
-# API Security: Rate Limiting, CORS, SQL Injection, CSRF, XSS & More
+# API Security: 7 Techniques to Protect Your APIs
 ### Rate Limiting
 
 * **Definition:** A security measure that restricts the number of requests a client can make to an API within a defined period.
