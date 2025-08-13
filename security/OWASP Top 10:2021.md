@@ -1,4 +1,4 @@
-# OWASP Top 10:2017
+# OWASP Top 10:2021
 
 This breaks each OWASP topic down and includes details on what the vulnerability is, how it occurs and how you can exploit it. You will put the theory into practise by completing supporting challenges.
 
