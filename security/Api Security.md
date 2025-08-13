@@ -1,6 +1,6 @@
 # API Security: 7 Techniques to Protect Your APIs
 
-<img width="870" height="593" alt="API Security" src="https://github.com/user-attachments/assets/88a9cbeb-5da2-4248-8098-31eec26b3efd" />
+<img width="870" height="593" alt="API Security" src="https://github.com/user-attachments/assets/88a9cbeb-5da2-4248-8098-31eec26b3efd" style="border: 5px solid #333; border-radius: 15px;" />
 
 ### 1. Rate Limiting
 
