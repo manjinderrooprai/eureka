@@ -70,7 +70,7 @@ Modern systems enhance security by using two types of tokens:
 
 **Single Sign-On (SSO)** allows users to log in once and gain access to multiple related services without needing to re-authenticate for each one.
 
-* **Identity Protocols**: These are the frameworks that allow SSO to work by securely exchanging user login information between different applications. The video mentions two main protocols:
+* **Identity Protocols**: These are the frameworks that allow SSO to work by securely exchanging user login information between different applications. Folloeing two main protocols:
     * **SAML (Security Assertion Markup Language)**: An older, XML-based protocol still common in enterprise environments.
     * **OAuth 2.0**: The more modern, JSON-based protocol that is widely used today.
 * **Tools & Technologies:**
