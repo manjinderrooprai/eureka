@@ -386,7 +386,7 @@ To see this in action, go to http://MACHINE_IP:8088 and try to register with `da
 
 ## 8. Software and Data Integrity Failures
 
-What is Integrity?
+### What is Integrity?
 
 When talking about integrity, we refer to the capacity we have to ascertain that a piece of data remains unmodified. Integrity is essential in cybersecurity as we care about maintaining important data free from unwanted or malicious modifications. For example, say you are downloading the latest installer for an application. How can you be sure that while downloading it, it wasn't modified in transit or somehow got damaged by a transmission error?
 
@@ -412,7 +412,7 @@ e141e9a1a0094095d5e26077311418a01dac429e68d3ff07a734385eb0172bea  WinSCP-5.21.5-
 
 Since we got the same hashes, we can safely conclude that the file we downloaded is an exact copy of the one on the website.
 
-Software and Data Integrity Failures
+### Software and Data Integrity Failures
 
 This vulnerability arises from code or infrastructure that uses software or data without using any kind of integrity checks. Since no integrity verification is being done, an attacker might modify the software or data passed to the application, resulting in unexpected consequences. 
 
