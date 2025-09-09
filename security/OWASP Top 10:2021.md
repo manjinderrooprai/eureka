@@ -376,7 +376,7 @@ To avoid brute force attacks, ensure that the application enforces an automatic 
 
 Implement Multi-Factor Authentication. If a user has multiple authentication methods, for example, using a username and password and receiving a code on their mobile device, it would be difficult for an attacker to get both the password and the code to access the account.
 
-For this example, we'll look at a logic flaw within the authentication mechanism.
+### For this example, we'll look at a logic flaw within the authentication mechanism.
 
 Many times, what happens is that developers forget to sanitise the input(username & password) given by the user in the code of their application, which can make them vulnerable to attacks like SQL injection. However, we will focus on a vulnerability that happens because of a developer's mistake but is very easy to exploit, i.e. re-registration of an existing user.
 
