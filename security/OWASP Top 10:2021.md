@@ -255,3 +255,27 @@ However, it was found that the rate-limiting only applied to code attempts made 
 <img width="1311" height="659" alt="image" src="https://github.com/user-attachments/assets/04e6f0cf-1bd5-40fe-88ff-73cee642ba89" />
 
 Notice how the vulnerability is related to the idea that no user would be capable of using thousands of IP addresses to make concurrent requests to try and brute-force a numeric code. The problem is in the design rather than the implementation of the application in itself.
+
+## Security Misconfiguration
+
+**Security Misconfigurations** are distinct from the other Top 10 vulnerabilities because they occur when security could have been appropriately configured but was not. Even if you download the latest up-to-date software, poor configurations could make your installation vulnerable.
+
+Security misconfigurations include:
+
+Poorly configured permissions on cloud services, like S3 buckets.
+Having unnecessary features enabled, like services, pages, accounts or privileges.
+Default accounts with unchanged passwords.
+Error messages that are overly detailed and allow attackers to find out more about the system.
+Not using HTTP security headers.
+This vulnerability can often lead to more vulnerabilities, such as default credentials giving you access to sensitive data, XML External Entities (XXE) or command injection on admin pages.
+
+For more info, look at the OWASP top 10 entry for Security Misconfiguration.
+
+### Debugging Interfaces
+
+A common security misconfiguration concerns the exposure of debugging features in production software. Debugging features are often available in programming frameworks to allow the developers to access advanced functionality that is useful for debugging an application while it's being developed. Attackers could abuse some of those debug functionalities if somehow, the developers forgot to disable them before publishing their applications.
+
+One example of such a vulnerability was allegedly used when Patreon got hacked in 2015. Five days before Patreon was hacked, a security researcher reported to Patreon that he had found an open debug interface for a Werkzeug console. Werkzeug is a vital component in Python-based web applications as it provides an interface for web servers to execute the Python code. Werkzeug includes a debug console that can be accessed either via URL on /console, or it will also be presented to the user if an exception is raised by the application. In both cases, the console provides a Python console that will run any code you send to it. For an attacker, this means he can execute commands arbitrarily.
+
+<img width="655" height="327" alt="image" src="https://github.com/user-attachments/assets/e1509654-f90d-4bd9-94ef-30e67a6a5dc9" />
+
