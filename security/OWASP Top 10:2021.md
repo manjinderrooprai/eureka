@@ -256,7 +256,7 @@ However, it was found that the rate-limiting only applied to code attempts made 
 
 Notice how the vulnerability is related to the idea that no user would be capable of using thousands of IP addresses to make concurrent requests to try and brute-force a numeric code. The problem is in the design rather than the implementation of the application in itself.
 
-## Security Misconfiguration
+## 5. Security Misconfiguration
 
 **Security Misconfigurations** are distinct from the other Top 10 vulnerabilities because they occur when security could have been appropriately configured but was not. Even if you download the latest up-to-date software, poor configurations could make your installation vulnerable.
 
