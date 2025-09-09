@@ -240,4 +240,18 @@ Since the application accepts any input from us, we can inject an inline command
 - uname -a
 - ps -ef
 
+## 4. Insecure Design
 
+**Insecure design** refers to **vulnerabilities which are inherent to the application's architecture**. They are not vulnerabilities regarding bad implementations or configurations, but the idea behind the whole application (or a part of it) is flawed from the start. Most of the time, **these vulnerabilities occur when an improper threat modelling is made during the planning phases of the application and propagate all the way up to your final app**. Some other times, **insecure design vulnerabilities may also be introduced by developers while adding some "shortcuts" around the code to make their testing easier**. A developer could, for example, **disable the OTP validation in the development phases to quickly test the rest of the app without manually inputting a code at each login but forget to re-enable it when sending the application to production**.
+
+### Insecure Password Resets
+
+A good example of such **vulnerabilities occurred on Instagram a while ago**. Instagram allowed users to reset their forgotten passwords by sending them a 6-digit code to their mobile number via SMS for validation. If an attacker wanted to access a victim's account, he could try to brute-force the 6-digit code. As expected, this was not directly possible as Instagram had rate-limiting implemented so that after 250 attempts, the user would be blocked from trying further.
+
+<img width="1413" height="390" alt="image" src="https://github.com/user-attachments/assets/a390bb4c-cf91-4777-b9b5-eff95fe49311" />
+
+However, it was found that the rate-limiting only applied to code attempts made from the same IP. If an attacker had several different IP addresses from where to send requests, he could now try 250 codes per IP. For a 6-digit code, you have a million possible codes, so an attacker would need 1000000/250 = 4000 IPs to cover all possible codes. This may sound like an insane amount of IPs to have, but cloud services make it easy to get them at a relatively small cost, making this attack feasible.
+
+<img width="1311" height="659" alt="image" src="https://github.com/user-attachments/assets/04e6f0cf-1bd5-40fe-88ff-73cee642ba89" />
+
+Notice how the vulnerability is related to the idea that no user would be capable of using thousands of IP addresses to make concurrent requests to try and brute-force a numeric code. The problem is in the design rather than the implementation of the application in itself.
