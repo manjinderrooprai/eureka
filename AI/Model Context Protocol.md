@@ -52,7 +52,7 @@ An MCP server is like a smart adapter for a tool or app. It knows how to take a 
 - Format results the AI can understand
 - Handle errors and give meaningful feedback
 
-###[ MCP Clients](https://modelcontextprotocol.io/docs/develop/build-client)
+### [ MCP Clients](https://modelcontextprotocol.io/docs/develop/build-client)
 
 On the other side, an MCP client lives inside the AI assistant or app (like Claude or Cursor). When the AI wants to use a tool, it goes through this client to talk to the matching server.
 
