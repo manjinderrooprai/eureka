@@ -43,6 +43,7 @@ An MCP server is like a smart adapter for a tool or app. It knows how to take a 
 - A YouTube MCP server could transcribe video links on demand.
 
 **MCP servers also can perform:**
+
 - Tell the AI what they can do (tool discovery)
 - Interpret and run commands
 - Format results the AI can understand
@@ -64,6 +65,7 @@ The client handles all the back-and-forth — sending requests, receiving result
 The MCP protocol is what keeps everything in sync. It defines how the client and server communicate — what the messages look like, how actions are described, and how results are returned.
 
 **It’s super flexible:**
+
 - Can run locally (e.g., between your AI and your computer’s apps)
 - Can run over the internet (e.g., between your AI and an online tool)
 - Uses structured formats like JSON so everything stays clean and consistent
