@@ -79,10 +79,20 @@ The MCP protocol is what keeps everything in sync. It defines how the client and
 **Remote:** cloud databases, SaaS tools, web APIs
 
 ### Who’s Already Using MCP?
-➊ Block is using MCP to hook up internal tools and knowledge sources to AI agents.
-❷ Replit integrated MCP so agents can read and write code across files, terminals, and projects.
-❸ Apollo is using MCP to let AI pull from structured data sources.
-❹ Sourcegraph and Codeium are plugging it into dev workflows for smarter code assistance.
-❺ Microsoft Copilot Studio now supports MCP too — making it easier for non-developers to connect AI to data and tools, no coding required.
 
+1. Block is using MCP to hook up internal tools and knowledge sources to AI agents.
+2.  Replit integrated MCP so agents can read and write code across files, terminals, and projects.
+3.  Apollo is using MCP to let AI pull from structured data sources.
+4.  Sourcegraph and Codeium are plugging it into dev workflows for smarter code assistance.
+5.  Microsoft Copilot Studio now supports MCP too — making it easier for non-developers to connect AI to data and tools, no coding required.
 
+### Marketplaces
+
+- mcpmarket.com — A plug-and-play directory of MCP servers for tools like GitHub, Figma, Notion, Databricks, and more.
+- mcp.so — A growing open repo of community-built MCP servers. Discover one. Fork it. Build your own.
+- Cline’s MCP Marketplace — A GitHub-powered hub for open-source MCP connectors anyone can use.
+
+### Some great places to explore MCP further:
+
+- [Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol) by Anthropic
+- [Model Context Protocol](https://github.com/modelcontextprotocol) on GitHub
