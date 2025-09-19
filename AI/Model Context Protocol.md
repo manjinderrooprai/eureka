@@ -59,4 +59,30 @@ The client handles all the back-and-forth — sending requests, receiving result
 - Cursor can use a client to interact with your local development environment.
 - Claude might use it to access files or read from a spreadsheet.
 
+### The MCP Protocol
+
+The MCP protocol is what keeps everything in sync. It defines how the client and server communicate — what the messages look like, how actions are described, and how results are returned.
+
+**It’s super flexible:**
+- Can run locally (e.g., between your AI and your computer’s apps)
+- Can run over the internet (e.g., between your AI and an online tool)
+- Uses structured formats like JSON so everything stays clean and consistent
+
+**Thanks to this shared protocol**, an AI agent can connect with a new tool — even one it’s never seen before — and still understand how to use it.
+
+### Services
+
+**Services = Real Apps and Data** - The last part of the puzzle is the services — the actual tools or data sources the AI wants to use. MCP servers are the gateway to these services, handling access securely and reliably.
+
+**These could be:**
+**Local:** files on your device, a folder, an app running locally
+**Remote:** cloud databases, SaaS tools, web APIs
+
+### Who’s Already Using MCP?
+➊ Block is using MCP to hook up internal tools and knowledge sources to AI agents.
+❷ Replit integrated MCP so agents can read and write code across files, terminals, and projects.
+❸ Apollo is using MCP to let AI pull from structured data sources.
+❹ Sourcegraph and Codeium are plugging it into dev workflows for smarter code assistance.
+❺ Microsoft Copilot Studio now supports MCP too — making it easier for non-developers to connect AI to data and tools, no coding required.
+
 
