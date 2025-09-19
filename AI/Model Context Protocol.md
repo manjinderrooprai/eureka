@@ -8,7 +8,7 @@ AI agents can write code, summarize reports, even chat like humans but when it�
 
 **MCP (Model Context Protocol)** changes that. It gives AI agents a simple, standardized way to plug into tools, data, and services — no hacks, no hand-coding.
 
-## What is MCP?
+## [What is MCP?](https://modelcontextprotocol.io/docs/getting-started/intro)
 
 - **Model Context Protocol (MCP)** is an **open standard developed by Anthropic**, the company behind **Claude**.
 - It gives AI agents a consistent way to connect with tools, services, and data — no matter where they live or how they’re built.
