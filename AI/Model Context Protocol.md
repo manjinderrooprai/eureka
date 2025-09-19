@@ -33,7 +33,7 @@ AI agents can write code, summarize reports, even chat like humans but when it�
 
 **NOTE:** All communication between host and servers happens over the standardized MCP Protocol, which ensures compatibility and structured responses.
 
-### MCP Servers
+### [MCP Servers](https://modelcontextprotocol.io/docs/develop/build-server)
 
 An MCP server is like a smart adapter for a tool or app. It knows how to take a request from an AI (like “Get today’s sales report”) and translate it into the commands that tool understands.
 
@@ -50,7 +50,7 @@ An MCP server is like a smart adapter for a tool or app. It knows how to take a 
 - Format results the AI can understand
 - Handle errors and give meaningful feedback
 
-### MCP Clients
+###[ MCP Clients](https://modelcontextprotocol.io/docs/develop/build-client)
 
 On the other side, an MCP client lives inside the AI assistant or app (like Claude or Cursor). When the AI wants to use a tool, it goes through this client to talk to the matching server.
 
