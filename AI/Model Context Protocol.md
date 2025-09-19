@@ -86,7 +86,7 @@ The MCP protocol is what keeps everything in sync. It defines how the client and
 4.  Sourcegraph and Codeium are plugging it into dev workflows for smarter code assistance.
 5.  Microsoft Copilot Studio now supports MCP too — making it easier for non-developers to connect AI to data and tools, no coding required.
 
-### Marketplaces
+### Marketplaces:
 
 - mcpmarket.com — A plug-and-play directory of MCP servers for tools like GitHub, Figma, Notion, Databricks, and more.
 - mcp.so — A growing open repo of community-built MCP servers. Discover one. Fork it. Build your own.
@@ -96,3 +96,11 @@ The MCP protocol is what keeps everything in sync. It defines how the client and
 
 - [Introducing the Model Context Protocol](https://www.anthropic.com/news/model-context-protocol) by Anthropic
 - [Model Context Protocol](https://github.com/modelcontextprotocol) on GitHub
+
+### Infra Tools Are Making MCP Even Easier:
+
+Behind the scenes, a bunch of companies are helping developers build, host, and manage MCP servers with way less effort:
+
+- Mintlify, Stainless, Speakeasy → auto-generate servers with just a few clicks
+- Cloudflare, Smithery → make hosting and scaling production-grade servers simple
+- Toolbase → handles key management and routing for local-first setups
