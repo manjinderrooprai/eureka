@@ -33,6 +33,8 @@ AI agents can write code, summarize reports, even chat like humans but when it�
 
 **NOTE:** All communication between host and servers happens over the standardized MCP Protocol, which ensures compatibility and structured responses.
 
+<img width="710" height="332" alt="Screenshot 2025-09-19 at 18 53 37" src="https://github.com/user-attachments/assets/92fc5d13-cbd5-4c24-bb5c-fbc61a61ea16" />
+
 ### [MCP Servers](https://modelcontextprotocol.io/docs/develop/build-server)
 
 An MCP server is like a smart adapter for a tool or app. It knows how to take a request from an AI (like “Get today’s sales report”) and translate it into the commands that tool understands.
