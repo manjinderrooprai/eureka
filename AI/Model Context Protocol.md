@@ -93,7 +93,7 @@ The MCP protocol is what keeps everything in sync. It defines how the client and
 ### Marketplaces:
 
 - **mcpmarket.com** — A plug-and-play directory of MCP servers for tools like GitHub, Figma, Notion, Databricks, and more.
-- **mcp.so **— A growing open repo of community-built MCP servers. Discover one. Fork it. Build your own.
+- **mcp.so** — A growing open repo of community-built MCP servers. Discover one. Fork it. Build your own.
 - **Cline’s MCP Marketplace** — A GitHub-powered hub for open-source MCP connectors anyone can use.
 
 ### Some great places to explore MCP further:
