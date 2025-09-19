@@ -8,7 +8,7 @@ AI agents can write code, summarize reports, even chat like humans but when it�
 
 **MCP (Model Context Protocol)** changes that. It gives AI agents a simple, standardized way to plug into tools, data, and services — no hacks, no hand-coding.
 
-### What is MCP?
+## What is MCP?
 - **Model Context Protocol (MCP)** is an **open standard developed by Anthropic**, the company behind **Claude**.
 - It gives AI agents a consistent way to connect with tools, services, and data — no matter where they live or how they’re built.
 - MCP is a big leap forward in how AI agents operate.
@@ -31,4 +31,32 @@ AI agents can write code, summarize reports, even chat like humans but when it�
 - Others can reach out to remote resources (like APIs or cloud services on the internet).
 
 **NOTE:** All communication between host and servers happens over the standardized MCP Protocol, which ensures compatibility and structured responses.
+
+### MCP Servers
+
+An MCP server is like a smart adapter for a tool or app. It knows how to take a request from an AI (like “Get today’s sales report”) and translate it into the commands that tool understands.
+
+**For Example:**
+
+- A GitHub MCP server might turn “list my open pull requests” into a GitHub API call.
+- A File MCP server might take “save this summary as a text file” and write it to your desktop.
+- A YouTube MCP server could transcribe video links on demand.
+
+**MCP servers also can perform:**
+- Tell the AI what they can do (tool discovery)
+- Interpret and run commands
+- Format results the AI can understand
+- Handle errors and give meaningful feedback
+
+### MCP Clients
+
+On the other side, an MCP client lives inside the AI assistant or app (like Claude or Cursor). When the AI wants to use a tool, it goes through this client to talk to the matching server.
+
+The client handles all the back-and-forth — sending requests, receiving results, and passing them to the AI.
+
+**For example:**
+
+- Cursor can use a client to interact with your local development environment.
+- Claude might use it to access files or read from a spreadsheet.
+
 
