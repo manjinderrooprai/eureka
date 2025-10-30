@@ -182,3 +182,80 @@ Performance benchmarking ensures your application meets **speed, responsiveness,
 | 7-8   | Deep Dive   | Learn CI/CD integration for all 3 tools                 |
 | 9-10  | Benchmark   | Compare results across test runs and tune thresholds    |
 | 11-12 | Showcase    | Document your work and prepare a demo/report for review |
+
+---
+
+## 🧭 Step 1: Understand What’s Expected
+
+Your feedback highlights 3 clear **Non-Functional Requirement (NFR)** areas to strengthen before your ST (Senior Technologist / Specialist Technologist) movement:
+
+| Focus Area                                      | Meaning                                                                                   | Why It’s Critical for ST Role                                                     |
+| ----------------------------------------------- | ----------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| **SAST (Static Application Security Testing)**  | Analyzes source code for security vulnerabilities early in development                    | STs are expected to integrate security in SDLC and ensure secure coding practices |
+| **DAST (Dynamic Application Security Testing)** | Tests running applications for vulnerabilities                                            | Ensures systems remain secure post-deployment                                     |
+| **Performance Benchmarking**                    | Evaluating system performance (load, response time, scalability) under various conditions | STs must ensure applications are performant, scalable, and stable in production   |
+
+---
+
+## 🗓 Step 2: 3-Month Development Plan
+
+Here’s a **structured roadmap** you can present to your manager/panel:
+
+### **Month 1 – Foundation & Tool Familiarity**
+
+**Goal:** Understand NFR principles and set up basic tools.
+
+* 📘 Learn key concepts of SAST, DAST, and performance testing.
+* 🧩 Tools to explore:
+
+  * **SAST:** SonarQube, Checkmarx, GitHub Advanced Security
+  * **DAST:** OWASP ZAP, Burp Suite
+  * **Performance:** JMeter, k6, Gatling
+* 🛠 Hands-on: Set up a sample app and perform a basic scan using SonarQube (SAST) and ZAP (DAST).
+
+📄 **Deliverable:** Short summary/report comparing vulnerabilities identified via SAST and DAST.
+
+---
+
+### **Month 2 – Deep Dive & Project Application**
+
+**Goal:** Apply learnings to a real or internal project.
+
+* Integrate SAST tool (e.g., SonarQube) in CI/CD pipeline.
+* Conduct DAST on staging or lower environment and document findings.
+* Start defining **performance KPIs** (response time, throughput, error rate).
+* Conduct **baseline performance test** with JMeter/k6.
+
+📄 **Deliverable:**
+
+* Security test results with remediation plan.
+* Performance test report with metrics & recommendations.
+
+---
+
+### **Month 3 – Benchmarking & Knowledge Sharing**
+
+**Goal:** Demonstrate leadership & readiness for ST responsibilities.
+
+* Create a **performance benchmark document** for your team/project.
+* Host a **mini knowledge session** for peers on SAST/DAST best practices.
+* Document a **security and performance checklist** for new applications.
+* Align with the ST panel or your manager for a readiness review.
+
+📄 **Deliverable:** Knowledge session slides + benchmark report + checklist.
+
+---
+
+## 🧠 Step 3: Talking Points for the Follow-Up Discussion
+
+When you meet your manager or the panel again, you can frame your conversation like this:
+
+> “Thank you for the constructive feedback from the SP-ST gating discussion. I’ve created a focused 3-month plan to strengthen my understanding and hands-on experience in NFR areas—SAST, DAST, and Performance Benchmarking.
+>
+> * In the first month, I’ll build strong conceptual and tool-level knowledge using SonarQube, ZAP, and JMeter.
+> * In the second, I’ll apply these in my project setup to generate tangible reports.
+> * By the third, I aim to create a benchmark and conduct a team knowledge-sharing session.
+>
+> I’d appreciate periodic check-ins or mentorship on real project scenarios to ensure I’m aligned with ST expectations.”
+
+This shows ownership, clarity, and initiative—exactly what panels look for in ST candidates.
