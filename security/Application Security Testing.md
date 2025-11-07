@@ -57,8 +57,7 @@ Let’s break down the key categories — these are the ones panelists usually e
 ---
 
 ## 🧰 **5. Recommended Learning & Practice Plan**
-
-Since you’re preparing for **ST-level expertise**, here’s a hands-on roadmap for Application Security Testing:
+Roadmap for Application Security Testing:
 
 ### **Month 1: Foundation**
 
@@ -77,12 +76,3 @@ Since you’re preparing for **ST-level expertise**, here’s a hands-on roadmap
 * Integrate both tools in a **CI/CD pipeline** (GitHub Actions or Jenkins).
 * Learn to prioritize findings (false positives, severity levels).
 * Create a **Security Testing Report Template** — a professional ST artifact.
-
----
-
-## 🧾 **6. Talking Points for Your Review Panel**
-
-You can confidently say something like:
-
-> “I’ve strengthened my understanding of Application Security Testing holistically — covering SAST, DAST, and IAST. I’ve implemented SonarQube and OWASP ZAP for static and dynamic testing and explored how to embed these into CI/CD workflows to align with DevSecOps practices.
-> My next goal is to extend this into performance benchmarking and create reusable test frameworks for consistent security validation.”
