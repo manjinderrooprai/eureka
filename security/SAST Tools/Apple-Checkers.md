@@ -154,18 +154,6 @@ You can share results by:
 
 ---
 
-### **Requesting a Review**
-
-If you suspect a false positive:
-
-1. Go to the **Findings** tab
-2. Click **Request Review**
-3. Select the issue → Choose a reason → Add comments
-4. Click **Submit for Review**
-5. InfoSec will review and respond via email or Radar
-
----
-
 ## **Configuration via `checkers.yml`**
 
 Define language versions and build tasks by adding a **`checkers.yml`** file at the root of your repo.
