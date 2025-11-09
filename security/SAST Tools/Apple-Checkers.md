@@ -1,7 +1,3 @@
-Here’s a **comprehensive `.md` (Markdown)** version of **detailed notes on Apple Checkers** — structured for clarity and ready for inclusion in documentation, training, or internal wiki use.
-
----
-
 # 🧩 Apple Checkers — Static Code Analysis Platform
 
 ### **Overview**
