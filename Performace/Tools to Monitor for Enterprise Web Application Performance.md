@@ -127,6 +127,111 @@ Global Availability
 
 ---
 
+# Visual architecture diagram — Mermaid (flowchart)
+
+Paste the code below into a Mermaid renderer (Markdown with Mermaid support, mermaid.live, GitHub README, Obsidian, etc.) to render the diagram.
+
+```mermaid
+flowchart LR
+  %% --- Actors ---
+  subgraph User_Tier["User / Clients"]
+    RUM[Real User Monitoring (RUM)]
+    Browser[Browser / Mobile App]
+  end
+
+  %% --- Frontend ---
+  subgraph Frontend["Frontend (Client-side)"]
+    Browser -->|page load & events| RUM
+    Synthetic[Synthetic Tests (WebPageTest / Lighthouse)]
+    Browser -->|requests| CDN[CDN]
+  end
+
+  %% --- Backend / App ---
+  subgraph App["Application & APIs"]
+    CDN --> LB[Load Balancer / Edge]
+    LB --> AppSrv[App Servers / Microservices]
+    AppSrv --> DB[(Database)]
+    AppSrv --> Cache[(Cache)]
+    AppSrv --> Auth[Auth Service / OAuth]
+  end
+
+  %% --- Infra / Containers ---
+  subgraph Infra["Infrastructure"]
+    AppSrv --- Containers[K8s / Containers]
+    Containers --- Host[Host / VMs]
+    Host --- Storage[Block Storage]
+  end
+
+  %% --- Monitoring & Observability ---
+  subgraph Observability["Monitoring / Observability"]
+    APM[APM: Traces / Slow transactions (NewRelic/Datadog/AppDynamics/Elastic)]
+    Prom[Prometheus -> Grafana]
+    Logs[Logging (ELK / Loki)]
+    RUM --> APM
+    AppSrv -->|metrics| Prom
+    AppSrv -->|logs| Logs
+    AppSrv -->|traces| APM
+    Synthetic -->|lab metrics| Grafana
+    APM -->|alerts| Alerting
+    Prom -->|dashboards| Grafana
+    Logs -->|search & analysis| Kibana
+  end
+
+  %% --- Security / Testing ---
+  subgraph Security["Security & Testing"]
+    DAST[DAST (OWASP ZAP / Burp)]
+    SAST[SAST (Static Analysis)]
+    IA[Pentest / Manual Testing]
+    CI[CI/CD (GitHub Actions / Jenkins)]
+    CI -->|deploy to staging| AppSrv
+    CI -->|trigger tests| Synthetic
+    CI -->|trigger scans| DAST
+    DAST --> Logs
+    DAST --> APM
+  end
+
+  %% --- Synthetic & Load ---
+  subgraph LoadTests["Load & Synthetic"]
+    K6[k6 / JMeter / Locust]
+    K6 -->|load traffic| LB
+    K6 -->|metrics| Prom
+  end
+
+  %% --- Alerting / Ops ---
+  subgraph Ops["Alerting / Incident Mgmt"]
+    Alerting[Alert Manager / PagerDuty / Opsgenie]
+    Grafana --> Alerting
+    APM --> Alerting
+    Logs --> Alerting
+  end
+
+  %% --- UX / Business metrics ---
+  subgraph Biz["Business / UX"]
+    Apdex[Apdex & Business KPIs]
+    RUM --> Apdex
+    APM --> Apdex
+    Grafana --> Apdex
+  end
+
+  %% --- Visual connectors (extra clarity) ---
+  DB -->|query latency| APM
+  Cache -->|hit/miss metrics| Prom
+  Auth -->|auth events| Logs
+  Kibana -->|visualize| Ops
+```
+
+---
+
+## Quick notes on the diagram
+
+* **Left → Right flow:** Users and synthetic tests generate traffic → CDN / LB → App → Storage/Cache.
+* **Observability layer** collects metrics, logs and traces (APM, Prometheus/Grafana, ELK) and sends alerts to Ops.
+* **Security/testing** (DAST, SAST, CI) integrate into CI/CD and feed results back to logs/APM.
+* **Load testing** exercises the system and pushes metrics into Prometheus/Grafana.
+* **Business/UX** metrics (Apdex, Core Web Vitals) are derived from RUM + APM and feed dashboards for product stakeholders.
+
+---
+
 ## ⚡ **Pro Tip: Combine Tools Smartly**
 
 * **Dev Stage:** Lighthouse + k6 + Prometheus (local)
