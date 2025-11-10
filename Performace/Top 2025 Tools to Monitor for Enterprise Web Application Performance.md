@@ -2,12 +2,12 @@
 
 | Tool                   | Focus Area                         | Highlights                                                                                          |
 | ---------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------- |
-| Datadog                | Full-stack SaaS observability      | Covers metrics, logs, traces, user-experience; widely adopted by enterprises. ([Website][1])        |
-| New Relic              | APM + front-end / RUM convergence  | Strong at application performance monitoring and synthetic + real-user experience. ([DebugBear][2]) |
-| SigNoz                 | Open-source APM/tracing stack      | For teams that want self-hosting, deep analytics, and cost control. ([SigNoz][3])                   |
-| Prometheus + Grafana   | Metrics + visualization            | Proven time-series stack; widely used for infrastructure and app metric monitoring. ([SigNoz][3])   |
-| DebugBear              | Web-performance / front-end / RUM  | Focused on Core Web Vitals, real user monitoring for front end. ([DebugBear][4])                    |
-| Uptime Robot / Pingdom | Uptime and availability monitoring | Simple but critical for monitoring availability, synthetic checks, and uptime. ([OnPage][5])        |
+| Datadog                | Full-stack SaaS observability      | Covers metrics, logs, traces, user-experience; widely adopted by enterprises.                       |
+| New Relic              | APM + front-end / RUM convergence  | Strong at application performance monitoring and synthetic + real-user experience.                  |
+| SigNoz                 | Open-source APM/tracing stack      | For teams that want self-hosting, deep analytics, and cost control.                                 |
+| Prometheus + Grafana   | Metrics + visualization            | Proven time-series stack; widely used for infrastructure and app metric monitoring.                 |
+| DebugBear              | Web-performance / front-end / RUM  | Focused on Core Web Vitals, real user monitoring for front end.                                     |
+| Uptime Robot / Pingdom | Uptime and availability monitoring | Simple but critical for monitoring availability, synthetic checks, and uptime.                      |
 
 ---
 
