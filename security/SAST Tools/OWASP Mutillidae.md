@@ -1,10 +1,6 @@
 # OWASP Mutillidae II
 
-![Image](https://www.researchgate.net/publication/330934873/figure/fig7/AS%3A723707437780993%401549556707302/Creating-an-account-in-Mutillidae.ppm)
-
 ![Image](https://miro.medium.com/v2/resize%3Afit%3A1200/1%2AZHQoCbCMkfYbUlp03z9e8g.png)
-
-![Image](https://opengraph.githubassets.com/60c7c543f67b099e15c8d970fa7ae59fce1e1e36a8479bf07685a2d2c0aa323b/webpwnized/mutillidae)
 
 ---
 
