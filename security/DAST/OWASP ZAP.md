@@ -63,6 +63,140 @@ OWASP ZAP is a free, open-source **Dynamic Application Security Testing (DAST)**
 
 ---
 
+# Quick glossary + purpose
+
+* **Session**
+
+  * **What:** ZAP’s saved workspace (site tree, history, alerts, config).
+  * **Why:** persist or share a testing state (so you can pause/resume a pentest or save evidence).
+  * **UI:** `File → New Session` / `File → Save Session` / `File → Open Session`.
+  * **Automation:** export/import session files when running long analyses or to keep CI evidence.
+  * **Tip:** Save a session before/after active scans so you can analyze evidence later.
+
+* **Context**
+
+  * **What:** Logical grouping of URLs/hosts, authentication parameters, users and session-handling rules.
+  * **Why:** enables targeting scans to a particular app area, configures authentication and session management for that logical app.
+  * **UI:** `Contexts → New Context` → define Included/Excluded URLs, Authentication, Users, Session Tracking.
+  * **Automation:** create contexts via the API and add include/exclude regexes so automated scans operate only on intended paths.
+  * **Tip:** Use contexts for multi-tenant apps or when a single ZAP instance scans many apps.
+
+* **Scope (in-scope / out-of-scope)**
+
+  * **What:** Which URLs/hosts are allowed for active scanning or automation. Usually expressed as context include/exclude regexes or global in-scope settings.
+  * **Why:** prevents accidental scanning of third-party domains and limits noise/false positives.
+  * **UI:** In the Sites tree or Context → Include in Context; also use the “In scope” checkbox on entries.
+  * **Automation:** set include/exclude rules in a context or pass a flag (e.g., “inScopeOnly”) to API scans.
+  * **Tip:** Always define an explicit scope before running active scans to avoid hitting unauthorized targets.
+
+* **Spider / Crawlers**
+
+  * **What:** Discovery crawlers (standard spider, AJAX spider, and API importers) that find links/endpoints.
+  * **Why:** build the site tree (surface pages and parameters) so scans know what to test.
+  * **UI:** `Spider` tab or `Tools → Spider` / for SPAs use AJAX Spider. For APIs import OpenAPI.
+  * **Automation:** call the spider via the REST API or use scripts that first authenticate then spider.
+  * **Tip:** Use AJAX spider for JS-heavy SPAs and OpenAPI import for APIs — HTML spider alone often misses dynamic routes.
+
+* **Passive Scan**
+
+  * **What:** Non-intrusive checks performed on observed traffic (no malicious payloads). Detects headers, cookies, information leakage, insecure cookie flags, etc.
+  * **Why:** safe to run against production if only passively observing legitimate browsing or test transactions.
+  * **UI:** Passive alerts appear automatically in the Alerts pane when ZAP proxies traffic. You can enable/disable specific passive scanners in `Options → Passive Scan`.
+  * **Automation:** passive scanning occurs as traffic is recorded; in CI you can exercise flows (functional tests) and then export passive alerts.
+  * **Tip:** Combine automated functional tests with passive scanning to catch configuration mistakes without intrusive tests.
+
+* **Active Scan**
+
+  * **What:** Intrusive testing that sends attack payloads to try to exploit vulnerabilities (SQLi, XSS, LFI, etc.).
+  * **Why:** finds exploitable runtime vulnerabilities — but can change server state and must be used only on authorized targets.
+  * **UI:** Right-click a node in the Site Tree → `Attack → Active Scan` (choose policy and scope). Configure scan policy & strength.
+  * **Automation:** run headless via ZAP’s REST API or the docker scripts (zap-api-scan, zap-baseline) in pipelines.
+  * **Tip:** tune scan policies and use `inScopeOnly` and authentication so the scanner can reach protected endpoints and avoid harming production.
+
+* **Scan Policy**
+
+  * **What:** A configurable set of active scan rules, attack strength, enabled checks and thresholds (you pick which checks to run and at what aggression).
+  * **Why:** reduce noise, shorten scan time, and avoid destructive checks for CI by enabling only the rules you care about.
+  * **UI:** `Tools → Options → Active Scan` or `Manage Scan Policies` (ZAP GUI lets you create/save policies).
+  * **Automation:** import custom scan policy files into ZAP before running automated scans so the same policy is applied across runs.
+  * **Tip:** create separate policies for “quick CI” (high-precision, non-destructive) and “full pentest” (comprehensive, longer, higher risk).
+
+* **Authentication & Users (within Context)**
+
+  * **What:** config that tells ZAP how to log in (form-based, HTTP basic, scriptable flows like OAuth) and user identities to scan as.
+  * **Why:** many vulnerabilities are only visible after authentication; scans must be able to exercise authenticated flows.
+  * **UI:** Context → Authentication → set method; then create Users and Test Authentication.
+  * **Automation:** use script-based auth helpers or record login flows; supply credentials via CI secrets.
+  * **Tip:** verify login works via ZAP’s “Forced User” or test auth feature before running active scans.
+
+* **Forced User & Session Management**
+
+  * **What:** force outgoing requests to be associated with a particular “user” session (useful for multi-user tests). Session management config maps cookie/session tokens, etc.
+  * **Why:** test authorization/business logic by scanning as different users (admin vs regular).
+  * **UI:** Context → Session Management and Forced User settings.
+  * **Tip:** configure proper session tracking to avoid being logged out mid-scan.
+
+* **Alerts & Reporting**
+
+  * **What:** ZAP categorizes findings (risk levels, description, evidence, references) and can export HTML/JSON/XML reports.
+  * **Why:** triage and hand off vulnerabilities to developers with evidence and remediation advice.
+  * **Automation:** export reports after scan completion and fail CI build if thresholds exceeded. Use the API to fetch alerts and integrate with ticketing.
+  * **Tip:** tune thresholds for CI (e.g., fail on High/Critical only) to reduce noisy pipeline failures.
+
+---
+
+# Typical manual workflow (UI)
+
+1. Start ZAP (GUI).
+2. Create a **Session**.
+3. Create a **Context** for your app; add include regexes that define **scope**.
+4. Configure **Authentication** and create **Users**; test login.
+5. Configure **Passive Scan** settings (enable/disable checks you care about).
+6. Browse the application through ZAP proxy (or run automated functional tests against the proxy) so the **Spider** and passive scanner populate the Site Tree and alerts.
+7. Run **Active Scan** against the in-scope nodes using an appropriate **Scan Policy** and an authenticated user if needed.
+8. Review **Alerts**, save **Session**, generate report, and export findings.
+
+---
+
+# Typical automated workflow (CI / headless)
+
+1. Start ZAP in daemon mode (Docker or service).
+2. Seed discovery: import OpenAPI or run spider via API; or run functional tests against the staging deployment while ZAP proxies traffic.
+3. Ensure authentication: upload login script or configure context users via API.
+4. Run active scan (pass `inScopeOnly=true` and the chosen scan policy).
+5. Wait for scan to finish; fetch alerts via API and generate HTML/JSON report.
+6. Fail the build or create issues if alerts above threshold (e.g., Critical/High) are found.
+7. Save session/artifacts for triage.
+
+---
+
+# Useful automation snippets (pattern)
+
+* **API pattern:** ZAP’s management API runs at `http://127.0.0.1:PORT/` and exposes endpoints like `/JSON/<component>/action/<operation>?params...&apikey=APIKEY`. Use this to script: create context, include regex, import auth, run spider, run ascan, fetch alerts.
+* **Docker helper:** use `owasp/zap2docker-stable` with built-in scripts `zap-api-scan.py`, `zap-baseline.py` for common CI runs. (These scripts wrap context import, spidering and scanning.)
+
+---
+
+# Practical tuning & safety tips
+
+* **Always** run Active Scans only against authorized targets (staging or explicit test environments).
+* Use **scan policies** to exclude destructive checks (file uploads, destructive injections) for CI.
+* Use **contexts** + **authentication** to include only protected endpoints you want scanned.
+* Use `inScopeOnly` to prevent scans from following external links.
+* Balance depth vs time: full active scans are thorough but slow. For CI use a small focused policy and schedule full scans overnight.
+* Validate **false positives** manually before reporting. Passive scans help triage low-risk issues quickly.
+
+---
+
+# Troubleshooting 
+
+* ZAP can’t reach JS-rendered links with classic spider → use AJAX spider or run Cypress/Playwright tests through ZAP so dynamic links are exercised.
+* If scans are failing to authenticate, record login with the browser proxied through ZAP and convert that to an authentication script.
+* If alerts are noisy in CI, create an allowlist of known acceptable low-risk items and fail only on high severity.
+* Save sessions and reports from CI runs to preserve evidence for audits.
+
+---
+
 # Operational notes & best practices
 
 * **Only scan authorised targets** — active scanning is intrusive and can break or modify application state. Only run against apps you own or have explicit permission to test.
