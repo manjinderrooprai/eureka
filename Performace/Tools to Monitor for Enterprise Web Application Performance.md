@@ -129,95 +129,72 @@ Global Availability
 
 # Visual architecture diagram — Mermaid (flowchart)
 
-Paste the code below into a Mermaid renderer (Markdown with Mermaid support, mermaid.live, GitHub README, Obsidian, etc.) to render the diagram.
-
 ```mermaid
 flowchart LR
-  %% --- Actors ---
-  subgraph User_Tier["User / Clients"]
-    RUM[Real User Monitoring (RUM)]
+  %% --- User tier ---
+  subgraph User_Tier [User / Clients]
+    RUM[Real User Monitoring - RUM]
     Browser[Browser / Mobile App]
   end
 
   %% --- Frontend ---
-  subgraph Frontend["Frontend (Client-side)"]
-    Browser -->|page load & events| RUM
+  subgraph Frontend [Frontend (Client-side)]
     Synthetic[Synthetic Tests (WebPageTest / Lighthouse)]
-    Browser -->|requests| CDN[CDN]
+    CDN[CDN / Edge]
   end
+
+  Browser -->|page load & events| RUM
+  Browser -->|requests| CDN
+  Synthetic -->|synthetic traffic| CDN
 
   %% --- Backend / App ---
-  subgraph App["Application & APIs"]
-    CDN --> LB[Load Balancer / Edge]
-    LB --> AppSrv[App Servers / Microservices]
-    AppSrv --> DB[(Database)]
-    AppSrv --> Cache[(Cache)]
-    AppSrv --> Auth[Auth Service / OAuth]
+  subgraph App [Application & APIs]
+    LB[Load Balancer / Edge]
+    AppSrv[App Servers / Microservices]
+    DB[(Database)]
+    Cache[(Cache)]
+    Auth[Auth Service]
   end
 
-  %% --- Infra / Containers ---
-  subgraph Infra["Infrastructure"]
-    AppSrv --- Containers[K8s / Containers]
-    Containers --- Host[Host / VMs]
-    Host --- Storage[Block Storage]
+  CDN --> LB
+  LB --> AppSrv
+  AppSrv --> DB
+  AppSrv --> Cache
+  AppSrv --> Auth
+
+  %% --- Infrastructure ---
+  subgraph Infra [Infrastructure]
+    K8s[Kubernetes / Containers]
+    Host[Hosts / VMs]
+    Storage[Block Storage]
   end
 
-  %% --- Monitoring & Observability ---
-  subgraph Observability["Monitoring / Observability"]
-    APM[APM: Traces / Slow transactions (NewRelic/Datadog/AppDynamics/Elastic)]
-    Prom[Prometheus -> Grafana]
-    Logs[Logging (ELK / Loki)]
-    RUM --> APM
-    AppSrv -->|metrics| Prom
-    AppSrv -->|logs| Logs
-    AppSrv -->|traces| APM
-    Synthetic -->|lab metrics| Grafana
-    APM -->|alerts| Alerting
-    Prom -->|dashboards| Grafana
-    Logs -->|search & analysis| Kibana
+  AppSrv --> K8s
+  K8s --> Host
+  Host --> Storage
+
+  %% --- Observability ---
+  subgraph Observability [Monitoring & Observability]
+    APM[APM - Traces / Slow transactions]
+    Prom[Prometheus]
+    Grafana[Grafana]
+    Logs[Logging - ELK / Loki]
+    Kibana[Kibana / Log UI]
+    Alerting[Alert Manager / PagerDuty]
   end
 
-  %% --- Security / Testing ---
-  subgraph Security["Security & Testing"]
-    DAST[DAST (OWASP ZAP / Burp)]
-    SAST[SAST (Static Analysis)]
-    IA[Pentest / Manual Testing]
-    CI[CI/CD (GitHub Actions / Jenkins)]
-    CI -->|deploy to staging| AppSrv
-    CI -->|trigger tests| Synthetic
-    CI -->|trigger scans| DAST
-    DAST --> Logs
-    DAST --> APM
-  end
+  RUM --> APM
+  AppSrv -->|metrics| Prom
+  AppSrv -->|traces| APM
+  AppSrv -->|logs| Logs
+  Prom --> Grafana
+  Logs --> Kibana
+  APM --> Alerting
+  Grafana --> Alerting
+  Kibana --> Alerting
 
-  %% --- Synthetic & Load ---
-  subgraph LoadTests["Load & Synthetic"]
-    K6[k6 / JMeter / Locust]
-    K6 -->|load traffic| LB
-    K6 -->|metrics| Prom
-  end
+  %% --- Security & Testing ---
 
-  %% --- Alerting / Ops ---
-  subgraph Ops["Alerting / Incident Mgmt"]
-    Alerting[Alert Manager / PagerDuty / Opsgenie]
-    Grafana --> Alerting
-    APM --> Alerting
-    Logs --> Alerting
-  end
-
-  %% --- UX / Business metrics ---
-  subgraph Biz["Business / UX"]
-    Apdex[Apdex & Business KPIs]
-    RUM --> Apdex
-    APM --> Apdex
-    Grafana --> Apdex
-  end
-
-  %% --- Visual connectors (extra clarity) ---
-  DB -->|query latency| APM
-  Cache -->|hit/miss metrics| Prom
-  Auth -->|auth events| Logs
-  Kibana -->|visualize| Ops
 ```
 
 ---
