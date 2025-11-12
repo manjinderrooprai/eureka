@@ -192,9 +192,9 @@ Now Tom’s team can **predict** load issues, **prevent outages**, and **communi
 
 # 1) What you need (short)
 
-* In your Spring Boot app: **Spring Boot Actuator** + **Micrometer Prometheus registry**. ([Micrometer][1])
-* Prometheus server to **scrape** `/actuator/prometheus`. ([Home][2])
-* Grafana to visualize dashboards (many community dashboards exist for Spring/JVM). ([Grafana Labs][3])
+* In your Spring Boot app: **Spring Boot Actuator** + **Micrometer Prometheus registry**.
+* Prometheus server to **scrape** `/actuator/prometheus`.
+* Grafana to visualize dashboards (many community dashboards exist for Spring/JVM).
 
 ---
 
@@ -220,7 +220,7 @@ implementation 'org.springframework.boot:spring-boot-starter-actuator'
 implementation 'io.micrometer:micrometer-registry-prometheus'
 ```
 
-(Actuator auto-configures Micrometer Prometheus endpoint when the registry is on the classpath.) ([Micrometer][1])
+(Actuator auto-configures Micrometer Prometheus endpoint when the registry is on the classpath.)
 
 ---
 
@@ -241,7 +241,7 @@ management:
 # management.server.port: 9091
 ```
 
-Key: expose `prometheus` endpoint so Prometheus can scrape `/actuator/prometheus`. ([Grafana Labs][4])
+Key: expose `prometheus` endpoint so Prometheus can scrape `/actuator/prometheus`.
 
 ---
 
@@ -259,7 +259,7 @@ scrape_configs:
       - targets: ['host.docker.internal:8080']   # <--- app host:port
 ```
 
-If on Kubernetes, use pod annotations / serviceMonitor instead of static_configs. ([Home][2])
+If on Kubernetes, use pod annotations / serviceMonitor instead of static_configs.
 
 ---
 
@@ -301,7 +301,7 @@ Add your Spring app as a separate service (or run it locally) and ensure Prometh
 * JVM heap used:
   `jvm_memory_used_bytes{area="heap"}`
 
-Metric names come from Micrometer/Spring Boot actuator (e.g. `http_server_requests_seconds_*`, `jvm_memory_*`). ([Micrometer][1])
+Metric names come from Micrometer/Spring Boot actuator (e.g. `http_server_requests_seconds_*`, `jvm_memory_*`).
 
 ---
 
@@ -328,20 +328,20 @@ groups:
 
 Community dashboards you can import by ID (go to Grafana → Dashboards → Import → paste ID):
 
-* **Spring Boot Statistics** — *community Spring Boot dashboard* (Grafana.com). ([Grafana Labs][3])
-* **JVM (Micrometer)** — ID often listed as **4701** (JVM Micrometer / Java). ([Grafana Labs][5])
-* **JVM Actuator** — ID **9568** (useful for Actuator + Micrometer metrics). ([Grafana Labs][6])
+* **Spring Boot Statistics** — *community Spring Boot dashboard* (Grafana.com).
+* **JVM (Micrometer)** — ID often listed as **4701** (JVM Micrometer / Java).
+* **JVM Actuator** — ID **9568** (useful for Actuator + Micrometer metrics).
 
-(There are multiple Spring Boot / JVM dashboards on Grafana.com — pick one that matches your metric names and Prometheus job label. Many tutorials show importing dashboard ID 14430 or similar; test a couple to find the layout you like.) ([Medium][7])
+(There are multiple Spring Boot / JVM dashboards on Grafana.com — pick one that matches your metric names and Prometheus job label. Many tutorials show importing dashboard ID 14430 or similar; test a couple to find the layout you like.)
 
 ---
 
 # 9) Tips & gotchas
 
-* If Prometheus can’t scrape: confirm the URL (e.g. `/actuator/prometheus`), port, and firewall. A common pitfall is running actuator on a different `management.server.port`. ([Stack Overflow][8])
-* For Kubernetes, prefer ServiceMonitors (Prometheus Operator) or pod annotations for automatic scraping. ([Grafana Labs][3])
+* If Prometheus can’t scrape: confirm the URL (e.g. `/actuator/prometheus`), port, and firewall. A common pitfall is running actuator on a different `management.server.port`.
+* For Kubernetes, prefer ServiceMonitors (Prometheus Operator) or pod annotations for automatic scraping.
 * Add meaningful `application` / `instance` labels (via `management.metrics.tags`) so dashboards can filter per-app.
-* Add custom metrics via Micrometer `MeterRegistry` (counters, timers, gauges) for business KPIs. ([Medium][9])
+* Add custom metrics via Micrometer `MeterRegistry` (counters, timers, gauges) for business KPIs.
 
 ---
 
@@ -365,14 +365,14 @@ public class MyService {
 }
 ```
 
-Micrometer will expose this as `orders_processed_total` to Prometheus automatically. ([Medium][9])
+Micrometer will expose this as `orders_processed_total` to Prometheus automatically.
 
 ---
 
 # 11) References / further reading
 
-* Spring Boot Actuator Prometheus endpoint (official docs). ([Home][10])
-* Micrometer Prometheus integration docs. ([Micrometer][1])
-* Grafana dashboards for Spring Boot / JVM (search & import on Grafana.com). ([Grafana Labs][3])
-* Practical walkthrough (Baeldung). ([baeldung.com][11])
+* Spring Boot Actuator Prometheus endpoint (official docs).
+* Micrometer Prometheus integration docs.
+* Grafana dashboards for Spring Boot / JVM (search & import on Grafana.com).
+* Practical walkthrough (Baeldung).
 
