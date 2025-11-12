@@ -1,0 +1,107 @@
+# Performance Benchmarking (NFRs)
+## 🧩 **1. Definition**
+
+**Performance Benchmarking** refers to **measuring and comparing system performance** against predefined **Non-Functional Requirements (NFRs)** or performance standards.
+It ensures the system meets expected performance levels before going live or after major updates.
+
+---
+
+## ⚙️ **2. What are NFRs (Non-Functional Requirements)?**
+
+Unlike functional requirements (what the system *does*), **NFRs** define **how well** the system performs.
+
+Common **Performance NFRs** include:
+
+| Category                 | Example NFR                                                      | Description                                                 |
+| ------------------------ | ---------------------------------------------------------------- | ----------------------------------------------------------- |
+| **Response Time**        | “System must respond within 2 seconds for 95% of user requests.” | Time taken for a system to return a result after a request. |
+| **Throughput**           | “System must handle 500 transactions per second.”                | Number of operations completed per time unit.               |
+| **Scalability**          | “System should scale linearly with increase in users.”           | Ability to handle growth in users/data.                     |
+| **Availability**         | “System must maintain 99.9% uptime.”                             | Percentage of time the system remains operational.          |
+| **Resource Utilization** | “CPU usage should not exceed 70% under peak load.”               | Efficient use of system resources like CPU, memory, or I/O. |
+| **Reliability**          | “System should recover within 5 minutes after a failure.”        | Ability to maintain service continuity.                     |
+
+---
+
+## 📏 **3. What is Performance Benchmarking?**
+
+It’s the **process of testing, measuring, and comparing** these NFRs against a **baseline or industry standard**.
+
+### ✅ Steps:
+
+1. **Identify Performance KPIs** (response time, TPS, CPU load, etc.)
+2. **Define Benchmark Scenarios** (realistic workloads, peak load, failover cases)
+3. **Execute Load/Stress Tests**
+4. **Capture Metrics**
+5. **Compare Results** against:
+
+   * SLAs (Service Level Agreements)
+   * Industry standards
+   * Previous version baselines
+
+---
+
+## 🧠 **4. Benchmarking Tools**
+
+| Tool                     | Purpose                      | Notes                              |
+| ------------------------ | ---------------------------- | ---------------------------------- |
+| **JMeter**               | Load and performance testing | Open-source, widely used           |
+| **Gatling**              | Load testing with scripts    | Developer-friendly, supports CI/CD |
+| **Locust**               | Scalable load testing        | Python-based, distributed          |
+| **k6**                   | Modern load testing          | Integrates well with CI pipelines  |
+| **Prometheus + Grafana** | Monitoring and visualization | Real-time performance dashboards   |
+
+---
+
+## 📊 **5. Example Benchmark Results Table**
+
+| Metric              | NFR Target | Test Result | Status |
+| ------------------- | ---------- | ----------- | ------ |
+| Response Time (p95) | ≤ 2s       | 1.8s        | ✅      |
+| Throughput          | ≥ 500 TPS  | 480 TPS     | ⚠️     |
+| CPU Utilization     | ≤ 70%      | 65%         | ✅      |
+| Memory Usage        | ≤ 4GB      | 5.2GB       | ❌      |
+
+---
+
+## 🧩 **6. Types of Performance Tests Used for Benchmarking**
+
+| Test Type                    | Purpose                                           |
+| ---------------------------- | ------------------------------------------------- |
+| **Load Testing**             | Check performance under expected workload         |
+| **Stress Testing**           | Identify system’s breaking point                  |
+| **Spike Testing**            | Evaluate performance during sudden traffic surges |
+| **Endurance (Soak) Testing** | Check long-term stability under sustained load    |
+| **Scalability Testing**      | Measure performance under increasing load         |
+
+---
+
+## 🧮 **7. Sample Benchmark Formula**
+
+To calculate **Throughput**:
+[
+\text{Throughput (TPS)} = \frac{\text{Total number of transactions}}{\text{Total time (in seconds)}}
+]
+
+To measure **95th Percentile Response Time**:
+Sort all response times and pick the value below which 95% of requests fall.
+
+---
+
+## 💡 **8. Fun Facts**
+
+* 🚀 Amazon found that **every 100ms delay** in page load time could cost **1% in sales**.
+* ⏱️ Google reported that **0.5s delay** leads to **20% drop in traffic**.
+* 💸 Performance optimization costs less during development than after release (up to **30x cheaper**).
+* ⚙️ Netflix runs **chaos testing** daily to maintain high availability under failure conditions.
+
+---
+
+## 🏁 **9. Outcome of Performance Benchmarking**
+
+After benchmarking, teams can:
+
+* Validate system readiness against NFRs
+* Identify performance bottlenecks
+* Plan capacity and scaling strategies
+* Establish baselines for future versions
