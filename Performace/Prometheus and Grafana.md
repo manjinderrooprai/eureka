@@ -185,5 +185,193 @@ Now Tom’s team can **predict** load issues, **prevent outages**, and **communi
 | **Language**    | PromQL                               | Dashboard JSON (visual configs) |
 | **Use Cases**   | System & app monitoring, alerting    | Visualization, reporting        |
 
-Would you like me to give you a **combined architecture diagram (visual)** showing Prometheus + Grafana + Spring Boot + exporters + Alertmanager + CI/CD metrics flow?
-I can generate it as an image for you.
+---
+
+## Spring (Boot) Java** app with **Micrometer → Prometheus → Grafana
+
+# 1) What you need (short)
+
+* In your Spring Boot app: **Spring Boot Actuator** + **Micrometer Prometheus registry**. ([Micrometer][1])
+* Prometheus server to **scrape** `/actuator/prometheus`. ([Home][2])
+* Grafana to visualize dashboards (many community dashboards exist for Spring/JVM). ([Grafana Labs][3])
+
+---
+
+# 2) Spring Boot: dependencies
+
+**Maven**
+
+```xml
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+<dependency>
+  <groupId>io.micrometer</groupId>
+  <artifactId>micrometer-registry-prometheus</artifactId>
+</dependency>
+```
+
+**Gradle**
+
+```groovy
+implementation 'org.springframework.boot:spring-boot-starter-actuator'
+implementation 'io.micrometer:micrometer-registry-prometheus'
+```
+
+(Actuator auto-configures Micrometer Prometheus endpoint when the registry is on the classpath.) ([Micrometer][1])
+
+---
+
+# 3) Spring Boot config (application.yml / application.properties)
+
+**application.yml**
+
+```yaml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    prometheus:
+      enabled: true
+# optional: if you want actuator on a different port
+# management.server.port: 9091
+```
+
+Key: expose `prometheus` endpoint so Prometheus can scrape `/actuator/prometheus`. ([Grafana Labs][4])
+
+---
+
+# 4) Example `prometheus.yml` (Prometheus scrape config)
+
+```yaml
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'spring-boot-app'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8080']   # <--- app host:port
+```
+
+If on Kubernetes, use pod annotations / serviceMonitor instead of static_configs. ([Home][2])
+
+---
+
+# 5) Quick Docker Compose (Prometheus + Grafana)
+
+```yaml
+version: '3.7'
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana-storage:/var/lib/grafana
+
+volumes:
+  grafana-storage:
+```
+
+Add your Spring app as a separate service (or run it locally) and ensure Prometheus target uses the reachable hostname.
+
+---
+
+# 6) Useful PromQL examples
+
+* HTTP request rate (per second):
+  `sum(rate(http_server_requests_seconds_count{job="spring-boot-app"}[5m])) by (uri,method,status)`
+* 95th percentile latency from histogram:
+  `histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket{job="spring-boot-app"}[5m])) by (le, uri))`
+* JVM heap used:
+  `jvm_memory_used_bytes{area="heap"}`
+
+Metric names come from Micrometer/Spring Boot actuator (e.g. `http_server_requests_seconds_*`, `jvm_memory_*`). ([Micrometer][1])
+
+---
+
+# 7) Basic alert rule example (Prometheus rule)
+
+```yaml
+groups:
+- name: spring-app.rules
+  rules:
+  - alert: HighHeapUsage
+    expr: |
+      (jvm_memory_used_bytes{area="heap"} / jvm_memory_max_bytes{area="heap"}) > 0.9
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      summary: "High JVM heap usage ({{ $labels.instance }})"
+      description: "Heap > 90% for more than 2 minutes"
+```
+
+---
+
+# 8) Grafana dashboards to import (ready-made)
+
+Community dashboards you can import by ID (go to Grafana → Dashboards → Import → paste ID):
+
+* **Spring Boot Statistics** — *community Spring Boot dashboard* (Grafana.com). ([Grafana Labs][3])
+* **JVM (Micrometer)** — ID often listed as **4701** (JVM Micrometer / Java). ([Grafana Labs][5])
+* **JVM Actuator** — ID **9568** (useful for Actuator + Micrometer metrics). ([Grafana Labs][6])
+
+(There are multiple Spring Boot / JVM dashboards on Grafana.com — pick one that matches your metric names and Prometheus job label. Many tutorials show importing dashboard ID 14430 or similar; test a couple to find the layout you like.) ([Medium][7])
+
+---
+
+# 9) Tips & gotchas
+
+* If Prometheus can’t scrape: confirm the URL (e.g. `/actuator/prometheus`), port, and firewall. A common pitfall is running actuator on a different `management.server.port`. ([Stack Overflow][8])
+* For Kubernetes, prefer ServiceMonitors (Prometheus Operator) or pod annotations for automatic scraping. ([Grafana Labs][3])
+* Add meaningful `application` / `instance` labels (via `management.metrics.tags`) so dashboards can filter per-app.
+* Add custom metrics via Micrometer `MeterRegistry` (counters, timers, gauges) for business KPIs. ([Medium][9])
+
+---
+
+# 10) Quick example: add a custom counter in code
+
+```java
+@Component
+public class MyService {
+  private final Counter ordersCounter;
+
+  public MyService(MeterRegistry registry) {
+    this.ordersCounter = Counter.builder("orders_processed_total")
+      .description("Total processed orders")
+      .register(registry);
+  }
+
+  public void processOrder(Order o) {
+    // ... processing
+    ordersCounter.increment();
+  }
+}
+```
+
+Micrometer will expose this as `orders_processed_total` to Prometheus automatically. ([Medium][9])
+
+---
+
+# 11) References / further reading
+
+* Spring Boot Actuator Prometheus endpoint (official docs). ([Home][10])
+* Micrometer Prometheus integration docs. ([Micrometer][1])
+* Grafana dashboards for Spring Boot / JVM (search & import on Grafana.com). ([Grafana Labs][3])
+* Practical walkthrough (Baeldung). ([baeldung.com][11])
+
