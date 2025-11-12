@@ -186,8 +186,9 @@ Now Tom’s team can **predict** load issues, **prevent outages**, and **communi
 | **Use Cases**   | System & app monitoring, alerting    | Visualization, reporting        |
 
 ---
+---
 
-**Spring (Boot) Java** app with **Micrometer → Prometheus → Grafana**
+### Spring (Boot) Java** app with **Micrometer → Prometheus → Grafana
 
 # 1) What you need (short)
 
