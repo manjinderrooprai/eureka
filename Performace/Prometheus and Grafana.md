@@ -1,5 +1,7 @@
 # Prometheus and Grafana
 
+<img width="991" height="496" alt="image" src="https://github.com/user-attachments/assets/716c37de-1aed-4fb8-b00c-dcc88059fe52" />
+
 ## 🧭 1. What is **Prometheus**?
 
 **Prometheus** is an **open-source monitoring and alerting system** originally built by SoundCloud and now part of the **Cloud Native Computing Foundation (CNCF)**.
