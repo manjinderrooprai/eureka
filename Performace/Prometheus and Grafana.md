@@ -185,7 +185,72 @@ Now Tom’s team can **predict** load issues, **prevent outages**, and **communi
 | **Language**    | PromQL                               | Dashboard JSON (visual configs) |
 | **Use Cases**   | System & app monitoring, alerting    | Visualization, reporting        |
 
+
+### 🧠 **Prometheus — What It Does**
+
+Prometheus is **a metrics collection and storage system**.
+It:
+
+* **Scrapes** metrics from your applications, Kubernetes pods, or system exporters.
+* **Stores** time-series data (like CPU, memory, HTTP request rates, etc.).
+* **Supports** powerful **PromQL** (Prometheus Query Language) for querying data.
+* Can **alert** using the Alertmanager component.
+
+✅ Think of Prometheus as **the “database + brain”** of your monitoring stack.
+
 ---
+
+### 📊 **Grafana — What It Adds**
+
+Grafana is **a visualization and analytics platform**.
+It:
+
+* Connects to Prometheus (and many other data sources like Loki, InfluxDB, CloudWatch, etc.).
+* Provides **beautiful, real-time dashboards** for metrics.
+* Allows you to create **interactive panels** (graphs, gauges, tables, etc.).
+* Supports **alerting and annotations** visually.
+* Helps with **collaboration** — sharing dashboards and insights easily.
+
+✅ Think of Grafana as **the “face + eyes”** of your monitoring system.
+
+---
+
+### 🧩 **Together**
+
+| Component      | Role                      | Example                                      |
+| -------------- | ------------------------- | -------------------------------------------- |
+| **Prometheus** | Collects & stores metrics | “App X has 75% CPU usage right now.”         |
+| **Grafana**    | Visualizes those metrics  | Dashboard shows CPU usage graph trending up. |
+
+---
+
+### 🏗️ Example Setup
+
+1. Prometheus scrapes data from:
+
+   * Node Exporter (system metrics)
+   * Application metrics (`/metrics` endpoint)
+   * K8s metrics-server or custom exporters
+
+2. Grafana connects to Prometheus as a **data source**.
+
+3. You build a dashboard in Grafana to view:
+
+   * CPU, memory, network usage
+   * Request latency, error rates, etc.
+
+4. Grafana alerts you when a metric crosses a threshold — using Prometheus data.
+
+---
+
+### ⚙️ In Short
+
+* **Prometheus = collects + stores metrics**
+* **Grafana = visualizes + analyzes metrics**
+
+You can use Prometheus *alone* to query metrics (with PromQL),
+but **Grafana makes it human-friendly** and production-ready for teams.
+
 ---
 
 ### Spring (Boot) Java** app with **Micrometer → Prometheus → Grafana
@@ -375,4 +440,3 @@ Micrometer will expose this as `orders_processed_total` to Prometheus automatica
 * Micrometer Prometheus integration docs.
 * Grafana dashboards for Spring Boot / JVM (search & import on Grafana.com).
 * Practical walkthrough (Baeldung).
-
