@@ -4,8 +4,6 @@ A benchmark is a standard or reference point against which the performance of an
 
 ## 5 Steps to Decide the Benchmark
 
-The video outlines a five-step process for establishing performance testing benchmarks:
-
 ### 1. Understand the Requirements
 * **Consult Stakeholders:** Talk to the business team, project team, and application owners.
 * **Gather Expectations:** Determine the expected user load (e.g., 50,000 concurrent users) and the expected response time under that load (e.g., less than 2 seconds).
