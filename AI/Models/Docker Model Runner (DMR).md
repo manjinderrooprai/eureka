@@ -150,6 +150,66 @@ Built for Kubernetes & container platforms.
 
 ---
 
+## ✅ Core `docker model` Commands
+
+| Command                             | Description / Purpose                                                                                                                                                          |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `docker model install-runner`       | Install Docker Model Runner (needed on some setups, e.g. Docker Engine on Linux). ([Docker Documentation][2])                                                                  |
+| `docker model uninstall-runner`     | Uninstall Docker Model Runner (i.e. remove the plugin/runner). ([Docker Documentation][1])                                                                                     |
+| `docker model version`              | Show the version of Docker Model Runner (check what version of DMR you have). ([Docker Documentation][1])                                                                      |
+| `docker model list`                 | List all AI/ML models you have pulled / that are locally available for running. ([Docker Documentation][1])                                                                    |
+| `docker model pull <MODEL>`         | Pull/download a model (from Docker Hub, HuggingFace or an OCI registry) to make it available locally. ([Docker Documentation][1])                                              |
+| `docker model push <MODEL>`         | Push a model (OCI-artifact) to Docker Hub (or another registry). Useful if you’ve packaged or tagged a model and want to share. ([Docker Documentation][1])                    |
+| `docker model package`              | Package a model file (e.g. a `.gguf` file) into a Docker-model OCI artifact — optionally specify license, context-size, and push it to a registry. ([Docker Documentation][1]) |
+| `docker model run <MODEL> [PROMPT]` | Run the model, either giving a prompt for one-off execution, or in interactive chat mode if no prompt provided. ([Docker Documentation][3])                                    |
+| `docker model inspect <MODEL>`      | Display detailed information about a specific model (metadata, tags, maybe config) available locally. ([Docker Documentation][1])                                              |
+| `docker model logs`                 | Fetch or stream logs from Model Runner — useful for debugging or monitoring inference activity. ([Docker Documentation][1])                                                    |
+| `docker model status`               | Check if Docker Model Runner is currently running (its daemon/service status). ([Docker Documentation][1])                                                                     |
+| `docker model tag SOURCE TARGET`    | Retag a local model (or OCI-artifact) under a new name — e.g. to push under a different namespace. ([Docker Documentation][1])                                                 |
+| `docker model rm <MODEL>`           | Remove a local model (delete the downloaded model) to free up space. ([Docker Documentation][1])                                                                               |
+
+---
+
+## 🔧 Example Usage & Options
+
+* To **run a model**:
+
+```
+docker model run ai/some-model "Hello, how are you?"
+```
+
+or, for interactive mode:
+
+````
+docker model run ai/some-model
+``` :contentReference[oaicite:15]{index=15}
+
+- To **package a GGUF model file** and push to a registry:
+
+````
+
+docker model package --gguf /path/to/model.gguf --push myorg/my-model:tag
+
+```:contentReference[oaicite:16]{index=16}
+
+- To **pull** a model from a public registry:
+
+```
+
+docker model pull ai/smollm2:latest
+
+```:contentReference[oaicite:17]{index=17}
+
+- To **check status** of the runner:
+
+```
+
+docker model status
+
+```:contentReference[oaicite:18]{index=18}
+
+---
+
 # Example: Llama 3.1 with DMR
 
 ```
