@@ -13,6 +13,7 @@ Before diving into optimization, remember the golden rule: **Don't optimize prem
 Caching is a fundamental technique for improving API performance. It involves storing the results of expensive computations or frequently accessed data so that subsequent requests for the same information can be served much faster, without needing to hit the backend database or re-process data.
 
 Imagine a popular e-commerce site. Product details for best-selling items are requested thousands of times a minute. Instead of querying the database for each request, caching stores these details in a fast-access memory store.
+
 <img width="1888" height="554" alt="image" src="https://github.com/user-attachments/assets/83e5366d-0d0b-4b9c-a733-e0f61ad85f66" />
 
 **Benefits:**
