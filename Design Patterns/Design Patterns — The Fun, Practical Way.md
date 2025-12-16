@@ -363,3 +363,302 @@ Algorithm structure is fixed, steps vary.
 * Facade
 * Proxy
 
+#Examples
+
+⸻
+
+1. Singleton Pattern
+
+Use case: Application state holder, feature flags
+
+public final class AppState {
+
+    private static AppState INSTANCE;
+
+    private AppState() {}
+
+    public static synchronized AppState instance() {
+        if (INSTANCE == null) {
+            INSTANCE = new AppState();
+        }
+        return INSTANCE;
+    }
+}
+
+Usage:
+
+AppState state = AppState.instance();
+
+
+⸻
+
+2. Factory Pattern
+
+Use case: Object creation based on type
+
+interface Shape {
+    void draw();
+}
+
+class Circle implements Shape {
+    public void draw() {
+        System.out.println("Drawing Circle");
+    }
+}
+
+class Square implements Shape {
+    public void draw() {
+        System.out.println("Drawing Square");
+    }
+}
+
+class ShapeFactory {
+    static Shape create(String type) {
+        if ("CIRCLE".equals(type)) return new Circle();
+        if ("SQUARE".equals(type)) return new Square();
+        throw new IllegalArgumentException("Unknown shape");
+    }
+}
+
+
+⸻
+
+3. Builder Pattern
+
+Use case: Immutable configuration objects
+
+class Config {
+    private final String key;
+    private final int timeout;
+
+    private Config(Builder b) {
+        this.key = b.key;
+        this.timeout = b.timeout;
+    }
+
+    static class Builder {
+        private String key;
+        private int timeout;
+
+        Builder key(String k) {
+            this.key = k;
+            return this;
+        }
+
+        Builder timeout(int t) {
+            this.timeout = t;
+            return this;
+        }
+
+        Config build() {
+            return new Config(this);
+        }
+    }
+}
+
+
+⸻
+
+4. Strategy Pattern
+
+Use case: Runtime behavior selection
+
+interface Operation {
+    int execute(int a, int b);
+}
+
+class Add implements Operation {
+    public int execute(int a, int b) { return a + b; }
+}
+
+class Multiply implements Operation {
+    public int execute(int a, int b) { return a * b; }
+}
+
+class Calculator {
+    private Operation op;
+
+    Calculator(Operation op) {
+        this.op = op;
+    }
+
+    int run(int x, int y) {
+        return op.execute(x, y);
+    }
+}
+
+
+⸻
+
+5. Observer Pattern
+
+Use case: Event notification
+
+import java.util.*;
+
+interface Listener {
+    void onEvent(String event);
+}
+
+class ConsoleListener implements Listener {
+    public void onEvent(String event) {
+        System.out.println("Event: " + event);
+    }
+}
+
+class EventSource {
+    private List<Listener> listeners = new ArrayList<>();
+
+    void register(Listener l) {
+        listeners.add(l);
+    }
+
+    void trigger() {
+        listeners.forEach(l -> l.onEvent("Triggered"));
+    }
+}
+
+
+⸻
+
+6. Decorator Pattern
+
+Use case: Feature enhancement
+
+interface Message {
+    String get();
+}
+
+class BasicMessage implements Message {
+    public String get() {
+        return "Hello";
+    }
+}
+
+class UppercaseDecorator implements Message {
+    private Message message;
+
+    UppercaseDecorator(Message m) {
+        this.message = m;
+    }
+
+    public String get() {
+        return message.get().toUpperCase();
+    }
+}
+
+
+⸻
+
+7. Adapter Pattern
+
+Use case: Interface compatibility
+
+class OldSystem {
+    String read() {
+        return "data";
+    }
+}
+
+interface NewSystem {
+    String fetch();
+}
+
+class SystemAdapter implements NewSystem {
+    private OldSystem old;
+
+    SystemAdapter(OldSystem o) {
+        this.old = o;
+    }
+
+    public String fetch() {
+        return old.read();
+    }
+}
+
+
+⸻
+
+8. Facade Pattern
+
+Use case: Simplified access
+
+class Loader {
+    void load() {}
+}
+
+class Processor {
+    void process() {}
+}
+
+class EngineFacade {
+    private Loader loader = new Loader();
+    private Processor processor = new Processor();
+
+    void start() {
+        loader.load();
+        processor.process();
+    }
+}
+
+
+⸻
+
+9. Proxy Pattern
+
+Use case: Deferred initialization
+
+interface Resource {
+    void access();
+}
+
+class RealResource implements Resource {
+    public void access() {
+        System.out.println("Accessing resource");
+    }
+}
+
+class ResourceProxy implements Resource {
+    private RealResource real;
+
+    public void access() {
+        if (real == null) {
+            real = new RealResource();
+        }
+        real.access();
+    }
+}
+
+
+⸻
+
+10. Command Pattern
+
+Use case: Encapsulated actions
+
+interface Task {
+    void run();
+}
+
+class PrintTask implements Task {
+    public void run() {
+        System.out.println("Running task");
+    }
+}
+
+class TaskExecutor {
+    void execute(Task task) {
+        task.run();
+    }
+}
+
+
+⸻
+
+Summary
+
+Creational: Singleton, Factory, Builder
+Structural: Adapter, Decorator, Facade, Proxy
+Behavioral: Strategy, Observer, Command
+
+⸻
