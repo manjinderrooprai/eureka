@@ -3,6 +3,8 @@
 Think of **design patterns as “proven solutions to common problems”** in software design.
 Just like traffic rules—boring to read, invaluable in practice.
 
+<img width="1022" height="505" alt="Design patterns" src="https://github.com/user-attachments/assets/4260c80d-d558-4741-baa1-f1d676703709" />
+
 ## We’ll learn them in **3 levels**:
 
 1. What problem it solves (story)
