@@ -643,6 +643,6 @@ class TaskExecutor {
 
 ### Summary
 
-- Creational: Singleton, Factory, Builder
-- Structural: Adapter, Decorator, Facade, Proxy
-- Behavioral: Strategy, Observer, Command
+- **Creational**: Singleton, Factory, Builder
+- **Structural**: Adapter, Decorator, Facade, Proxy
+- **Behavioral**: Strategy, Observer, Command
