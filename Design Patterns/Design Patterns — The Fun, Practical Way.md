@@ -365,8 +365,6 @@ Algorithm structure is fixed, steps vary.
 
 # Examples
 
-⸻
-
 ## 1. Singleton Pattern
 
 Use case: Application state holder, feature flags
@@ -389,8 +387,6 @@ public final class AppState {
 Usage:
 AppState state = AppState.instance();
 ```
-
-⸻
 
 ## 2. Factory Pattern
 
@@ -421,8 +417,6 @@ class ShapeFactory {
     }
 }
 ```
-
-⸻
 
 ## 3. Builder Pattern
 
@@ -459,8 +453,6 @@ class Config {
 }
 ```
 
-⸻
-
 ## 4. Strategy Pattern
 
 Use case: Runtime behavior selection
@@ -490,8 +482,6 @@ class Calculator {
     }
 }
 ```
-
-⸻
 
 ## 5. Observer Pattern
 
@@ -523,8 +513,6 @@ class EventSource {
 }
 ```
 
-⸻
-
 ## 6. Decorator Pattern
 
 Use case: Feature enhancement
@@ -552,8 +540,6 @@ class UppercaseDecorator implements Message {
     }
 }
 ```
-
-⸻
 
 ## 7. Adapter Pattern
 
@@ -583,8 +569,6 @@ class SystemAdapter implements NewSystem {
 }
 ```
 
-⸻
-
 ## 8. Facade Pattern
 
 Use case: Simplified access
@@ -608,8 +592,6 @@ class EngineFacade {
     }
 }
 ```
-
-⸻
 
 ## 9. Proxy Pattern
 
@@ -637,8 +619,6 @@ class ResourceProxy implements Resource {
 }
 ```
 
-⸻
-
 ## 10. Command Pattern
 
 Use case: Encapsulated actions
@@ -661,12 +641,8 @@ class TaskExecutor {
 }
 ```
 
-⸻
-
 ### Summary
 
 - Creational: Singleton, Factory, Builder
 - Structural: Adapter, Decorator, Facade, Proxy
 - Behavioral: Strategy, Observer, Command
-
-⸻
