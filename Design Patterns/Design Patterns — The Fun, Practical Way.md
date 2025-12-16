@@ -363,11 +363,11 @@ Algorithm structure is fixed, steps vary.
 * Facade
 * Proxy
 
-#Examples
+# Examples
 
 ⸻
 
-1. Singleton Pattern
+## 1. Singleton Pattern
 
 Use case: Application state holder, feature flags
 
@@ -392,7 +392,7 @@ AppState state = AppState.instance();
 
 ⸻
 
-2. Factory Pattern
+## 2. Factory Pattern
 
 Use case: Object creation based on type
 
@@ -424,7 +424,7 @@ class ShapeFactory {
 
 ⸻
 
-3. Builder Pattern
+## 3. Builder Pattern
 
 Use case: Immutable configuration objects
 
@@ -461,7 +461,7 @@ class Config {
 
 ⸻
 
-4. Strategy Pattern
+## 4. Strategy Pattern
 
 Use case: Runtime behavior selection
 
@@ -493,7 +493,7 @@ class Calculator {
 
 ⸻
 
-5. Observer Pattern
+## 5. Observer Pattern
 
 Use case: Event notification
 
@@ -525,7 +525,7 @@ class EventSource {
 
 ⸻
 
-6. Decorator Pattern
+## 6. Decorator Pattern
 
 Use case: Feature enhancement
 
@@ -555,7 +555,7 @@ class UppercaseDecorator implements Message {
 
 ⸻
 
-7. Adapter Pattern
+## 7. Adapter Pattern
 
 Use case: Interface compatibility
 
@@ -585,7 +585,7 @@ class SystemAdapter implements NewSystem {
 
 ⸻
 
-8. Facade Pattern
+## 8. Facade Pattern
 
 Use case: Simplified access
 
@@ -611,7 +611,7 @@ class EngineFacade {
 
 ⸻
 
-9. Proxy Pattern
+## 9. Proxy Pattern
 
 Use case: Deferred initialization
 ```java
@@ -641,7 +641,7 @@ class ResourceProxy implements Resource {
 
 ## 10. Command Pattern
 
-### Use case: Encapsulated actions
+Use case: Encapsulated actions
 
 ```java
 interface Task {
