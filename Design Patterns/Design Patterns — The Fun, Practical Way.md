@@ -345,6 +345,8 @@ Algorithm structure is fixed, steps vary.
 
 # Examples
 
+![1659334507497](https://github.com/user-attachments/assets/ba69e7ec-10fc-46d4-9cc5-329cd24521dd)
+
 ## 1. Singleton Pattern
 
 Use case: Application state holder, feature flags
