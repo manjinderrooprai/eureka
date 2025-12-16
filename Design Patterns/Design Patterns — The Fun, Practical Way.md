@@ -371,6 +371,7 @@ Algorithm structure is fixed, steps vary.
 
 Use case: Application state holder, feature flags
 
+```java
 public final class AppState {
 
     private static AppState INSTANCE;
@@ -386,9 +387,8 @@ public final class AppState {
 }
 
 Usage:
-
 AppState state = AppState.instance();
-
+```
 
 ⸻
 
@@ -396,6 +396,7 @@ AppState state = AppState.instance();
 
 Use case: Object creation based on type
 
+```java
 interface Shape {
     void draw();
 }
@@ -419,7 +420,7 @@ class ShapeFactory {
         throw new IllegalArgumentException("Unknown shape");
     }
 }
-
+```
 
 ⸻
 
@@ -427,6 +428,7 @@ class ShapeFactory {
 
 Use case: Immutable configuration objects
 
+```java
 class Config {
     private final String key;
     private final int timeout;
@@ -455,7 +457,7 @@ class Config {
         }
     }
 }
-
+```
 
 ⸻
 
@@ -463,6 +465,7 @@ class Config {
 
 Use case: Runtime behavior selection
 
+```java
 interface Operation {
     int execute(int a, int b);
 }
@@ -486,7 +489,7 @@ class Calculator {
         return op.execute(x, y);
     }
 }
-
+```
 
 ⸻
 
@@ -494,6 +497,7 @@ class Calculator {
 
 Use case: Event notification
 
+```java
 import java.util.*;
 
 interface Listener {
@@ -517,7 +521,7 @@ class EventSource {
         listeners.forEach(l -> l.onEvent("Triggered"));
     }
 }
-
+```
 
 ⸻
 
@@ -525,6 +529,7 @@ class EventSource {
 
 Use case: Feature enhancement
 
+```java
 interface Message {
     String get();
 }
@@ -546,7 +551,7 @@ class UppercaseDecorator implements Message {
         return message.get().toUpperCase();
     }
 }
-
+```
 
 ⸻
 
@@ -554,6 +559,7 @@ class UppercaseDecorator implements Message {
 
 Use case: Interface compatibility
 
+```java
 class OldSystem {
     String read() {
         return "data";
@@ -575,7 +581,7 @@ class SystemAdapter implements NewSystem {
         return old.read();
     }
 }
-
+```
 
 ⸻
 
@@ -583,6 +589,7 @@ class SystemAdapter implements NewSystem {
 
 Use case: Simplified access
 
+```java
 class Loader {
     void load() {}
 }
@@ -600,14 +607,14 @@ class EngineFacade {
         processor.process();
     }
 }
-
+```
 
 ⸻
 
 9. Proxy Pattern
 
 Use case: Deferred initialization
-
+```java
 interface Resource {
     void access();
 }
@@ -628,14 +635,15 @@ class ResourceProxy implements Resource {
         real.access();
     }
 }
-
+```
 
 ⸻
 
-10. Command Pattern
+## 10. Command Pattern
 
-Use case: Encapsulated actions
+### Use case: Encapsulated actions
 
+```java
 interface Task {
     void run();
 }
@@ -651,14 +659,14 @@ class TaskExecutor {
         task.run();
     }
 }
-
+```
 
 ⸻
 
-Summary
+### Summary
 
-Creational: Singleton, Factory, Builder
-Structural: Adapter, Decorator, Facade, Proxy
-Behavioral: Strategy, Observer, Command
+- Creational: Singleton, Factory, Builder
+- Structural: Adapter, Decorator, Facade, Proxy
+- Behavioral: Strategy, Observer, Command
 
 ⸻
