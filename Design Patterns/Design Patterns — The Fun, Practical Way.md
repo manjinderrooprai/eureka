@@ -3,15 +3,13 @@
 Think of **design patterns as “proven solutions to common problems”** in software design.
 Just like traffic rules—boring to read, invaluable in practice.
 
-We’ll learn them in **3 levels**:
+## We’ll learn them in **3 levels**:
 
 1. What problem it solves (story)
 2. How it works (idea)
 3. Where you actually use it (real projects)
 
----
-
-## 1️⃣ Singleton — *“Only One Boss Allowed”*
+## 1. Singleton — *“Only One Boss Allowed”*
 
 ### Story
 
@@ -37,9 +35,7 @@ You want **only one instance** of a class across the application.
 
 > “If more than one instance breaks logic → Singleton”
 
----
-
-## 2️⃣ Factory — *“Don’t Ask How, Just Give Me the Object”*
+## 2. Factory — *“Don’t Ask How, Just Give Me the Object”*
 
 ### Story
 
@@ -65,9 +61,7 @@ Object creation logic becomes messy and tightly coupled.
 
 > “If `new` is everywhere → Factory”
 
----
-
-## 3️⃣ Builder — *“Make It Step by Step”*
+## 3. Builder — *“Make It Step by Step”*
 
 ### Story
 
@@ -97,9 +91,7 @@ Constructors with **too many parameters**.
 
 > “Too many constructor arguments → Builder”
 
----
-
-## 4️⃣ Strategy — *“Same Task, Different Ways”*
+## 4. Strategy — *“Same Task, Different Ways”*
 
 ### Story
 
@@ -130,9 +122,7 @@ You want to **change behavior at runtime**.
 
 > “If `if-else` keeps growing → Strategy”
 
----
-
-## 5️⃣ Observer — *“You Subscribe, I Notify”*
+## 5. Observer — *“You Subscribe, I Notify”*
 
 ### Story
 
@@ -159,9 +149,7 @@ Many objects depend on **one object’s state change**.
 
 > “One change → many reactions → Observer”
 
----
-
-## 6️⃣ Decorator — *“Add Features Without Breaking Things”*
+## 6. Decorator — *“Add Features Without Breaking Things”*
 
 ### Story
 
@@ -192,9 +180,7 @@ You want to **add behavior dynamically** without changing the class.
 
 > “Need add-ons without inheritance → Decorator”
 
----
-
-## 7️⃣ Adapter — *“Plug Converter”*
+## 7. Adapter — *“Plug Converter”*
 
 ### Story
 
@@ -219,9 +205,7 @@ Two interfaces don’t match.
 
 > “Interface mismatch → Adapter”
 
----
-
-## 8️⃣ Facade — *“One Button, Many Things”*
+## 8. Facade — *“One Button, Many Things”*
 
 ### Story
 
@@ -251,9 +235,7 @@ Complex subsystem exposed to clients.
 
 > “Too complex to use directly → Facade”
 
----
-
-## 9️⃣ Proxy — *“Control Access”*
+## 9. Proxy — *“Control Access”*
 
 ### Story
 
@@ -279,9 +261,7 @@ You need **controlled access** to an object.
 
 > “Need access control → Proxy”
 
----
-
-## 🔟 Command — *“Wrap Action as Object”*
+## 10. Command — *“Wrap Action as Object”*
 
 ### Story
 
@@ -306,9 +286,7 @@ You want to **decouple requester from action**.
 
 > “Action should be stored or replayed → Command”
 
----
-
-## 11️⃣ Template Method — *“Same Recipe, Different Flavors”*
+## 11. Template Method — *“Same Recipe, Different Flavors”*
 
 ### Story
 
