@@ -158,9 +158,9 @@ Many objects depend on **one object’s state change**.
 You buy coffee:
 
 * Coffee
-* * Milk
-* * Sugar
-* * Cream
+* Milk
+* Sugar
+* Cream
 
 ### Problem
 
