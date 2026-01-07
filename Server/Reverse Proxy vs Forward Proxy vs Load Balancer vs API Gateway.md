@@ -1,6 +1,6 @@
 # Reverse Proxy vs Forward Proxy vs Load Balancer vs API Gateway
 
-<img width="672" height="982" alt="image" src="https://github.com/user-attachments/assets/dbf0840d-61b2-4161-ad8b-4138da0e1335" />
+<img width="972" height="1282" alt="image" src="https://github.com/user-attachments/assets/057f3c0d-24fe-4341-a755-3cd5068bd090" />
 
 
 ## 1. Reverse Proxy
