@@ -23,6 +23,43 @@ Below is a **memory-level explanation** of your program, focusing strictly on th
 
 ## Program Execution: Step-by-Step Memory Analysis
 
+```java
+public class App {
+    public static void main(String[] args) throws Exception {
+        System.out.println("Spring Constant Pool!");
+
+        String s1 = new String("you");
+        String s2 = new String("you");
+
+        //1. 
+        System.out.println(s1 == s2 );
+
+        //2. 
+        String s3 = "you";
+        System.out.println(s1 == s3 );
+
+        //3. 
+        String s4 = "you";
+        System.out.println(s2 == s4 );
+
+        //4.
+        String s5 = "yo" + "u";
+        System.out.println(s5 == s3);
+
+        //5. 
+        String s6 = "yo";
+        String s7 = s6 + "u";
+        System.out.println(s7 == s4);
+
+        //6.
+        final String s8 = "yo";
+        String s9 = s8 + "u";
+        System.out.println(s4 == s9 ); 
+
+    }
+}
+```
+
 ### JVM Startup
 
 ```java
