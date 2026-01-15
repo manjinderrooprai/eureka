@@ -1,8 +1,6 @@
 # Strings in Heap and String Constant Pool (SCP) 
 Below is a **memory-level explanation** of your program, focusing strictly on the **Heap** and the **String Constant Pool (SCP)** and why each comparison evaluates the way it does.
 
----
-
 ## Key JVM Memory Concepts (Required to Understand This)
 
 ### 1. String Constant Pool (SCP)
@@ -22,8 +20,6 @@ Below is a **memory-level explanation** of your program, focusing strictly on th
 * `==` → **reference comparison** (memory address)
 * `.equals()` → **content comparison**
 * Your code uses `==`, so **only memory references matter**.
-
----
 
 ## Program Execution: Step-by-Step Memory Analysis
 
@@ -69,8 +65,6 @@ Heap:
 
 ---
 
-### 1️⃣
-
 ```java
 System.out.println(s1 == s2);
 ```
@@ -86,8 +80,6 @@ false
 ```
 
 ---
-
-### 2️⃣
 
 ```java
 String s3 = "you";
@@ -115,8 +107,6 @@ false
 
 ---
 
-### 3️⃣
-
 ```java
 String s4 = "you";
 System.out.println(s2 == s4);
@@ -133,7 +123,7 @@ false
 
 ---
 
-### 4️⃣ (Compile-Time Concatenation)
+### (Compile-Time Concatenation)
 
 ```java
 String s5 = "yo" + "u";
@@ -165,7 +155,7 @@ true
 
 ---
 
-### 5️⃣ (Runtime Concatenation)
+### (Runtime Concatenation)
 
 ```java
 String s6 = "yo";
@@ -199,7 +189,7 @@ false
 
 ---
 
-### 6️⃣ (Final Variable Optimization)
+### (Final Variable Optimization)
 
 ```java
 final String s8 = "yo";
@@ -255,7 +245,7 @@ true
 
 ---
 
-## 1️⃣ After JVM Loads Literals
+## 1. After JVM Loads Literals
 
 ```text
 String Constant Pool (inside Heap)
@@ -268,7 +258,7 @@ String Constant Pool (inside Heap)
 
 ---
 
-## 2️⃣ After `new String("you")`
+## 2. After `new String("you")`
 
 ```java
 String s1 = new String("you");
@@ -287,7 +277,7 @@ String Constant Pool (SCP)           Heap (Non-Pool)
 
 ---
 
-## 3️⃣ After Literal Assignments
+## 3. After Literal Assignments
 
 ```java
 String s3 = "you";
@@ -307,7 +297,7 @@ String Constant Pool (SCP)           Heap
 
 ---
 
-## 4️⃣ Compile-Time Concatenation
+## 4. Compile-Time Concatenation
 
 ```java
 String s5 = "yo" + "u";
@@ -326,7 +316,7 @@ String Constant Pool (SCP)
 
 ---
 
-## 5️⃣ Runtime Concatenation
+## 5. Runtime Concatenation
 
 ```java
 String s6 = "yo";
@@ -346,7 +336,7 @@ String Constant Pool (SCP)           Heap
 
 ---
 
-## 6️⃣ `final` Enables Compile-Time Folding
+## 6. `final` Enables Compile-Time Folding
 
 ```java
 final String s8 = "yo";
